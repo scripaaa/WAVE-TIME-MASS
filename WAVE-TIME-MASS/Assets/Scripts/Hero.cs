@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hero : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class Hero : MonoBehaviour
     [SerializeField] private int lives = 5; // количество жизней
     [SerializeField] private float jumpForce = 15f; // сила прыжка
     private bool isGrounded = false; // есть ли замл€ под ногами
+
+    public int score; // колличество монет
+    public Text score_text; // текст, вывод€щий колличество монет
 
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
@@ -17,6 +21,7 @@ public class Hero : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+        score_text.text = score.ToString();
     }
 
     private void Update()
@@ -48,5 +53,12 @@ public class Hero : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
             isGrounded = true;
+    }
+
+    //ƒобавл€ет монетку
+    public void AddCoin()
+    {
+        score++;
+        score_text.text = score.ToString();
     }
 }
