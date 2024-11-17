@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hero : MonoBehaviour
 {
-    [SerializeField] private float speed = 3f; // скорость движения
-    [SerializeField] private int lives = 5; // количество жизней
-    [SerializeField] private float jumpForce = 15f; // сила прыжка
-    private bool isGrounded = false; // есть ли замля под ногами
+    [SerializeField] private float speed = 3f; // Г±ГЄГ®Г°Г®Г±ГІГј Г¤ГўГЁГ¦ГҐГ­ГЁГї
+    [SerializeField] private int lives = 5; // ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г¦ГЁГ§Г­ГҐГ©
+    [SerializeField] private float jumpForce = 15f; // Г±ГЁГ«Г  ГЇГ°Г»Г¦ГЄГ 
+    private bool isGrounded = false; // ГҐГ±ГІГј Г«ГЁ Г§Г Г¬Г«Гї ГЇГ®Г¤ Г­Г®ГЈГ Г¬ГЁ
+
+    public int score; // ГЄГ®Г«Г«ГЁГ·ГҐГ±ГІГўГ® Г¬Г®Г­ГҐГІ
+    public Text score_text; // ГІГҐГЄГ±ГІ, ГўГ»ГўГ®Г¤ГїГ№ГЁГ© ГЄГ®Г«Г«ГЁГ·ГҐГ±ГІГўГ® Г¬Г®Г­ГҐГІ
 
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
@@ -20,12 +24,13 @@ public class Hero : MonoBehaviour
     }
 
 
-    //Получаем ссылки на rb и sprite
+    //ГЏГ®Г«ГіГ·Г ГҐГ¬ Г±Г±Г»Г«ГЄГЁ Г­Г  rb ГЁ sprite
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        score_text.text = score.ToString();
     }
 
     private void Update()
@@ -38,18 +43,18 @@ public class Hero : MonoBehaviour
             Jump();
     }
 
-    //Бег
+    //ГЃГҐГЈ
     private void Run()
     {
         if (isGrounded) State = States.run;
-        Vector3 dir = transform.right * Input.GetAxis("Horizontal"); //Направление юнита
+        Vector3 dir = transform.right * Input.GetAxis("Horizontal"); //ГЌГ ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ ГѕГ­ГЁГІГ 
 
         transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, speed * Time.deltaTime);
 
-        sprite.flipX = dir.x < 0.0f; //Поворот при смене направления
+        sprite.flipX = dir.x < 0.0f; //ГЏГ®ГўГ®Г°Г®ГІ ГЇГ°ГЁ Г±Г¬ГҐГ­ГҐ Г­Г ГЇГ°Г ГўГ«ГҐГ­ГЁГї
     }
 
-    //Прыжок
+    //ГЏГ°Г»Г¦Г®ГЄ
     private void Jump()
     {
         isGrounded = false;
@@ -61,6 +66,13 @@ public class Hero : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
             isGrounded = true;
+    }
+
+    //Г„Г®ГЎГ ГўГ«ГїГҐГІ Г¬Г®Г­ГҐГІГЄГі
+    public void AddCoin()
+    {
+        score++;
+        score_text.text = score.ToString();
     }
 }
 
