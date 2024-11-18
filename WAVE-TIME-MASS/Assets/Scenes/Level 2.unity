@@ -9633,6 +9633,8 @@ GameObject:
   - component: {fileID: 1033001202}
   - component: {fileID: 1033001199}
   - component: {fileID: 1033001205}
+  - component: {fileID: 1033001207}
+  - component: {fileID: 1033001206}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Player
@@ -9766,6 +9768,36 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1033001206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033001198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c428a83be52acf2428ce1a14ef855dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PresentObject: {fileID: 371557230}
+  PastObject: {fileID: 289698964}
+  FutureObject: {fileID: 1811539307}
+--- !u!114 &1033001207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033001198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c428a83be52acf2428ce1a14ef855dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PresentObject: {fileID: 62594978}
+  PastObject: {fileID: 1753548472}
+  FutureObject: {fileID: 208721685}
 --- !u!1 &1135328116
 GameObject:
   m_ObjectHideFlags: 0
