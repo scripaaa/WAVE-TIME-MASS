@@ -31,6 +31,8 @@ public class Hero : MonoBehaviour
         sprite = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
         score_text.text = score.ToString();
+        Artifact artf=new DoubleJump();
+        AddArtifact(artf);
     }
 
     private void Update()
@@ -74,6 +76,13 @@ public class Hero : MonoBehaviour
         score++;
         score_text.text = score.ToString();
     }
+    //Применить артефакт к игроку; 
+    public void AddArtifact(Artifact artifact) { artifact.Use(); }
+
+    //значение поля jumpForce
+    public float GetJumpForse() { return jumpForce; }
+    //изменить значение поля speed
+    public void SetJumpForse(float newjumpforse) { jumpForce = newjumpforse; }
 }
 
 public enum States
