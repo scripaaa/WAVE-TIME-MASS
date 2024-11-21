@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
-public class WalkingEnemies : MonoBehaviour
+public class WalkingEnemies : Entity
 {
     public float speed;
     public Vector3[] positions;
-
     private int currentTarget;
+    public Hero Hero;
 
     public void FixedUpdate()
     {
@@ -28,11 +28,9 @@ public class WalkingEnemies : MonoBehaviour
     }   
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player") 
-        {
-            SceneManager.LoadScene(1);
-        }
+       
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
