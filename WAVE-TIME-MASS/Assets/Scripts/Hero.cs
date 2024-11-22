@@ -31,8 +31,6 @@ public class Hero : MonoBehaviour
         sprite = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
         score_text.text = score.ToString();
-        Artifact artf=new DoubleJump();
-        AddArtifact(artf);
     }
 
     private void Update()
@@ -80,9 +78,16 @@ public class Hero : MonoBehaviour
     public void AddArtifact(Artifact artifact) { artifact.Use(); }
 
     //значение поля jumpForce
-    public float GetJumpForse() { return jumpForce; }
-    //изменить значение поля speed
-    public void SetJumpForse(float newjumpforse) { jumpForce = newjumpforse; }
+    public float GetJumpForce() { return jumpForce; }
+    //изменить значение поля jumpForce
+    public void SetJumpForce(float newjumpforce) { jumpForce = newjumpforce; }
+    //значение поля lives
+    public int GetLives() { return lives; }
+    //изменить значение поля Live
+    public void SetLives(int newlives)
+    { 
+        lives =newlives; 
+    }
 }
 
 public enum States
