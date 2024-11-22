@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Hero : Entity
 {
@@ -41,6 +42,7 @@ public class Hero : Entity
         sprite = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
         score_text.text = score.ToString();
+        Instance = this;
     }
 
     private void Update()
@@ -51,8 +53,12 @@ public class Hero : Entity
             Run();
         if (isGrounded && Input.GetButtonDown("Jump"))
             Jump();
+        if (gameObject.transform.position.y < -20)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
 
-        if (health > lives)
+            if (health > lives)
             health = lives;
         for (int i = 0; i < Hearts.Length; i++)
         {

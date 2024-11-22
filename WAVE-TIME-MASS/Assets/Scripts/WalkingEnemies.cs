@@ -9,7 +9,7 @@ public class WalkingEnemies : Entity
     public float speed;
     public Vector3[] positions;
     private int currentTarget;
-    public Hero Hero;
+   
 
     public void FixedUpdate()
     {
@@ -28,7 +28,10 @@ public class WalkingEnemies : Entity
     }   
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       
+       if (collision.gameObject == Hero.Instance.gameObject)
+        {
+            Hero.Instance.GetDamage();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
