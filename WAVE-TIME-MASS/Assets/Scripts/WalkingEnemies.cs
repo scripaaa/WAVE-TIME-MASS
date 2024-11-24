@@ -13,7 +13,6 @@ public class WalkingEnemies : Entity
     private Vector3 target;
     private int currentTarget;
     private SpriteRenderer sprite;
-    private int currentTarget;
     
     void Start()
     {
@@ -32,8 +31,7 @@ public class WalkingEnemies : Entity
             sprite.flipX = false;
         }
     }
-  
-    private int currentTarget;
+
    
 
     public void FixedUpdate()
@@ -57,7 +55,6 @@ public class WalkingEnemies : Entity
         Flip();
     }        
 
-    }   
     private void OnCollisionEnter2D(Collision2D collision)
     {
        if (collision.gameObject == Hero.Instance.gameObject)
