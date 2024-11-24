@@ -5,13 +5,16 @@ using UnityEngine;
 public class ChooseArtifact : MonoBehaviour
 {
     private Hero hero = FindObjectOfType<Hero>();
+    
     public void ChooseArtifact1()
     {
-        Debug.Log("Выбран 1 артефакт");
-        Artifact artf = new DoubleJump();
-        hero.AddArtifact(artf);
+        hero.AddArtifact(new DoubleJump());
     }
     public void ChooseArtifact2()
+    {
+        hero.AddArtifact(new ExtraXP());
+    }
+    public void ChooseArtifact3()
     {
         hero.AddArtifact(new ExtraXP());
     }
