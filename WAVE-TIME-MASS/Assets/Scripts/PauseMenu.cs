@@ -14,16 +14,19 @@ public class PauseMenu : MonoBehaviour
     public void Continue() // Продолжить
     {
         pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     public void MainMenu() // Выход в главное меню
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
     }
 
     public void NewGame() // Начало новой игры
     {
         SceneManager.LoadScene(1);
+        Time.timeScale = 1f;
     }
 
     public void Quit() // Выход из игры
@@ -40,10 +43,12 @@ public class PauseMenu : MonoBehaviour
             if(!pauseMenu.activeSelf)
             {
                 pauseMenu.SetActive(true);
+                Time.timeScale = 0f;
             }
             else
             {
                 pauseMenu.SetActive(false);
+                Time.timeScale = 1f;
             }
         }
     }
