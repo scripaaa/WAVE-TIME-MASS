@@ -141,10 +141,9 @@ public class Hero : Entity
     }
 }
 
-    public enum States
-    {
-        idle,
-        run,
-        jump
-    }
+public enum States
+{
+    idle,
+    run,
+    jump
 }
