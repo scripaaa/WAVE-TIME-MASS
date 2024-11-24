@@ -125,6 +125,22 @@ public class Hero : Entity
         score_text.text = score.ToString();
     }
 
+    //Применить артефакт к игроку; 
+    public void AddArtifact(Artifact artifact) { artifact.Use(); }
+
+    //значение поля jumpForce
+    public float GetJumpForce() { return jumpForce; }
+    //изменить значение поля jumpForce
+    public void SetJumpForce(float newjumpforce) { jumpForce = newjumpforce; }
+    //значение поля lives
+    public int GetLives() { return lives; }
+    //изменить значение поля Live
+    public void SetLives(int newlives)
+    { 
+        lives =newlives; 
+    }
+}
+
     public enum States
     {
         idle,
