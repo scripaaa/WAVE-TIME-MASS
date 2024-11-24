@@ -9,6 +9,25 @@ public class WalkingEnemies : MonoBehaviour
     public Vector3[] positions;
 
     private int currentTarget;
+    private SpriteRenderer sprite;
+    
+    void Start()
+    {
+        sprite = GetComponentInChildren<SpriteRenderer>();
+    }
+    
+    void Flip() // ����� ����������� ��� ������������
+    {
+        var target = transform.position;
+        if (target.x == positions[1].x )
+        {
+            sprite.flipX = true;
+        }
+        if (target.x == positions[0].x)
+        {
+            sprite.flipX = false;
+        }
+    }
 
     public void FixedUpdate()
     {
@@ -25,4 +44,14 @@ public class WalkingEnemies : MonoBehaviour
             }
         }
     }   
+        Flip();
+    }        
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       if (collision.gameObject == Hero.Instance.gameObject)
+        {
+            Hero.Instance.GetDamage();
+        }
+    }
 }

@@ -76,9 +76,10 @@ public class Hero : MonoBehaviour
     }
 }
 
-public enum States
-{
-    idle,
-    run,
-    jump
+    public enum States
+    {
+        idle,
+        run,
+        jump
+    }
 }
