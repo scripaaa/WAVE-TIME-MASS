@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExtraXP : Artifact
+public class DoubleJump : Artifact
 {
     public override void Use()
     {
-        hero.SetLives(hero.GetLives() + 1);
-            
+        hero.SetJumpForce(hero.GetJumpForce() + 7);
     }
 }
-

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using static UnityEngine.EventSystems.EventTrigger;
+using static UnityEngine.RuleTile.TilingRuleOutput;
+using UnityEditor.Experimental;
 
 public class Hero : Entity
 {
@@ -58,7 +61,7 @@ public class Hero : Entity
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-            if (health > lives)
+        if (health > lives)
             health = lives;
         for (int i = 0; i < Hearts.Length; i++)
         {
@@ -97,7 +100,7 @@ public class Hero : Entity
     {
         if (collision.gameObject.tag == "Ground")
             isGrounded = true;
-        
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -136,8 +139,8 @@ public class Hero : Entity
     public int GetLives() { return lives; }
     //изменить значение поля Live
     public void SetLives(int newlives)
-    { 
-        lives =newlives; 
+    {
+        lives = newlives;
     }
 }
 
