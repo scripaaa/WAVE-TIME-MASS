@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChooseArtifact : MonoBehaviour
 {
-    private Hero hero = FindObjectOfType<Hero>();
+    /*private Hero hero = FindObjectOfType<Hero>();
     
     public void ChooseArtifact1()
     {
@@ -17,5 +17,5 @@ public class ChooseArtifact : MonoBehaviour
     public void ChooseArtifact3()
     {
         hero.AddArtifact(new ExtraXP());
-    }
+    }*/
 }

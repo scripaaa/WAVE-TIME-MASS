@@ -9,18 +9,18 @@ using UnityEditor.Experimental;
 
 public class Hero : Entity
 {
-    [SerializeField] private float speed = 3f; // ñêîðîñòü äâèæåíèÿ
-    [SerializeField] private int health; // êîëè÷åñòâî æèçíåé
-    [SerializeField] private float jumpForce = 15f; // ñèëà ïðûæêà
+    [SerializeField] private float speed = 3f;
+    [SerializeField] private int health; 
+    [SerializeField] private float jumpForce = 15f; 
     [SerializeField] private Image[] Hearts;
     [SerializeField] private Sprite Heart;
     [SerializeField] private Sprite DeadHeart;
-    private bool isGrounded = false; // åñòü ëè çàìëÿ ïîä íîãàìè
+    private bool isGrounded = false;
 
 
 
-    public int score; // êîëëè÷åñòâî ìîíåò
-    public Text score_text; // òåêñò, âûâîäÿùèé êîëëè÷åñòâî ìîíå
+    public int score; 
+    public Text score_text; 
 
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
@@ -36,7 +36,6 @@ public class Hero : Entity
     }
 
 
-    //Ïîëó÷àåì ññûëêè íà rb è sprite
     private void Awake()
     {
         lives = 5;
@@ -77,18 +76,16 @@ public class Hero : Entity
         }
     }
 
-    //Áåã
     private void Run()
     {
         if (isGrounded) State = States.run;
-        Vector3 dir = transform.right * Input.GetAxis("Horizontal"); //Íàïðàâëåíèå þíèòà
+        Vector3 dir = transform.right * Input.GetAxis("Horizontal");
 
         transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, speed * Time.deltaTime);
 
-        sprite.flipX = dir.x < 0.0f; //Ïîâîðîò ïðè ñìåíå íàïðàâëåíèÿ
+        sprite.flipX = dir.x < 0.0f; 
     }
 
-    //Ïðûæîê
     private void Jump()
     {
         isGrounded = false;
@@ -121,7 +118,6 @@ public class Hero : Entity
         }
     }
 
-    //Äîáàâëÿåò ìîíåòêó
     public void AddCoin()
     {
         score++;
