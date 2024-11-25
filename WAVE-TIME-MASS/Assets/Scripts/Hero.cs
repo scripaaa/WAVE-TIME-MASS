@@ -21,6 +21,7 @@ public class Hero : Entity
 
     public int score; // Счет монеток
     public Text score_text; // Текст для счета монеток
+    public bool canControl = true; // Флаг для управления
 
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
@@ -48,8 +49,25 @@ public class Hero : Entity
         score_text.text = score.ToString();
     }
 
+    void Start()
+    {
+        Instance = this;
+
+        rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+        score_text.text = score.ToString();
+
+        // Устанавливаем начальное здоровье
+        health = lives;
+
+        // Не нужно применять артефакты в Start
+    }
+
     private void Update()
     {
+        if (!canControl) return; // Если управление запрещено, ничего не делаем
+
         if (isGrounded) State = States.idle;
 
         if (Input.GetButton("Horizontal"))
@@ -133,6 +151,24 @@ public class Hero : Entity
     {
         score++;
         score_text.text = score.ToString();
+    }
+
+    public void ApplyArtifactEffects()
+    {
+        if (PlayerPrefs.GetInt("DoubleJump", 0) == 1)
+        {
+            Debug.Log("DoubleJump активирован!");
+            jumpForce += 7;
+        }
+        if (PlayerPrefs.GetInt("DoubleHP", 0) == 1)
+        {
+            Debug.Log("DoubleHP активирован!");
+            lives += 1;
+        }
+        if (PlayerPrefs.GetInt("JumpAttack", 0) == 1)
+        {
+            Debug.Log("JumpAttack активирован!");
+        }
     }
 
     // Применить артефакт к игроку; 
