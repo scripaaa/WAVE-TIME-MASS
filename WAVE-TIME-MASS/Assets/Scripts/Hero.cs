@@ -9,18 +9,18 @@ using UnityEditor.Experimental;
 
 public class Hero : Entity
 {
-    [SerializeField] private float speed = 3f;
-    [SerializeField] private int health; 
-    [SerializeField] private float jumpForce = 15f; 
-    [SerializeField] private Image[] Hearts;
-    [SerializeField] private Sprite Heart;
-    [SerializeField] private Sprite DeadHeart;
-    private bool isGrounded = false;
+    [SerializeField] private float speed = 3f; // Скорость
+    [SerializeField] private int health; // Хп
+    [SerializeField] private float jumpForce = 15f; // Высота прыжка
 
+    [SerializeField] private Image[] Hearts; // Сердечки в сцене
+    [SerializeField] private Sprite Heart; // Отображение в сцене полных сердечек
+    [SerializeField] private Sprite DeadHeart; // Отображение в сцене пустых сердечек
 
+    private bool isGrounded = false; // Есть ли земля под ногами
 
-    public int score; 
-    public Text score_text; 
+    public int score; // Счет монеток
+    public Text score_text; // Текст для счета монеток
 
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
@@ -38,13 +38,14 @@ public class Hero : Entity
 
     private void Awake()
     {
-        lives = 5;
+        lives = 1;
         health = lives;
+        Instance = this;
+
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
         score_text.text = score.ToString();
-        Instance = this;
     }
 
     private void Update()
@@ -53,8 +54,10 @@ public class Hero : Entity
 
         if (Input.GetButton("Horizontal"))
             Run();
+
         if (isGrounded && Input.GetButtonDown("Jump"))
             Jump();
+
         if (gameObject.transform.position.y < -20)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -62,6 +65,7 @@ public class Hero : Entity
 
         if (health > lives)
             health = lives;
+
         for (int i = 0; i < Hearts.Length; i++)
         {
             if (i < health)
@@ -76,6 +80,7 @@ public class Hero : Entity
         }
     }
 
+    // Бег
     private void Run()
     {
         if (isGrounded) State = States.run;
@@ -86,6 +91,7 @@ public class Hero : Entity
         sprite.flipX = dir.x < 0.0f; 
     }
 
+    // Прыжок
     private void Jump()
     {
         isGrounded = false;
@@ -93,12 +99,15 @@ public class Hero : Entity
         if (!isGrounded) State = States.jump;
     }
 
+    // Проверка на соприкосновение с землей
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
             isGrounded = true;
 
     }
+
+    // Убийство врага
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy")
@@ -107,6 +116,7 @@ public class Hero : Entity
         }
     }
 
+    // Получение урона
     public override void GetDamage()
     {
         health -= 1;
@@ -118,22 +128,23 @@ public class Hero : Entity
         }
     }
 
+    // Добавление монеты
     public void AddCoin()
     {
         score++;
         score_text.text = score.ToString();
     }
 
-    //Применить артефакт к игроку; 
+    // Применить артефакт к игроку; 
     public void AddArtifact(Artifact artifact) { artifact.Use(); }
 
-    //значение поля jumpForce
+    // Значение поля jumpForce
     public float GetJumpForce() { return jumpForce; }
-    //изменить значение поля jumpForce
+    // Изменить значение поля jumpForce
     public void SetJumpForce(float newjumpforce) { jumpForce = newjumpforce; }
-    //значение поля lives
+    // Значение поля lives
     public int GetLives() { return lives; }
-    //изменить значение поля Live
+    // Изменить значение поля Live
     public void SetLives(int newlives)
     {
         lives = newlives;
