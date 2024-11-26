@@ -604,6 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0dfd489157d0e2439d652b505b6b4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textTheEnd: {fileID: 0}
 --- !u!1001 &364629323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11689,6 +11690,10 @@ PrefabInstance:
     - target: {fileID: 3347775672808187878, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
       propertyPath: m_Name
       value: Background Layer 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962315897681076858, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8856185120815358167, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
       propertyPath: m_Pivot.x
