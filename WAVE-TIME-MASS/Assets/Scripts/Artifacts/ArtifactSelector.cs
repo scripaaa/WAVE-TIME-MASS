@@ -31,6 +31,11 @@ public class ArtifactSelector : MonoBehaviour
 
     void SelectArtifact(string artifact)
     {
+        // Сбрасываем все артефакты
+        PlayerPrefs.SetInt("DoubleJump", 0);
+        PlayerPrefs.SetInt("DoubleHP", 0);
+        PlayerPrefs.SetInt("JumpAttack", 0);
+
         // Сохраняем выбранный артефакт
         switch (artifact)
         {

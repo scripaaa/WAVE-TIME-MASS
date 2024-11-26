@@ -6,12 +6,16 @@ using UnityEngine.SceneManagement;
 using static UnityEngine.EventSystems.EventTrigger;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 using UnityEditor.Experimental;
+using Unity.VisualScripting;
 
 public class Hero : Entity
 {
     [SerializeField] private float speed = 3f; // Скорость
     [SerializeField] private int health; // Хп
     [SerializeField] private float jumpForce = 15f; // Высота прыжка
+
+    [SerializeField] private UnityEngine.Transform heartsContainer; // Контейнер для сердец
+    [SerializeField] private GameObject heartPrefab; // Префаб сердца
 
     [SerializeField] private Image[] Hearts; // Сердечки в сцене
     [SerializeField] private Sprite Heart; // Отображение в сцене полных сердечек
@@ -47,21 +51,8 @@ public class Hero : Entity
         sprite = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
         score_text.text = score.ToString();
-    }
 
-    void Start()
-    {
-        Instance = this;
-
-        rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponentInChildren<SpriteRenderer>();
-        anim = GetComponent<Animator>();
-        score_text.text = score.ToString();
-
-        // Устанавливаем начальное здоровье
-        health = lives;
-
-        // Не нужно применять артефакты в Start
+        heartPrefab.SetActive(false); // Дополнительного сердца изначально не видно
     }
 
     private void Update()
@@ -153,6 +144,9 @@ public class Hero : Entity
         score_text.text = score.ToString();
     }
 
+    public GameObject DoubleHP; // Сердечко, которое появится при выборе артефакта
+
+    // Выбор артефакта
     public void ApplyArtifactEffects()
     {
         if (PlayerPrefs.GetInt("DoubleJump", 0) == 1)
@@ -160,31 +154,40 @@ public class Hero : Entity
             Debug.Log("DoubleJump активирован!");
             jumpForce += 7;
         }
-        if (PlayerPrefs.GetInt("DoubleHP", 0) == 1)
+        else if (PlayerPrefs.GetInt("DoubleHP", 0) == 1)
         {
             Debug.Log("DoubleHP активирован!");
-            lives += 1;
+            AddHeart();
+
         }
-        if (PlayerPrefs.GetInt("JumpAttack", 0) == 1)
+        else if (PlayerPrefs.GetInt("JumpAttack", 0) == 1)
         {
             Debug.Log("JumpAttack активирован!");
+            // Добавьте логику JumpAttack здесь
         }
     }
 
-    // Применить артефакт к игроку; 
-    public void AddArtifact(Artifact artifact) { artifact.Use(); }
-
-    // Значение поля jumpForce
-    public float GetJumpForce() { return jumpForce; }
-    // Изменить значение поля jumpForce
-    public void SetJumpForce(float newjumpforce) { jumpForce = newjumpforce; }
-    // Значение поля lives
-    public int GetLives() { return lives; }
-    // Изменить значение поля Live
-    public void SetLives(int newlives)
+    private void AddHeart()
     {
-        lives = newlives;
+        // Увеличиваем максимальное здоровье
+        lives += 1;
+        health = lives;
+
+        // Добавляем сердце в HUD
+        GameObject newHeart = Instantiate(heartPrefab, heartsContainer);
+        newHeart.GetComponent<Image>().sprite = Heart;
+
+        // Расширяем массив `Hearts`
+        List<Image> heartsList = new List<Image>(Hearts);
+        heartsList.Add(newHeart.GetComponent<Image>());
+        Hearts = heartsList.ToArray();
+
+        newHeart.SetActive(true); // Отображаем доп середечко
+
+        Debug.Log("Новое сердце добавлено!");
     }
+
+
 }
 
 public enum States
