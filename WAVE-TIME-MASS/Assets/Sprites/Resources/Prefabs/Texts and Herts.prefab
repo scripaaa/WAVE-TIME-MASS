@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 6912207367024923090}
   - component: {fileID: 8170174876681026795}
   m_Layer: 5
-  m_Name: Background Layer 1
+  m_Name: Texts and Herts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

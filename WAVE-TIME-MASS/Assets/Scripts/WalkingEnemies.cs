@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -21,7 +22,7 @@ public class WalkingEnemies : Entity
         sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
-    void Flip() // ����� ����������� ��� ������������
+    void Flip() // Поворот врага при смене направления
     {
         var target = transform.position;
         if (target.x == positions[1].x)
@@ -54,6 +55,12 @@ public class WalkingEnemies : Entity
             }
         }
         Flip();
+
+        // Смерть при падении с карты
+        if (gameObject.transform.position.y < -20)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

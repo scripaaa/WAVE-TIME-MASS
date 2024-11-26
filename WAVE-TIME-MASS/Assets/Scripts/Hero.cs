@@ -31,6 +31,7 @@ public class Hero : Entity
     private SpriteRenderer sprite;
     private Animator anim;
     private int lives;
+    private bool active_Damage_Jump = false; // блокируем возможность атаки прыжком
 
     public static Hero Instance { get; set; }
 
@@ -51,8 +52,6 @@ public class Hero : Entity
         sprite = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
         score_text.text = score.ToString();
-
-        heartPrefab.SetActive(false); // Дополнительного сердца изначально не видно
     }
 
     private void Update()
@@ -67,6 +66,7 @@ public class Hero : Entity
         if (isGrounded && Input.GetButtonDown("Jump"))
             Jump();
 
+        // Смерть при падении с карты
         if (gameObject.transform.position.y < -20)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -119,7 +119,7 @@ public class Hero : Entity
     // Убийство врага
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" && active_Damage_Jump)
         {
             Destroy(other.gameObject);
         }
@@ -144,7 +144,6 @@ public class Hero : Entity
         score_text.text = score.ToString();
     }
 
-    public GameObject DoubleHP; // Сердечко, которое появится при выборе артефакта
 
     // Выбор артефакта
     public void ApplyArtifactEffects()
@@ -163,7 +162,7 @@ public class Hero : Entity
         else if (PlayerPrefs.GetInt("JumpAttack", 0) == 1)
         {
             Debug.Log("JumpAttack активирован!");
-            // Добавьте логику JumpAttack здесь
+            active_Damage_Jump = true; // активируем возможность атаковать прыжком
         }
     }
 
