@@ -5,14 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Finish : MonoBehaviour
 {
-    public GameObject textTheEnd;
-    private Hero playerController;
-
-    void Start()
-    {
-        // Ищем игрока
-        playerController = FindObjectOfType<Hero>();
-    }
+    public GameObject panel;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,10 +14,12 @@ public class Finish : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == 2)
         {
-            textTheEnd.SetActive(true); // Отображаем финальный экран
-            playerController.canControl = false; // Блокируем управление
+            panel.SetActive(true); // Отображаем финальный экран
+            TimeManager.FreezeTime(); // Замораживает игру
         }
 
         Destroy(gameObject);
     }
 }
+
+

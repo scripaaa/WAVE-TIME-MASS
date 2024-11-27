@@ -952,7 +952,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3780339495959067344, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_Name
-      value: Apple 1
+      value: Coin 1
       objectReference: {fileID: 0}
     - target: {fileID: 4886157878089779142, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11632,7 +11632,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3780339495959067344, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_Name
-      value: Apple 2
+      value: Coin 2
       objectReference: {fileID: 0}
     - target: {fileID: 4886157878089779142, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11794,7 +11794,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3780339495959067344, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_Name
-      value: Apple 3
+      value: Coin 3
       objectReference: {fileID: 0}
     - target: {fileID: 4886157878089779142, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12458,11 +12458,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1111060106669556461, guid: 9ecd3cabffbe82542b52ac575d8c0f64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.04
+      value: -12.07
       objectReference: {fileID: 0}
     - target: {fileID: 1111060106669556461, guid: 9ecd3cabffbe82542b52ac575d8c0f64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.73
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 1111060106669556461, guid: 9ecd3cabffbe82542b52ac575d8c0f64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12503,6 +12503,10 @@ PrefabInstance:
     - target: {fileID: 6472308388055342897, guid: 9ecd3cabffbe82542b52ac575d8c0f64, type: 3}
       propertyPath: smoothSpeed
       value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6472308388055342897, guid: 9ecd3cabffbe82542b52ac575d8c0f64, type: 3}
+      propertyPath: mapMinBounds.y
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 7867311522602366176, guid: 9ecd3cabffbe82542b52ac575d8c0f64, type: 3}
       propertyPath: m_Name

@@ -4519,7 +4519,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3780339495959067344, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_Name
-      value: Apple 1
+      value: Coin 1
       objectReference: {fileID: 0}
     - target: {fileID: 4886157878089779142, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4576,7 +4576,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3780339495959067344, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_Name
-      value: Apple 3
+      value: Coin 3
       objectReference: {fileID: 0}
     - target: {fileID: 4886157878089779142, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13891,37 +13891,6 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 6441734517987485330, guid: 9ecd3cabffbe82542b52ac575d8c0f64, type: 3}
   m_PrefabInstance: {fileID: 1573071404}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &762871450
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 762871451}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &762871451
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 762871450}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.7314177, y: -1.7430713, z: -0.09065807}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &813315844
 GameObject:
   m_ObjectHideFlags: 0
@@ -22887,7 +22856,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3780339495959067344, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_Name
-      value: Apple 2
+      value: Coin 2
       objectReference: {fileID: 0}
     - target: {fileID: 4886157878089779142, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23224,6 +23193,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 289156722685555904, guid: 60e7bd98f96603047b49cf54074477ae, type: 3}
+      propertyPath: panel
+      value: 
+      objectReference: {fileID: 436639353}
+    - target: {fileID: 289156722685555904, guid: 60e7bd98f96603047b49cf54074477ae, type: 3}
       propertyPath: textTheEnd
       value: 
       objectReference: {fileID: 436639353}
@@ -23296,4 +23269,3 @@ SceneRoots:
   - {fileID: 1177124941}
   - {fileID: 616405821}
   - {fileID: 1731218088}
-  - {fileID: 762871451}

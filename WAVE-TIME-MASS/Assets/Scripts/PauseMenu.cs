@@ -14,19 +14,19 @@ public class PauseMenu : MonoBehaviour
     public void Continue() 
     {
         pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
+        TimeManager.UnfreezeTime();
     }
 
     public void MainMenu() 
     {
         SceneManager.LoadScene(0);
-        Time.timeScale = 1f;
+        TimeManager.UnfreezeTime();
     }
 
     public void NewGame() 
     {
         SceneManager.LoadScene(1);
-        Time.timeScale = 1f;
+        TimeManager.UnfreezeTime(); // Размораживаем игру
     }
 
     public void Quit() 
@@ -43,12 +43,12 @@ public class PauseMenu : MonoBehaviour
             if (!pauseMenu.activeSelf)
             {
                 pauseMenu.SetActive(true);
-                Time.timeScale = 0f;
+                TimeManager.FreezeTime(); // Замораживаем игру
             }
             else
             {
                 pauseMenu.SetActive(false);
-                Time.timeScale = 1f;
+                TimeManager.UnfreezeTime(); // Размораживаем игру
             }
         }
     }

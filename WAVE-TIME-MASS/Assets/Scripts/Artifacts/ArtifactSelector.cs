@@ -14,12 +14,9 @@ public class ArtifactSelector : MonoBehaviour
 
     void Start()
     {
-        // Ищем игрока
-        playerController = FindObjectOfType<Hero>();
-        if (playerController != null)
-        {
-            playerController.canControl = false; // Блокируем управление
-        }
+        playerController = FindObjectOfType<Hero>(); // Ищем игрока
+
+        TimeManager.FreezeTime(); // Замораживаем игру
 
         artifactPanel.SetActive(true); // Показываем окно
 
@@ -60,10 +57,8 @@ public class ArtifactSelector : MonoBehaviour
     void HideArtifactPanel()
     {
         artifactPanel.SetActive(false); // Скрываем окно
-        if (playerController != null)
-        {
-            playerController.canControl = true; // Разрешаем управление
-        }
+
+        TimeManager.UnfreezeTime(); // Размораживаем игру
 
         // Применяем артефакты к игроку
         ApplyArtifacts();
