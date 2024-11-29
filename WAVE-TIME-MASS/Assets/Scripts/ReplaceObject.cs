@@ -8,9 +8,9 @@ public class  ReplaceObject: MonoBehaviour
     public GameObject PastObject; // Объект в настоящем
     public GameObject FutureObject; // Объект в будущем
 
-    private KeyCode replaceKey_Future = KeyCode.F; // Клавиша для перехода в будущее
-    private KeyCode replaceKey_Present = KeyCode.N; // Клавиша для перехода в настоящее
-    private KeyCode replaceKey_Past = KeyCode.P; // Клавиша для перехода в прошлое
+    private KeyCode replaceKey_Future = KeyCode.E; // Клавиша для перехода в будущее
+    private KeyCode replaceKey_Present = KeyCode.W; // Клавиша для перехода в настоящее
+    private KeyCode replaceKey_Past = KeyCode.Q; // Клавиша для перехода в прошлое
 
     private void Start()
     {
