@@ -364,6 +364,7 @@ GameObject:
   - component: {fileID: 405602911}
   - component: {fileID: 405602910}
   - component: {fileID: 405602909}
+  - component: {fileID: 405602912}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -433,7 +434,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 405602910}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 862800860}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: Continue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &405602910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,6 +485,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405602907}
   m_CullTransparentMesh: 1
+--- !u!114 &405602912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405602907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 955437650}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 888cbc34745cbb348a72a7f2fd97b71b, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &862800858
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +563,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 862800858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4150a49bbc196314abcab011b7fc75e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2da38dc1fa6514c4ba59fd6f09d9c0a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &955437649
