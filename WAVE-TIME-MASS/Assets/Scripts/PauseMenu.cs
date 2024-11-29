@@ -5,11 +5,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    GameObject finish; 
 
     public void Continue() 
     {
@@ -20,13 +16,19 @@ public class PauseMenu : MonoBehaviour
     public void MainMenu() 
     {
         SceneManager.LoadScene(0);
-        TimeManager.UnfreezeTime();
+        TimeManager.UnfreezeTime(); // Размораживаем игру
+
+        if (finish == null)
+            TimeManager.UnfreezeTime(); // Размораживаем игру второй раз из-за конца игры
     }
 
     public void NewGame() 
     {
         SceneManager.LoadScene(1);
         TimeManager.UnfreezeTime(); // Размораживаем игру
+
+        if (finish == null)
+            TimeManager.UnfreezeTime(); // Размораживаем игру второй раз из-за конца игры
     }
 
     public void Quit() 
@@ -34,11 +36,11 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
-
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        GameObject finish = GameObject.FindWithTag("Finish"); // Проверяем есть ли кубок на уровне
+
+        if (Input.GetKeyDown(KeyCode.Escape)) 
         {
             if (!pauseMenu.activeSelf)
             {
