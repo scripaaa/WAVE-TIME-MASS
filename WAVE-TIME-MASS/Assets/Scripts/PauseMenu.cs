@@ -15,6 +15,7 @@ public class PauseMenu : MonoBehaviour
 
     public void MainMenu() 
     {
+        PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex); // Сохраниение сцены при выходе
         SceneManager.LoadScene(0);
         TimeManager.UnfreezeTime(); // Размораживаем игру
 
@@ -33,6 +34,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Quit() 
     {
+        PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex); // Сохраниение сцены при выходе
         Application.Quit();
     }
 

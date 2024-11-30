@@ -10,6 +10,10 @@ public class MainMenu : MonoBehaviour
         Debug.Log("новая игра");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    public void Continue()
+    {
+        SceneManager.LoadScene(PlayerPrefs.GetInt("SavedScene"));
+    }
     public void Exit()
     {
         Debug.Log("закрытие игры");
