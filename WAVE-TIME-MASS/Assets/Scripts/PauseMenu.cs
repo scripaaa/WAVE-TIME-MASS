@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
-    GameObject finish; 
+    public GameObject controls_panel;
+    GameObject finish;
 
     public void Continue() 
     {
@@ -36,6 +37,16 @@ public class PauseMenu : MonoBehaviour
     {
         PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex); // Сохраниение сцены при выходе
         Application.Quit();
+    }
+
+    public void Controls()
+    {
+        controls_panel.SetActive(true); // Отображаем управление
+    }
+
+    public void Close_Сontrols()
+    {
+        controls_panel.SetActive(false); // Скрываем управление
     }
 
     void Update()
