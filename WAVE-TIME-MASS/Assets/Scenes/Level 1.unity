@@ -709,7 +709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6271690149081746205, guid: 443c3d2e054be464da0c372a81983aa7, type: 3}
       propertyPath: m_Color.a
-      value: 0.78431374
+      value: 0.8627451
       objectReference: {fileID: 0}
     - target: {fileID: 6837094176272439540, guid: 443c3d2e054be464da0c372a81983aa7, type: 3}
       propertyPath: m_IsActive
@@ -11393,7 +11393,6 @@ MonoBehaviour:
   DeadHeart: {fileID: 21300000, guid: 86f83ae125aa3ea41861699a9d2d9c5c, type: 3}
   score: 0
   score_text: {fileID: 192032258}
-  canControl: 1
 --- !u!50 &1033001202
 Rigidbody2D:
   serializedVersion: 4
