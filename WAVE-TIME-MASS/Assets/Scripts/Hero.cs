@@ -25,7 +25,6 @@ public class Hero : Entity
 
     public int score; // Счет монеток
     public Text score_text; // Текст для счета монеток
-    public bool canControl = true; // Флаг для управления
 
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
@@ -56,8 +55,6 @@ public class Hero : Entity
 
     private void Update()
     {
-        if (!canControl) return; // Если управление запрещено, ничего не делаем
-
         if (isGrounded) State = States.idle;
 
         if (Input.GetButton("Horizontal"))

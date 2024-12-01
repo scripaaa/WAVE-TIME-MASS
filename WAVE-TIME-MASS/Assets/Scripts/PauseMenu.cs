@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
-    GameObject finish; 
+    public GameObject controls_panel;
+    GameObject finish;
 
     public void Continue() 
     {
@@ -38,6 +39,16 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void Controls()
+    {
+        controls_panel.SetActive(true); // Отображаем управление
+    }
+
+    public void Close_Сontrols()
+    {
+        controls_panel.SetActive(false); // Скрываем управление
+    }
+
     void Update()
     {
         GameObject finish = GameObject.FindWithTag("Finish"); // Проверяем есть ли кубок на уровне
@@ -51,9 +62,19 @@ public class PauseMenu : MonoBehaviour
             }
             else
             {
-                pauseMenu.SetActive(false);
-                TimeManager.UnfreezeTime(); // Размораживаем игру
+                if (controls_panel.activeSelf)
+                {
+                    controls_panel.SetActive(false);
+                }
+                else
+                {
+                    pauseMenu.SetActive(false);
+                    TimeManager.UnfreezeTime(); // Размораживаем игру
+                }
+                
             }
+   
+            
         }
     }
 }

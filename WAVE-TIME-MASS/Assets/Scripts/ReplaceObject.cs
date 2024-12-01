@@ -12,6 +12,8 @@ public class  ReplaceObject: MonoBehaviour
     private KeyCode replaceKey_Present = KeyCode.W; // Клавиша для перехода в настоящее
     private KeyCode replaceKey_Past = KeyCode.Q; // Клавиша для перехода в прошлое
 
+    public GameObject pause_menu; // Меню паузы
+
     private void Start()
     {
         PastObject.SetActive(false);
@@ -20,17 +22,20 @@ public class  ReplaceObject: MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(replaceKey_Future))
+        if (!pause_menu.activeSelf) // Проверяем отображается ли меню паузы
         {
-            InFuture();
-        }
-        else if (Input.GetKeyDown(replaceKey_Present))
-        {
-            InPresent();
-        }
-        else if (Input.GetKeyDown(replaceKey_Past))
-        {
-            InPast();
+            if (Input.GetKeyDown(replaceKey_Future))
+            {
+                InFuture();
+            }
+            else if (Input.GetKeyDown(replaceKey_Present))
+            {
+                InPresent();
+            }
+            else if (Input.GetKeyDown(replaceKey_Past))
+            {
+                InPast();
+            }
         }
     }
 
