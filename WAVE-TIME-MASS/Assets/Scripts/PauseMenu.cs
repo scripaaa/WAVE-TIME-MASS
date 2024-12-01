@@ -62,9 +62,19 @@ public class PauseMenu : MonoBehaviour
             }
             else
             {
-                pauseMenu.SetActive(false);
-                TimeManager.UnfreezeTime(); // Размораживаем игру
+                if (controls_panel.activeSelf)
+                {
+                    controls_panel.SetActive(false);
+                }
+                else
+                {
+                    pauseMenu.SetActive(false);
+                    TimeManager.UnfreezeTime(); // Размораживаем игру
+                }
+                
             }
+   
+            
         }
     }
 }
