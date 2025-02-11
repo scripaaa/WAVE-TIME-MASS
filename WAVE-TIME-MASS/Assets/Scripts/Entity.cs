@@ -5,13 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class Entity : MonoBehaviour
 {
-    public virtual void GetDamage()
+    protected int livess;
+
+    public virtual void GetDamageHero()
     {
 
     }
 
+    public virtual void GetDamage()
+    {
+        livess--;
+        if (livess < 1)
+            Die();
+        Debug.Log("У врага " + livess + " хп");
+    }
+
     public virtual void Die()
     {
-       SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Destroy(this.gameObject);
     }
 }

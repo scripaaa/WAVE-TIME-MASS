@@ -26,7 +26,14 @@ public class Hero : Entity
     public int score; // Счет монеток
     public Text score_text; // Текст для счета монеток
 
-    private Rigidbody2D rb;
+    public bool IsAttacking = false; // Атакуем ли мы сейчас
+    public bool IsRecharged = true; // Перезарядка атаки
+
+    public UnityEngine.Transform AttackPos; // позиция атаки
+    public float attackRange; // Дальность атаки
+    public LayerMask enemy; // Слой врагов
+
+    private Rigidbody2D rb; 
     private SpriteRenderer sprite;
     private Animator anim;
     private int lives;
@@ -51,17 +58,25 @@ public class Hero : Entity
         sprite = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
         score_text.text = score.ToString();
+        IsRecharged = true; 
     }
 
     private void Update()
     {
-        if (isGrounded) State = States.idle;
+        if (isGrounded && !IsAttacking)
+            State = States.idle;
 
-        if (Input.GetButton("Horizontal"))
+        if (!IsAttacking && Input.GetButton("Horizontal"))
             Run();
 
-        if (isGrounded && Input.GetButtonDown("Jump"))
+        if ((!IsAttacking && isGrounded && Input.GetButtonDown("Jump")) | (!IsAttacking && !isGrounded))
             Jump();
+        if (Input.GetButtonDown("Fire1"))
+            Attack();
+        
+
+
+
 
         // Смерть при падении с карты
         if (gameObject.transform.position.y < -20)
@@ -100,9 +115,16 @@ public class Hero : Entity
     // Прыжок
     private void Jump()
     {
-        isGrounded = false;
-        rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
-        if (!isGrounded) State = States.jump;
+        if (!isGrounded)
+        {
+            State = States.jump; 
+        }
+        else
+        {
+            isGrounded = false;
+            rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+            if (!isGrounded) State = States.jump;
+        }
     }
 
     // Проверка на соприкосновение с землей
@@ -112,6 +134,57 @@ public class Hero : Entity
             isGrounded = true;
 
     }
+
+    private void Attack()
+    {
+        Debug.Log("Attack executed!");
+        if (IsRecharged)
+        {
+            State = States.attack;
+            IsAttacking = true;
+            IsRecharged = false;
+            
+
+
+            StartCoroutine(AttackAnimation());
+            StartCoroutine(AttackCoolDown());
+
+        }
+    }
+
+    private void OnAttack()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(AttackPos.position, attackRange, enemy);
+
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            colliders[i].GetComponent<Entity>().GetDamage();
+        }
+
+       
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(AttackPos.position, attackRange);
+    }
+    
+
+
+    private IEnumerator AttackAnimation()
+    {
+        yield return new WaitForSeconds(0.2f);
+        IsAttacking = false;
+    }
+
+    private IEnumerator AttackCoolDown()
+    {
+        yield return new WaitForSeconds(0.1f);
+        IsRecharged = true;
+    }
+
 
     // Убийство врага
     private void OnTriggerEnter2D(Collider2D other)
@@ -123,14 +196,14 @@ public class Hero : Entity
     }
 
     // Получение урона
-    public override void GetDamage()
+    public override void GetDamageHero()
     {
         health -= 1;
         if (health == 0)
         {
             foreach (var h in Hearts)
                 h.sprite = DeadHeart;
-            Die();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
         }
     }
 
@@ -190,5 +263,6 @@ public enum States
 {
     idle,
     run,
-    jump
+    jump,
+    attack
 }
