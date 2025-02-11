@@ -13,6 +13,8 @@ public class WalkingEnemies : Entity
     public float speed;
     public Vector3[] positions;
 
+
+
     private Vector3 target;
     private int currentTarget;
     private SpriteRenderer sprite;
@@ -20,6 +22,7 @@ public class WalkingEnemies : Entity
     void Start()
     {
         sprite = GetComponentInChildren<SpriteRenderer>();
+        livess = 3;
     }
 
     void Flip() // Поворот врага при смене направления
@@ -67,7 +70,10 @@ public class WalkingEnemies : Entity
     {
         if (collision.gameObject == Hero.Instance.gameObject)
         {
-            Hero.Instance.GetDamage();
+            Hero.Instance.GetDamageHero();
+            if (livess < 1)
+                Die();
         }
+        
     }
 }

@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 173530085}
   - component: {fileID: 173530084}
   - component: {fileID: 173530083}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Walking enemy 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4641,7 +4641,7 @@ GameObject:
   - component: {fileID: 457977468}
   - component: {fileID: 457977467}
   - component: {fileID: 457977466}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Walking enemy 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -13838,11 +13838,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64a0912738eda554485d7e1aa9c3dfac, type: 3}
---- !u!1 &616405822 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6519486661456939369, guid: 64a0912738eda554485d7e1aa9c3dfac, type: 3}
-  m_PrefabInstance: {fileID: 616405821}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &671893605
 GameObject:
   m_ObjectHideFlags: 0
@@ -13896,6 +13891,37 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 6441734517987485330, guid: 9ecd3cabffbe82542b52ac575d8c0f64, type: 3}
   m_PrefabInstance: {fileID: 1573071404}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &744890291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 744890292}
+  m_Layer: 0
+  m_Name: AttackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &744890292
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744890291}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.704, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1033001204}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &813315844
 GameObject:
   m_ObjectHideFlags: 0
@@ -14047,6 +14073,13 @@ MonoBehaviour:
   DeadHeart: {fileID: 21300000, guid: 86f83ae125aa3ea41861699a9d2d9c5c, type: 3}
   score: 0
   score_text: {fileID: 1115057110}
+  IsAttacking: 0
+  IsRecharged: 1
+  AttackPos: {fileID: 744890292}
+  attackRange: 3.5
+  enemy:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!50 &1033001202
 Rigidbody2D:
   serializedVersion: 4
@@ -14133,6 +14166,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2008257906}
+  - {fileID: 744890292}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1033001205
@@ -14172,7 +14206,6 @@ MonoBehaviour:
   PastObject: {fileID: 1374874117}
   FutureObject: {fileID: 344838218}
   pause_menu: {fileID: 1177124942}
-  artifactSelector: {fileID: 616405822}
 --- !u!61 &1033001207
 BoxCollider2D:
   m_ObjectHideFlags: 0
