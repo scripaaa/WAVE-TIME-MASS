@@ -127,6 +127,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4886157878089779142, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
   m_PrefabInstance: {fileID: 379581345}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &71272432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 71272433}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &71272433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71272432}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1033001204}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &173530082
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,9 +345,9 @@ GameObject:
   - component: {fileID: 344838222}
   - component: {fileID: 344838221}
   - component: {fileID: 344838220}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Future
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4815,9 +4846,9 @@ GameObject:
   - component: {fileID: 552271092}
   - component: {fileID: 552271091}
   - component: {fileID: 552271093}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14071,6 +14102,11 @@ MonoBehaviour:
   - {fileID: 1731218091}
   Heart: {fileID: 21300000, guid: 33a3a0158667da444a2f3b5b43422086, type: 3}
   DeadHeart: {fileID: 21300000, guid: 86f83ae125aa3ea41861699a9d2d9c5c, type: 3}
+  groundCheckRadius: 0.5
+  groundCheck: {fileID: 71272433}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   score: 0
   score_text: {fileID: 1115057110}
   IsAttacking: 0
@@ -14167,6 +14203,7 @@ Transform:
   m_Children:
   - {fileID: 2008257906}
   - {fileID: 744890292}
+  - {fileID: 71272433}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1033001205
@@ -14551,9 +14588,9 @@ GameObject:
   - component: {fileID: 1374874120}
   - component: {fileID: 1374874119}
   - component: {fileID: 1374874121}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Past
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18880,9 +18917,9 @@ GameObject:
   - component: {fileID: 1809574940}
   - component: {fileID: 1809574939}
   - component: {fileID: 1809574941}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Present
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

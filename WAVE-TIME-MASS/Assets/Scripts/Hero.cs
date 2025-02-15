@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using static UnityEngine.EventSystems.EventTrigger;
-using static UnityEngine.RuleTile.TilingRuleOutput;
-using UnityEditor.Experimental;
-using Unity.VisualScripting;
 
 public class Hero : Entity
 {
@@ -22,6 +18,9 @@ public class Hero : Entity
     [SerializeField] private Sprite DeadHeart; // Отображение в сцене пустых сердечек
 
     private bool isGrounded = false; // Есть ли земля под ногами
+    public float groundCheckRadius = 0.2f; // Радиус проверки нахождения на земле
+    public Transform groundCheck; // Точка проверки нахождения на земле
+    public LayerMask groundLayer; // Слой земли
 
     public int score; // Счет монеток
     public Text score_text; // Текст для счета монеток
@@ -63,6 +62,8 @@ public class Hero : Entity
 
     private void Update()
     {
+        CheckIfGrounded();
+
         if (isGrounded && !IsAttacking)
             State = States.idle;
 
@@ -71,12 +72,9 @@ public class Hero : Entity
 
         if ((!IsAttacking && isGrounded && Input.GetButtonDown("Jump")) | (!IsAttacking && !isGrounded))
             Jump();
+
         if (Input.GetButtonDown("Fire1"))
             Attack();
-        
-
-
-
 
         // Смерть при падении с карты
         if (gameObject.transform.position.y < -20)
@@ -84,6 +82,12 @@ public class Hero : Entity
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
+        UpdateHearts();
+    }
+
+    // Обновление здоровья
+    private void UpdateHearts()
+    {
         if (health > lives)
             health = lives;
 
@@ -101,6 +105,12 @@ public class Hero : Entity
         }
     }
 
+    // // Проверка на соприкосновение с землей
+    private void CheckIfGrounded()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+    }
+
     // Бег
     private void Run()
     {
@@ -115,24 +125,12 @@ public class Hero : Entity
     // Прыжок
     private void Jump()
     {
-        if (!isGrounded)
-        {
-            State = States.jump; 
-        }
-        else
+        if (isGrounded)
         {
             isGrounded = false;
             rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
-            if (!isGrounded) State = States.jump;
+            State = States.jump;
         }
-    }
-
-    // Проверка на соприкосновение с землей
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-            isGrounded = true;
-
     }
 
     private void Attack()
@@ -143,12 +141,9 @@ public class Hero : Entity
             State = States.attack;
             IsAttacking = true;
             IsRecharged = false;
-            
-
 
             StartCoroutine(AttackAnimation());
             StartCoroutine(AttackCoolDown());
-
         }
     }
 
