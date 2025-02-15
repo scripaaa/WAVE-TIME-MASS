@@ -9,10 +9,10 @@ public class Finish : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.tag == "Player") && (SceneManager.GetActiveScene().buildIndex < 2))
+        if ((collision.tag == "Player") && (SceneManager.GetActiveScene().buildIndex < 3))
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
-        if (SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             panel.SetActive(true); // Отображаем финальный экран
             TimeManager.FreezeTime(); // Замораживает игру
