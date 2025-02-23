@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Obstacle
   - Saw
+  - Spike
   layers:
   - Default
   - TransparentFX

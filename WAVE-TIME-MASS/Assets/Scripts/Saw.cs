@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Saw : Entity
@@ -31,17 +32,13 @@ public class Saw : Entity
     }
     private void OnTriggerEnter2D(Collider2D other) // проверка на столкновение 
     {
+        // Перезагрузка сцена при столкновении игрока и пилы
+        if (other.gameObject.CompareTag("Player"))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         if ((other.CompareTag("Obstacle")) || (other.CompareTag("Saw")))
         {
             MovingRight = !MovingRight;
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject == Hero.Instance.gameObject)
-        {
-            Hero.Instance.GetDamage();
-        }
-    }
+    
 }
