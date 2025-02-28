@@ -5,21 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class Finish : MonoBehaviour
 {
-    public GameObject panel;
+    public LevelStats levelStats; // Ссылка на LevelStats
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.tag == "Player") && (SceneManager.GetActiveScene().buildIndex < 3))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
-        if (SceneManager.GetActiveScene().buildIndex == 3)
+        if (collision.tag == "Player")
         {
-            panel.SetActive(true); // Отображаем финальный экран
-            TimeManager.FreezeTime(); // Замораживает игру
-        }
+            TimeManager.FreezeTime(); // Замораживаем игру
+            levelStats.CompleteLevel(); // Показываем статистику
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }
-
-
