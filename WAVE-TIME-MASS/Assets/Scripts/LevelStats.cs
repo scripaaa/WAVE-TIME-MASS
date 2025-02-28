@@ -14,6 +14,7 @@ public class LevelStats : MonoBehaviour
     public Text timeText; // Текст для отображения времени
     public Image[] stars; // Массив изображений звезд
     public Text timerText; // Текстовый элемент для отображения таймера
+    public GameObject panel; // Финальный экран
 
     private bool levelCompleted = false;
 
@@ -104,11 +105,8 @@ public class LevelStats : MonoBehaviour
     {
         if (timerText != null)
         {
-            // Форматируем время в минуты и секунды
-
-            int seconds = (int)(levelTime % 60);
-            int milliseconds = (int)((levelTime * 10) % 10);
-            timerText.text = string.Format("{0:00},{1:0}", seconds, milliseconds);
+            // Отображаем время в секундах с одной десятичной дробью
+            timerText.text = levelTime.ToString("F1") + "с";
         }
         else
         {
@@ -119,10 +117,20 @@ public class LevelStats : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        TimeManager.UnfreezeTime();
     }
 
     public void NextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            panel.SetActive(true);
+            TimeManager.FreezeTime(); 
+        }
+        else
+        {
+            TimeManager.UnfreezeTime();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
