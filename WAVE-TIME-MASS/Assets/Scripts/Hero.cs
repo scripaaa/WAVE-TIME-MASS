@@ -27,6 +27,8 @@ public class Hero : Entity
 
     public bool IsAttacking = false; // Атакуем ли мы сейчас
     public bool IsRecharged = true; // Перезарядка атаки
+    public bool IsFalling = false; //Падаем ли мы сейчас
+    public bool IsJumping = false; //В прыжке ли мы сейчас
 
     public UnityEngine.Transform AttackPos; // позиция атаки
     public float attackRange; // Дальность атаки
@@ -67,21 +69,24 @@ public class Hero : Entity
         if (isGrounded && !IsAttacking)
             State = States.idle;
 
-        if (!IsAttacking && Input.GetButton("Horizontal"))
+        if ( Input.GetButton("Horizontal"))
             Run();
 
-        if ((!IsAttacking && isGrounded && Input.GetButtonDown("Jump")) | (!IsAttacking && !isGrounded))
+        if (( isGrounded && Input.GetButtonDown("Jump")) | ( !isGrounded && Input.GetButtonDown("Jump")))
             Jump();
 
         if (Input.GetButtonDown("Fire1"))
             Attack();
+        if (IsFalling && !IsAttacking)
+            State = States.fall;
+        if (IsJumping && !IsAttacking) State = States.jump;
 
         // Смерть при падении с карты
         if (gameObject.transform.position.y < -20)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-
+        UpdateAnimationState();
         UpdateHearts();
     }
 
@@ -109,12 +114,38 @@ public class Hero : Entity
     private void CheckIfGrounded()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        if (isGrounded)
+        {
+            IsFalling = false;
+            IsJumping = false;
+        }
+    }
+    //Проверка на падание персонажа 
+    private void UpdateAnimationState()
+    {
+        if (!IsAttacking)
+        {
+            if (IsJumping)
+                State = States.jump;
+            if (IsFalling)
+                State = States.fall;
+            if (rb.velocity.y < 0)
+            {
+                IsFalling = true;
+                IsJumping = false;
+            }
+            else if (rb.velocity.y > 0)
+            {
+                IsJumping = true;
+                IsFalling = false;
+            }
+        }
     }
 
     // Бег
     private void Run()
     {
-        if (isGrounded) State = States.run;
+        if (isGrounded && !IsAttacking) State = States.run;
         Vector3 dir = transform.right * Input.GetAxis("Horizontal");
 
         transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, speed * Time.deltaTime);
@@ -128,10 +159,13 @@ public class Hero : Entity
         if (isGrounded)
         {
             isGrounded = false;
+            IsJumping = true;
             rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
-            State = States.jump;
+            if (!IsAttacking)
+                State = States.jump;
         }
     }
+    
 
     private void Attack()
     {
@@ -170,13 +204,13 @@ public class Hero : Entity
 
     private IEnumerator AttackAnimation()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.43f);
         IsAttacking = false;
     }
 
     private IEnumerator AttackCoolDown()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.43f);
         IsRecharged = true;
     }
 
@@ -259,5 +293,6 @@ public enum States
     idle,
     run,
     jump,
-    attack
+    attack,
+    fall
 }
