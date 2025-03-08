@@ -33,6 +33,7 @@ public class Hero : Entity
     public UnityEngine.Transform AttackPos; // позиция атаки
     public float attackRange; // Дальность атаки
     public LayerMask enemy; // Слой врагов
+    public GameObject deathMenu;
 
     private Rigidbody2D rb; 
     private SpriteRenderer sprite;
@@ -84,7 +85,7 @@ public class Hero : Entity
         // Смерть при падении с карты
         if (gameObject.transform.position.y < -20)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            deathMenu.SetActive(true);
         }
         UpdateAnimationState();
         UpdateHearts();
@@ -232,7 +233,7 @@ public class Hero : Entity
         {
             foreach (var h in Hearts)
                 h.sprite = DeadHeart;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+            deathMenu.SetActive(true);
         }
     }
 
