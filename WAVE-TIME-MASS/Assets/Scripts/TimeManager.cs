@@ -23,5 +23,10 @@ public static class TimeManager
             }
         }
     }
-}
 
+    public static void ResetFreezeCount()
+    {
+        freezeCount = 0;
+        Time.timeScale = 1f;
+    }
+}

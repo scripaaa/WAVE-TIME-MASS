@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Entity : MonoBehaviour
 {
     protected int livess;
-
     public virtual void GetDamageHero()
     {
 
@@ -23,5 +22,6 @@ public class Entity : MonoBehaviour
     public virtual void Die()
     {
         Destroy(this.gameObject);
+
     }
 }

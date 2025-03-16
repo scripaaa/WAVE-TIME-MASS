@@ -59,6 +59,7 @@ public class ArtifactSelector : MonoBehaviour
         artifactPanel.SetActive(false); // Скрываем окно
 
         TimeManager.UnfreezeTime(); // Размораживаем игру
+        TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
 
         // Применяем артефакты к игроку
         ApplyArtifacts();
