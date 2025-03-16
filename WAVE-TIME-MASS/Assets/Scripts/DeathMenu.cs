@@ -10,20 +10,20 @@ public class DeathMenu : MonoBehaviour
     public Image fadeImage; // ссылка на фото
 
     private float fadeDuration = 0.5f; // длительность
-
+    private Coroutine fadeCoroutine; // ссылка на корутину
 
     private void Update()
     {
         if (deathMenu.activeSelf)
         {
-            TimeManager.FreezeTime();
-            StartCoroutine(FadeToBlack());
-        }
-        else
-        {
-            TimeManager.UnfreezeTime();
+            if (fadeCoroutine == null)
+            {
+                TimeManager.FreezeTime();
+                fadeCoroutine = StartCoroutine(FadeToBlack());
+            }
         }
     }
+
     // затемнение
     IEnumerator FadeToBlack()
     {
@@ -40,14 +40,28 @@ public class DeathMenu : MonoBehaviour
 
     public void Restart()
     {
-        TimeManager.UnfreezeTime();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (fadeCoroutine != null)
+        {
+            StopCoroutine(fadeCoroutine);
+            fadeCoroutine = null;
+        }
+
+        deathMenu.SetActive(false); // Скрыть меню смерти
+        TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Перезагрузить сцену
     }
+
     public void MainMenu()
     {
+        if (fadeCoroutine != null)
+        {
+            StopCoroutine(fadeCoroutine);
+            fadeCoroutine = null;
+        }
+
         PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex); // Сохраниение сцены при выходе
-        SceneManager.LoadScene(0);
-        TimeManager.UnfreezeTime();
+        TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
+        SceneManager.LoadScene(0); // Загрузить главное меню
     }
 
     public void Exit()

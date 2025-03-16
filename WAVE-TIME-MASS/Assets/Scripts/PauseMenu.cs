@@ -22,6 +22,8 @@ public class PauseMenu : MonoBehaviour
 
         if (finish == null)
             TimeManager.UnfreezeTime(); // Размораживаем игру второй раз из-за конца игры
+
+        TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
     }
 
     public void NewGame() 
@@ -31,6 +33,8 @@ public class PauseMenu : MonoBehaviour
 
         if (finish == null)
             TimeManager.UnfreezeTime(); // Размораживаем игру второй раз из-за конца игры
+
+        TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
     }
 
     public void Quit() 
@@ -70,6 +74,7 @@ public class PauseMenu : MonoBehaviour
                 {
                     pauseMenu.SetActive(false);
                     TimeManager.UnfreezeTime(); // Размораживаем игру
+                    TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
                 }
                 
             }
