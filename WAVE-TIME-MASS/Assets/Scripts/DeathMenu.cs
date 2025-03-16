@@ -8,7 +8,10 @@ public class DeathMenu : MonoBehaviour
 {
     public GameObject deathMenu;
     public Image fadeImage; // ссылка на фото
-    public float fadeDuration = 2.0f; // длительность
+
+    private float fadeDuration = 0.5f; // длительность
+
+
     private void Update()
     {
         if (deathMenu.activeSelf)

@@ -85,6 +85,7 @@ public class Hero : Entity
         // Смерть при падении с карты
         if (gameObject.transform.position.y < -20)
         {
+            gameObject.GetComponent<DeathMenu>().enabled = true;
             deathMenu.SetActive(true);
         }
         UpdateAnimationState();
@@ -233,6 +234,7 @@ public class Hero : Entity
         {
             foreach (var h in Hearts)
                 h.sprite = DeadHeart;
+            gameObject.GetComponent<DeathMenu>().enabled = true;
             deathMenu.SetActive(true);
         }
     }
