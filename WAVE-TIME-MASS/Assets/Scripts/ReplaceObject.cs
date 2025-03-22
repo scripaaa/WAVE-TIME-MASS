@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class  ReplaceObject: MonoBehaviour
+public class ReplaceObject : MonoBehaviour
 {
     public GameObject PresentObject; // Объект в настоящем
-    public GameObject PastObject; // Объект в настоящем
+    public GameObject PastObject; // Объект в прошлом
     public GameObject FutureObject; // Объект в будущем
 
     private KeyCode replaceKey_Future = KeyCode.E; // Клавиша для перехода в будущее
@@ -14,82 +15,106 @@ public class  ReplaceObject: MonoBehaviour
 
     public GameObject pause_menu; // Меню паузы
 
+    private float lastSwitchTime = -10f; // Время последнего переключения
+    private float cooldownDuration = 5f; // Длительность кулдауна (5 секунд)
+    public Image cooldownIndicator; // UI Image для отображения кулдауна
+    public Text cooldownText; // UI Text для отображения статуса перезарядки
+
+    private Times currentTime = Times.present; // Текущее время (по умолчанию - настоящее)
+
     private void Start()
     {
         PastObject.SetActive(false);
         FutureObject.SetActive(false);
+
+        // Инициализация текста
+        if (cooldownText != null)
+        {
+            cooldownText.text = "Можно путешествовать";
+        }
     }
 
-    void Update()
+    private void Update()
     {
-        if (!pause_menu.activeSelf) // Проверяем отображается ли меню паузы
+        if (!pause_menu.activeSelf)
         {
+            // Обновляем индикатор кулдауна
+            if (cooldownIndicator != null)
+            {
+                float cooldownProgress = Mathf.Clamp01((Time.time - lastSwitchTime) / cooldownDuration);
+                cooldownIndicator.fillAmount = cooldownProgress;
+            }
+
+            // Обновляем текст в зависимости от состояния кулдауна
+            if (cooldownText != null)
+            {
+                if (Time.time - lastSwitchTime >= cooldownDuration)
+                {
+                    cooldownText.text = "Можно путешествовать";
+                }
+                else
+                {
+                    cooldownText.text = "Немного подождите";
+                }
+            }
+
+            // Остальная логика переключения
             if (Input.GetKeyDown(replaceKey_Future))
             {
-                InFuture();
+                TrySwitchTime(Times.future);
             }
             else if (Input.GetKeyDown(replaceKey_Present))
             {
-                InPresent();
+                TrySwitchTime(Times.present);
             }
             else if (Input.GetKeyDown(replaceKey_Past))
             {
-                InPast();
+                TrySwitchTime(Times.past);
             }
         }
     }
 
-    void InFuture()
+    void TrySwitchTime(Times newTime)
     {
-        if (PresentObject != null)
+        // Если игрок пытается переключиться в то же время, ничего не делаем
+        if (newTime == currentTime)
         {
-            PresentObject.SetActive(false);
+            Debug.Log("Вы уже в этом времени!");
+            return;
         }
 
-        if (PastObject != null)
+        // Проверяем, прошло ли достаточно времени с момента последнего переключения
+        if (Time.time - lastSwitchTime >= cooldownDuration)
         {
-            PastObject.SetActive(false);
+            SwitchTime(newTime);
+            lastSwitchTime = Time.time; // Обновляем время последнего переключения
+            currentTime = newTime; // Обновляем текущее время
         }
-
-        if (FutureObject != null)
+        else
         {
-            FutureObject.SetActive(true);
+            Debug.Log("Кулдаун еще не закончился!");
         }
     }
 
-    void InPresent()
+    void SwitchTime(Times newTime)
     {
-        if (PresentObject != null)
-        {
-            PresentObject.SetActive(true);
-        }
+        // Выключаем все объекты
+        if (PresentObject != null) PresentObject.SetActive(false);
+        if (PastObject != null) PastObject.SetActive(false);
+        if (FutureObject != null) FutureObject.SetActive(false);
 
-        if (PastObject != null)
+        // Включаем нужный объект в зависимости от выбранного времени
+        switch (newTime)
         {
-            PastObject.SetActive(false);
-        }
-
-        if (FutureObject != null)
-        {
-            FutureObject.SetActive(false);
-        }
-    }
-
-    void InPast()
-    {
-        if (PresentObject != null)
-        {
-            PresentObject.SetActive(false);
-        }
-
-        if (PastObject != null)
-        {
-            PastObject.SetActive(true);
-        }
-
-        if (FutureObject != null)
-        {
-            FutureObject.SetActive(false);
+            case Times.present:
+                if (PresentObject != null) PresentObject.SetActive(true);
+                break;
+            case Times.past:
+                if (PastObject != null) PastObject.SetActive(true);
+                break;
+            case Times.future:
+                if (FutureObject != null) FutureObject.SetActive(true);
+                break;
         }
     }
 }
