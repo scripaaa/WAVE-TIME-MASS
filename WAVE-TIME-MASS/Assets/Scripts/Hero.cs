@@ -40,6 +40,7 @@ public class Hero : Entity
     private Animator anim;
     private int lives;
     private bool active_Damage_Jump = false; // блокируем возможность атаки прыжком
+    private bool active_Melee_Attacking = false; // блокируем возможность атаки прыжком
 
     public static Hero Instance { get; set; }
 
@@ -172,15 +173,18 @@ public class Hero : Entity
 
     private void Attack()
     {
-        Debug.Log("Attack executed!");
-        if (IsRecharged)
+        if (active_Melee_Attacking)
         {
-            State = States.attack;
-            IsAttacking = true;
-            IsRecharged = false;
+            Debug.Log("Attack executed!");
+            if (IsRecharged)
+            {
+                State = States.attack;
+                IsAttacking = true;
+                IsRecharged = false;
 
-            StartCoroutine(AttackAnimation());
-            StartCoroutine(AttackCoolDown());
+                StartCoroutine(AttackAnimation());
+                StartCoroutine(AttackCoolDown());
+            }
         }
     }
 
@@ -217,7 +221,7 @@ public class Hero : Entity
         IsRecharged = true;
     }
 
-    // Убийство врага
+    // Убийство врага прыжком
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy" && active_Damage_Jump)
@@ -253,31 +257,16 @@ public class Hero : Entity
     }
 
     // Активация атаки прыжком
-    public void Damage_Jump()
+    public void Active_Damage_Jump()
     {
         active_Damage_Jump = true;
     }
 
-    // Выбор артефакта
-    /*public void ApplyArtifactEffects()
+    // Активация атаки прыжком
+    public void Active_Melee_Attacking()
     {
-        if (PlayerPrefs.GetInt("DoubleJump", 0) == 1)
-        {
-            Debug.Log("DoubleJump активирован!");
-            jumpForce += 7;
-        }
-        else if (PlayerPrefs.GetInt("DoubleHP", 0) == 1)
-        {
-            Debug.Log("DoubleHP активирован!");
-            AddHeart();
-
-        }
-        else if (PlayerPrefs.GetInt("JumpAttack", 0) == 1)
-        {
-            Debug.Log("JumpAttack активирован!");
-            active_Damage_Jump = true; // активируем возможность атаковать прыжком
-        }
-    }*/
+        active_Melee_Attacking = true;
+    }
 
     public void AddHeart()
     {

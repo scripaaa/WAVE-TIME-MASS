@@ -154,7 +154,7 @@ public class ArtifactSelector : MonoBehaviour
                 InventoryUI.Instance.AddArtifact(3);
                 if (playerController != null)
                 {
-                    playerController.Damage_Jump();
+                    playerController.Active_Damage_Jump();
                 }
                 break;
             case "Dash":
@@ -170,6 +170,10 @@ public class ArtifactSelector : MonoBehaviour
                 PlayerPrefs.SetInt("MeleeAttack", 1);
                 Debug.Log("Выбран MeleeAttack");
                 InventoryUI.Instance.AddArtifact(2);
+                if (playerController != null)
+                {
+                    playerController.Active_Melee_Attacking();
+                }
                 break;
         }
 
