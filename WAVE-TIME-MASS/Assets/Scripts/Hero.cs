@@ -43,6 +43,7 @@ public class Hero : Entity
 
     public static Hero Instance { get; set; }
 
+
     private States State
     {
         get { return (States)anim.GetInteger("State"); }
