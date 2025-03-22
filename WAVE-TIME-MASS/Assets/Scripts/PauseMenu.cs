@@ -16,6 +16,12 @@ public class PauseMenu : MonoBehaviour
 
     public void MainMenu() 
     {
+        // Очищаем инвентарь перед рестартом
+        if (InventoryUI.Instance != null)
+        {
+            InventoryUI.Instance.ClearInventory();
+        }
+
         PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex); // Сохраниение сцены при выходе
         SceneManager.LoadScene(0);
         TimeManager.UnfreezeTime(); // Размораживаем игру
@@ -28,6 +34,12 @@ public class PauseMenu : MonoBehaviour
 
     public void NewGame() 
     {
+        // Очищаем инвентарь перед рестартом
+        if (InventoryUI.Instance != null)
+        {
+            InventoryUI.Instance.ClearInventory();
+        }
+
         SceneManager.LoadScene(1);
         TimeManager.UnfreezeTime(); // Размораживаем игру
 

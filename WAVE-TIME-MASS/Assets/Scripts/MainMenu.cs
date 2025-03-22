@@ -7,6 +7,12 @@ public class MainMenu : MonoBehaviour
 {
     public void NewGame()
     {
+        // Очищаем инвентарь перед рестартом
+        if (InventoryUI.Instance != null)
+        {
+            InventoryUI.Instance.ClearInventory();
+        }
+
         Debug.Log("новая игра");
         TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

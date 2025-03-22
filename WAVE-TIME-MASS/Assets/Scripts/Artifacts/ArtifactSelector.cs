@@ -84,11 +84,17 @@ public class ArtifactSelector : MonoBehaviour
                     doubleHPButton.gameObject.SetActive(true);
                     slowdownButton.gameObject.SetActive(true);
                 }
-                else if ((InventoryUI.Instance.HasArtifact(3) || InventoryUI.Instance.HasArtifact(5)) && InventoryUI.Instance.HasArtifact(2))
+                else if (InventoryUI.Instance.HasArtifact(3) && InventoryUI.Instance.HasArtifact(2))
                 {
                     rangedAttackButton.gameObject.SetActive(true);
                     doubleHPButton.gameObject.SetActive(true);
                     dashButton.gameObject.SetActive(true);
+                }
+                else if (InventoryUI.Instance.HasArtifact(5) && InventoryUI.Instance.HasArtifact(2))
+                {
+                    rangedAttackButton.gameObject.SetActive(true);
+                    doubleHPButton.gameObject.SetActive(true);
+                    slowdownButton.gameObject.SetActive(true);
                 }
                 else if ((InventoryUI.Instance.HasArtifact(3) || InventoryUI.Instance.HasArtifact(5)) && InventoryUI.Instance.HasArtifact(4))
                 {
@@ -117,7 +123,9 @@ public class ArtifactSelector : MonoBehaviour
         PlayerPrefs.SetInt("DoubleHP", 0);
         PlayerPrefs.SetInt("JumpAttack", 0);
         PlayerPrefs.SetInt("Dash", 0);
-        PlayerPrefs.SetInt("MeleeAttack", 0);*/
+        PlayerPrefs.SetInt("MeleeAttack", 0);
+        PlayerPrefs.SetInt("RangedAttack", 0);
+        PlayerPrefs.SetInt("Slowdown", 0);*/
 
         // Сохраняем выбранный артефакт
         switch (artifact)
@@ -126,16 +134,28 @@ public class ArtifactSelector : MonoBehaviour
                 PlayerPrefs.SetInt("DoubleJump", 1);
                 Debug.Log("Выбран DoubleJump");
                 InventoryUI.Instance.AddArtifact(0);
+                if (playerController != null)
+                {
+                    playerController.DoubleJump();
+                }
                 break;
             case "DoubleHP":
                 PlayerPrefs.SetInt("DoubleHP", 1);
                 Debug.Log("Выбран DoubleHP");
                 InventoryUI.Instance.AddArtifact(1);
+                if (playerController != null)
+                {
+                    playerController.AddHeart();
+                }
                 break;
             case "JumpAttack":
                 PlayerPrefs.SetInt("JumpAttack", 1);
                 Debug.Log("Выбран JumpAttack");
                 InventoryUI.Instance.AddArtifact(3);
+                if (playerController != null)
+                {
+                    playerController.Damage_Jump();
+                }
                 break;
             case "Dash":
                 PlayerPrefs.SetInt("Dash", 1);
@@ -165,14 +185,14 @@ public class ArtifactSelector : MonoBehaviour
         TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
 
         // Применяем артефакты к игроку
-        ApplyArtifacts();
+        //ApplyArtifacts();
     }
 
-    void ApplyArtifacts()
+    /*void ApplyArtifacts()
     {
         if (playerController != null)
         {
             playerController.ApplyArtifactEffects();
         }
-    }
+    }*/
 }

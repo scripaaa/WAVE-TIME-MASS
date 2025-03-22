@@ -47036,6 +47036,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 497378387804448707, guid: 64a0912738eda554485d7e1aa9c3dfac, type: 3}
+      propertyPath: currentLevel
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4261056312979290853, guid: 64a0912738eda554485d7e1aa9c3dfac, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -136334,6 +136338,34 @@ PrefabInstance:
     - target: {fileID: 4889279363878454829, guid: 9670fbcaa4582464e9dec8454eea1ab9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5314420580118317315, guid: 9670fbcaa4582464e9dec8454eea1ab9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5314420580118317315, guid: 9670fbcaa4582464e9dec8454eea1ab9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5314420580118317315, guid: 9670fbcaa4582464e9dec8454eea1ab9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 20323405}
+    - target: {fileID: 5314420580118317315, guid: 9670fbcaa4582464e9dec8454eea1ab9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5314420580118317315, guid: 9670fbcaa4582464e9dec8454eea1ab9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5314420580118317315, guid: 9670fbcaa4582464e9dec8454eea1ab9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelStats, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5314420580118317315, guid: 9670fbcaa4582464e9dec8454eea1ab9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7137324547965027207, guid: 9670fbcaa4582464e9dec8454eea1ab9, type: 3}
       propertyPath: m_Name

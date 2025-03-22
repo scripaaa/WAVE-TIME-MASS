@@ -46,6 +46,12 @@ public class DeathMenu : MonoBehaviour
             fadeCoroutine = null;
         }
 
+        // Удаляем последний артефакт из инвентаря
+        if (InventoryUI.Instance != null)
+        {
+            InventoryUI.Instance.RemoveArtifact(SceneManager.GetActiveScene().buildIndex - 2);
+        }
+
         deathMenu.SetActive(false); // Скрыть меню смерти
         TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Перезагрузить сцену
@@ -59,6 +65,12 @@ public class DeathMenu : MonoBehaviour
             fadeCoroutine = null;
         }
 
+        // Очищаем инвентарь перед рестартом
+        if (InventoryUI.Instance != null)
+        {
+            InventoryUI.Instance.ClearInventory();
+        }
+
         PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex); // Сохраниение сцены при выходе
         TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
         SceneManager.LoadScene(0); // Загрузить главное меню
@@ -66,6 +78,12 @@ public class DeathMenu : MonoBehaviour
 
     public void Exit()
     {
+        // Очищаем инвентарь перед рестартом
+        if (InventoryUI.Instance != null)
+        {
+            InventoryUI.Instance.ClearInventory();
+        }
+
         PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex); // Сохраниение сцены при выходе
         Application.Quit();
     }

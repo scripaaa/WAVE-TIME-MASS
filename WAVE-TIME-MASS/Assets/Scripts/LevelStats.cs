@@ -116,6 +116,12 @@ public class LevelStats : MonoBehaviour
 
     public void RestartLevel()
     {
+        // Удаляем последний артефакт из инвентаря
+        if (InventoryUI.Instance != null)
+        {
+            InventoryUI.Instance.RemoveArtifact(SceneManager.GetActiveScene().buildIndex - 2);
+        }
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         TimeManager.UnfreezeTime();
         TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
@@ -123,7 +129,7 @@ public class LevelStats : MonoBehaviour
 
     public void NextLevel()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 3)
+        if (SceneManager.GetActiveScene().buildIndex == 4)
         {
             panel.SetActive(true);
             TimeManager.FreezeTime(); 

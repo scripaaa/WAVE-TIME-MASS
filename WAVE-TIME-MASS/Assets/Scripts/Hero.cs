@@ -217,7 +217,6 @@ public class Hero : Entity
         IsRecharged = true;
     }
 
-
     // Убийство врага
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -247,9 +246,20 @@ public class Hero : Entity
         score_text.text = score.ToString();
     }
 
+    // Активация двойного прыжка
+    public void DoubleJump()
+    {
+        jumpForce += 7;
+    }
+
+    // Активация атаки прыжком
+    public void Damage_Jump()
+    {
+        active_Damage_Jump = true;
+    }
 
     // Выбор артефакта
-    public void ApplyArtifactEffects()
+    /*public void ApplyArtifactEffects()
     {
         if (PlayerPrefs.GetInt("DoubleJump", 0) == 1)
         {
@@ -267,9 +277,9 @@ public class Hero : Entity
             Debug.Log("JumpAttack активирован!");
             active_Damage_Jump = true; // активируем возможность атаковать прыжком
         }
-    }
+    }*/
 
-    private void AddHeart()
+    public void AddHeart()
     {
         // Увеличиваем максимальное здоровье
         lives += 1;

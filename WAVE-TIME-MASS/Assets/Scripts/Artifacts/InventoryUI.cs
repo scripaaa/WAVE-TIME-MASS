@@ -29,7 +29,7 @@ public class InventoryUI : MonoBehaviour
     private void Start()
     {
         // Очищаем инвентарь при старте (если нужно)
-        // ClearInventory();
+        //ClearInventory();
     }
 
     // Добавление артефакта в инвентарь
