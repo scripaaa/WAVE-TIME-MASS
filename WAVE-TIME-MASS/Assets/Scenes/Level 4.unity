@@ -1071,6 +1071,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b68795930e9f884697e2b3e7e10f942, type: 3}
+--- !u!114 &68240070 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5102786759987220323, guid: 5b68795930e9f884697e2b3e7e10f942, type: 3}
+  m_PrefabInstance: {fileID: 68240069}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888833657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3951580878c40834e9c2f8b7b2ba9f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &68880993
 GameObject:
   m_ObjectHideFlags: 0
@@ -92680,6 +92691,7 @@ GameObject:
   - component: {fileID: 1033001209}
   - component: {fileID: 1033001210}
   - component: {fileID: 1033001211}
+  - component: {fileID: 1033001212}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Player
@@ -92937,6 +92949,22 @@ MonoBehaviour:
   dashDuration: 0.12
   dashCooldown: 1
   canDash: 0
+--- !u!114 &1033001212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033001198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59d703d59870b9429db0a3a57e2ee06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowdownFactor: 0.5
+  playerSpeedMultiplier: 2
+  arrowShooterController_present: {fileID: 329727606385368469}
+  arrowShooterController_past: {fileID: 68240070}
 --- !u!1 &1057644098
 GameObject:
   m_ObjectHideFlags: 0
@@ -147010,6 +147038,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b68795930e9f884697e2b3e7e10f942, type: 3}
+--- !u!114 &329727606385368469 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5102786759987220323, guid: 5b68795930e9f884697e2b3e7e10f942, type: 3}
+  m_PrefabInstance: {fileID: 329727606385368468}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645880332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3951580878c40834e9c2f8b7b2ba9f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2157868898419348520
 PrefabInstance:
   m_ObjectHideFlags: 0

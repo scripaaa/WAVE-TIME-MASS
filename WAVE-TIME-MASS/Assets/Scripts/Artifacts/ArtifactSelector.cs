@@ -17,7 +17,7 @@ public class ArtifactSelector : MonoBehaviour
 
     private Hero playerController;
     public PlayerDash playerDash; // Ссылка на скрипт PlayerDash
-    //public InventoryUI inventoryUI; // Ссылка на скрипт инвентаря
+    private Slowdown slowdown; // Ссылка на Slowdown
 
     public int currentLevel = 1; // Текущий уровень (можно задавать извне)
 
@@ -25,6 +25,7 @@ public class ArtifactSelector : MonoBehaviour
     {
         playerController = FindObjectOfType<Hero>(); // Ищем игрока
         playerDash = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDash>(); // Находим скрипт PlayerDash на объекте игрока
+        slowdown = GameObject.FindGameObjectWithTag("Player").GetComponent<Slowdown>(); // Находим скрипт Slowdown на объекте игрока
 
         TimeManager.FreezeTime(); // Замораживаем игру
 
@@ -173,6 +174,15 @@ public class ArtifactSelector : MonoBehaviour
                 if (playerController != null)
                 {
                     playerController.Active_Melee_Attacking();
+                }
+                break;
+            case "Slowdown":
+                PlayerPrefs.SetInt("Slowdown", 1);
+                Debug.Log("Выбран Slowdown");
+                InventoryUI.Instance.AddArtifact(6);
+                if (slowdown != null)
+                {
+                    slowdown.ActivateSlowdown();
                 }
                 break;
         }

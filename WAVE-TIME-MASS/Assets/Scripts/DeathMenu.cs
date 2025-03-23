@@ -11,6 +11,12 @@ public class DeathMenu : MonoBehaviour
 
     private float fadeDuration = 0.5f; // длительность
     private Coroutine fadeCoroutine; // ссылка на корутину
+    private Slowdown slowdown; // Ссылка на Slowdown
+
+    void Start()
+    {
+        slowdown = GameObject.FindGameObjectWithTag("Player").GetComponent<Slowdown>(); // Находим скрипт Slowdown на объекте игрока
+    }
 
     private void Update()
     {
@@ -55,6 +61,8 @@ public class DeathMenu : MonoBehaviour
         deathMenu.SetActive(false); // Скрыть меню смерти
         TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Перезагрузить сцену
+
+        slowdown.NotActivateSlowdown();
     }
 
     public void MainMenu()
@@ -74,6 +82,8 @@ public class DeathMenu : MonoBehaviour
         PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex); // Сохраниение сцены при выходе
         TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
         SceneManager.LoadScene(0); // Загрузить главное меню
+
+        slowdown.NotActivateSlowdown();
     }
 
     public void Exit()
@@ -86,5 +96,7 @@ public class DeathMenu : MonoBehaviour
 
         PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex); // Сохраниение сцены при выходе
         Application.Quit();
+
+        slowdown.NotActivateSlowdown();
     }
 }

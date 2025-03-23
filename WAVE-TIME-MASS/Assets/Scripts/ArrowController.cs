@@ -14,8 +14,8 @@ public class ArrowController : MonoBehaviour
 
     void Update()
     {
-        // Двигаем стрелу в заданном направлении
-        rb.velocity = direction * speed;
+        // Двигаем стрелу в заданном направлении с учетом Time.timeScale
+        rb.velocity = direction * speed * Time.timeScale;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

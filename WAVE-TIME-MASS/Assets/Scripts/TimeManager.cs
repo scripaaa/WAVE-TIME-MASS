@@ -24,6 +24,11 @@ public static class TimeManager
         }
     }
 
+    public static bool IsTimeFrozen()
+    {
+        return freezeCount > 0;
+    }
+
     public static void ResetFreezeCount()
     {
         freezeCount = 0;

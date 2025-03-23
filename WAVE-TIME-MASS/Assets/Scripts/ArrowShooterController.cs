@@ -14,7 +14,8 @@ public class ArrowShooterController : MonoBehaviour
 
     void Update()
     {
-        timer -= Time.deltaTime;
+        // Используем Time.unscaledDeltaTime, чтобы интервал между выстрелами не зависел от Time.timeScale
+        timer -= Time.unscaledDeltaTime;
 
         if (timer <= 0)
         {

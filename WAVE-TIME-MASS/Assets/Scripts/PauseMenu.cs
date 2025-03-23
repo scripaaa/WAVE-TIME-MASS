@@ -8,6 +8,13 @@ public class PauseMenu : MonoBehaviour
     public GameObject controls_panel;
     GameObject finish;
 
+    private Slowdown slowdown; // Ссылка на Slowdown
+
+    void Start()
+    {
+        slowdown = GameObject.FindGameObjectWithTag("Player").GetComponent<Slowdown>(); // Находим скрипт Slowdown на объекте игрока
+    }
+
     public void Continue() 
     {
         pauseMenu.SetActive(false);
@@ -30,6 +37,8 @@ public class PauseMenu : MonoBehaviour
             TimeManager.UnfreezeTime(); // Размораживаем игру второй раз из-за конца игры
 
         TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
+
+        slowdown.NotActivateSlowdown();
     }
 
     public void NewGame() 
@@ -47,6 +56,8 @@ public class PauseMenu : MonoBehaviour
             TimeManager.UnfreezeTime(); // Размораживаем игру второй раз из-за конца игры
 
         TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
+
+        slowdown.NotActivateSlowdown();
     }
 
     public void Quit() 

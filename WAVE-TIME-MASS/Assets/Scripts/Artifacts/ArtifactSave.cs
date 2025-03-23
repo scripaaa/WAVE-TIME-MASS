@@ -6,11 +6,13 @@ public class ArtifactSave : MonoBehaviour
 {
     private Hero player; // Ссылка на игрока
     private PlayerDash playerDash; // Ссылка на скрипт PlayerDash
+    private Slowdown slowdown; // Ссылка на Slowdown
 
     private void Start()
     {
         player = FindObjectOfType<Hero>(); // Ищем игрока
         playerDash = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDash>(); // Находим скрипт PlayerDash на объекте игрока
+        slowdown = GameObject.FindGameObjectWithTag("Player").GetComponent<Slowdown>(); // Находим скрипт Slowdown на объекте игрока
 
         ApplyArtifactEffects();
     }
@@ -42,6 +44,12 @@ public class ArtifactSave : MonoBehaviour
         {
             player.Active_Melee_Attacking(); // Разрешаем ближнюю атаку
         }
+
+        if (InventoryUI.Instance.HasArtifact(6)) // Slowdown
+        {
+            slowdown.ActivateSlowdown(); // Замедляем время
+        }
+
         // Добавьте проверки для других артефактов
     }
 }
