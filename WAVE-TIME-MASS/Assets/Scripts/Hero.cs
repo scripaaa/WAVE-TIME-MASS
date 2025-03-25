@@ -17,6 +17,10 @@ public class Hero : Entity
     [SerializeField] private Sprite Heart; // Отображение в сцене полных сердечек
     [SerializeField] private Sprite DeadHeart; // Отображение в сцене пустых сердечек
 
+    [SerializeField] private Transform RangePoint;
+    [SerializeField] private GameObject[] projectiles;
+
+
     private bool isGrounded = false; // Есть ли земля под ногами
     public float groundCheckRadius = 0.2f; // Радиус проверки нахождения на земле
     public Transform groundCheck; // Точка проверки нахождения на земле
@@ -80,6 +84,8 @@ public class Hero : Entity
 
         if (Input.GetButtonDown("Fire1"))
             Attack();
+        if (Input.GetButtonDown("Fire2"))
+            RangeAttack();
         if (IsFalling && !IsAttacking)
             State = States.fall;
         if (IsJumping && !IsAttacking) State = States.jump;
@@ -186,6 +192,29 @@ public class Hero : Entity
                 StartCoroutine(AttackCoolDown());
             }
         }
+    }
+    private void RangeAttack()
+    {
+       
+            Debug.Log("Range attack executed!");
+            State = States.rangeattack;
+
+            projectiles[FindProjectile()].transform.position = RangePoint.position;
+            projectiles[FindProjectile()].GetComponent<Projectile>().SetDirection(Mathf.Sign(transform.localScale.x));
+
+            StartCoroutine(AttackAnimation());
+            StartCoroutine(AttackCoolDown());
+        
+    }
+    private int FindProjectile()
+    {
+        
+        for (int i = 0; i < projectiles.Length; i++)
+        {
+            if (!projectiles[i].activeInHierarchy)
+                return i;
+        }
+        return 0;
     }
 
     private void OnAttack()
@@ -297,5 +326,6 @@ public enum States
     run,
     jump,
     attack,
-    fall
+    fall,
+    rangeattack
 }
