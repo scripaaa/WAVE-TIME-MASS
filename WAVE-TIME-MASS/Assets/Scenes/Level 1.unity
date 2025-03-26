@@ -12812,6 +12812,7 @@ MonoBehaviour:
   - {fileID: 943989900}
   - {fileID: 463610483}
   - {fileID: 78359162}
+  RangeCooldown: 0.5
   groundCheckRadius: 0.3
   groundCheck: {fileID: 1848148306}
   groundLayer:
@@ -12819,6 +12820,7 @@ MonoBehaviour:
     m_Bits: 64
   score: 0
   score_text: {fileID: 192032258}
+  IsRangeAttacking: 0
   IsAttacking: 0
   IsRecharged: 1
   IsFalling: 0

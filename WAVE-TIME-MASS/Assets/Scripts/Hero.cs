@@ -17,8 +17,10 @@ public class Hero : Entity
     [SerializeField] private Sprite Heart; // Отображение в сцене полных сердечек
     [SerializeField] private Sprite DeadHeart; // Отображение в сцене пустых сердечек
 
-    [SerializeField] private Transform RangePoint;
-    [SerializeField] private GameObject[] projectiles;
+    [SerializeField] private Transform RangePoint;// Место откуда появляются все дальние атаки
+    [SerializeField] private GameObject[] projectiles; // массив объектов дальней атаки
+    [SerializeField] private float RangeCooldown; // кулдаун на дальнюю атаку, можно изменять в инспекторе
+    
 
 
     private bool isGrounded = false; // Есть ли земля под ногами
@@ -29,6 +31,7 @@ public class Hero : Entity
     public int score; // Счет монеток
     public Text score_text; // Текст для счета монеток
 
+    public bool IsRangeAttacking = false; //Используем ли дальнюю атаку
     public bool IsAttacking = false; // Атакуем ли мы сейчас
     public bool IsRecharged = true; // Перезарядка атаки
     public bool IsFalling = false; //Падаем ли мы сейчас
@@ -45,6 +48,7 @@ public class Hero : Entity
     private int lives;
     private bool active_Damage_Jump = false; // блокируем возможность атаки прыжком
     private bool active_Melee_Attacking = false; // блокируем возможность атаки прыжком
+    private float cooldownTimer = Mathf.Infinity; //таймер для проверки
 
     public static Hero Instance { get; set; }
 
@@ -73,7 +77,11 @@ public class Hero : Entity
     {
         CheckIfGrounded();
 
-        if (isGrounded && !IsAttacking)
+        if (Input.GetButtonDown("Fire1"))
+            Attack();
+        if (Input.GetButtonDown("Fire2") && cooldownTimer > RangeCooldown)
+            RangeAttack();
+        if (isGrounded && !IsAttacking && !IsRangeAttacking)
             State = States.idle;
 
         if ( Input.GetButton("Horizontal"))
@@ -82,13 +90,12 @@ public class Hero : Entity
         if (( isGrounded && Input.GetButtonDown("Jump")) | ( !isGrounded && Input.GetButtonDown("Jump")))
             Jump();
 
-        if (Input.GetButtonDown("Fire1"))
-            Attack();
-        if (Input.GetButtonDown("Fire2"))
-            RangeAttack();
-        if (IsFalling && !IsAttacking)
+        
+        cooldownTimer += Time.deltaTime; // изменяем значение проверочного таймера
+
+        if (IsFalling && !IsAttacking && !IsRangeAttacking)
             State = States.fall;
-        if (IsJumping && !IsAttacking) State = States.jump;
+        if (IsJumping && !IsAttacking && !IsRangeAttacking) State = States.jump;
 
         // Смерть при падении с карты
         if (gameObject.transform.position.y < -20)
@@ -155,12 +162,19 @@ public class Hero : Entity
     // Бег
     private void Run()
     {
-        if (isGrounded && !IsAttacking) State = States.run;
+        if (isGrounded && !IsAttacking && !IsRangeAttacking) State = States.run;
+        float moveInput = Input.GetAxis("Horizontal");
         Vector3 dir = transform.right * Input.GetAxis("Horizontal");
 
         transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, speed * Time.deltaTime);
 
-        sprite.flipX = dir.x < 0.0f; 
+        if (moveInput != 0)
+        {
+
+            Vector3 newScale = transform.localScale;
+            newScale.x = Mathf.Abs(newScale.x) * Mathf.Sign(moveInput);
+            transform.localScale = newScale;
+        }
     }
 
     // Прыжок
@@ -171,7 +185,7 @@ public class Hero : Entity
             isGrounded = false;
             IsJumping = true;
             rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
-            if (!IsAttacking)
+            if (!IsAttacking && !IsRangeAttacking)
                 State = States.jump;
         }
     }
@@ -195,14 +209,16 @@ public class Hero : Entity
     }
     private void RangeAttack()
     {
-       
-            Debug.Log("Range attack executed!");
-            State = States.rangeattack;
+        cooldownTimer = 0;
+        State = States.rangeattack;
+        IsRangeAttacking = true;
+        StartCoroutine(RangeAttackCoolDown());
 
-            projectiles[FindProjectile()].transform.position = RangePoint.position;
+        projectiles[FindProjectile()].transform.position = RangePoint.position;
             projectiles[FindProjectile()].GetComponent<Projectile>().SetDirection(Mathf.Sign(transform.localScale.x));
         
     }
+    //Возвращает нужные элемент дальней атаки
     private int FindProjectile()
     {
         
@@ -233,7 +249,11 @@ public class Hero : Entity
         Gizmos.DrawWireSphere(AttackPos.position, attackRange);
     }
     
-
+    private IEnumerator RangeAttackCoolDown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        IsRangeAttacking = false;
+    }
 
     private IEnumerator AttackAnimation()
     {

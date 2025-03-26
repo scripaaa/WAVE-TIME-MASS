@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
         transform.Translate(movementspeed, 0, 0);
 
         lifetime += Time.deltaTime;
-        if (lifetime > 5)
+        if (lifetime > 3)
             gameObject.SetActive(false);
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -29,6 +29,13 @@ public class Projectile : MonoBehaviour
         hit = true;
         boxCollider.enabled = false;
         anim.SetTrigger("explode");
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<Entity>().GetDamage();
+        }
+            
+
+
     }
     public void SetDirection(float _direction)
     {
@@ -37,6 +44,7 @@ public class Projectile : MonoBehaviour
         gameObject.SetActive(true);
         hit = false;
         boxCollider.enabled = true;
+    
 
         float localScaleX = transform.localScale.x;
         if (Mathf.Sign(localScaleX) != _direction)
