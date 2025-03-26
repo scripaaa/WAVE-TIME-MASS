@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: future_watch_1109_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 1980
+        height: 1980
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25937f797bab69b4dbf411daae753f46
+      internalID: -1290012130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: future_watch_1109_1
+      rect:
+        serializedVersion: 2
+        x: 1980
+        y: 50
+        width: 1980
+        height: 2030
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6fd3a0d250859044928f39cb7ec1ba4
+      internalID: 1304831393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: future_watch_1109_2
+      rect:
+        serializedVersion: 2
+        x: 3960
+        y: 50
+        width: 1970
+        height: 2030
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b00bd2bc621e237429df595255ef6367
+      internalID: 786496142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: future_watch_1109_3
+      rect:
+        serializedVersion: 2
+        x: 5930
+        y: 45
+        width: 1974
+        height: 2035
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f183897940713f44f8035b365a9200ae
+      internalID: -583095183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +203,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      future_watch_1109_0: -1290012130
+      future_watch_1109_1: 1304831393
+      future_watch_1109_2: 786496142
+      future_watch_1109_3: -583095183
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

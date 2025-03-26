@@ -141842,6 +141842,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6483472414680390161, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+      propertyPath: pause_menu
+      value: 
+      objectReference: {fileID: 1177124942}
     - target: {fileID: 7104774119011868725, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
