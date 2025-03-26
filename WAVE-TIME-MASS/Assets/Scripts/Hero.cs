@@ -39,6 +39,7 @@ public class Hero : Entity
 
     public UnityEngine.Transform AttackPos; // позиция атаки
     public float attackRange; // Дальность атаки
+    public float attackHeight; //Высота атаки
     public LayerMask enemy; // Слой врагов
     public GameObject deathMenu;
 
@@ -49,6 +50,7 @@ public class Hero : Entity
     private bool active_Damage_Jump = false; // блокируем возможность атаки прыжком
     private bool active_Melee_Attacking = false; // блокируем возможность атаки прыжком
     private float cooldownTimer = Mathf.Infinity; //таймер для проверки
+    private Color originalColor;
 
     public static Hero Instance { get; set; }
 
@@ -70,7 +72,8 @@ public class Hero : Entity
         sprite = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
         score_text.text = score.ToString();
-        IsRecharged = true; 
+        IsRecharged = true;
+        originalColor = sprite.color;
     }
 
     private void Update()
@@ -232,7 +235,12 @@ public class Hero : Entity
 
     private void OnAttack()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(AttackPos.position, attackRange, enemy);
+        Vector2 direction = transform.right;
+        if (transform.localScale.x < 0) direction = -transform.right;
+    
+            Vector2 boxSize = new Vector2(attackRange, attackHeight);
+        Vector2 boxCenter = (Vector2)AttackPos.position + (Vector2)(direction * (attackRange / 2));
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(boxCenter, boxSize, 0f, enemy);
 
 
         for (int i = 0; i < colliders.Length; i++)
@@ -245,10 +253,28 @@ public class Hero : Entity
 
     private void OnDrawGizmosSelected()
     {
+        Vector2 direction = transform.right;
+        if (transform.localScale.x < 0) direction = -transform.right;
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(AttackPos.position, attackRange);
+        Vector2 boxCenter = (Vector2)AttackPos.position + (Vector2)(direction * (attackRange / 2));
+        Gizmos.DrawWireCube(boxCenter, new Vector3(attackRange, attackHeight, 1f));
     }
-    
+
+
+    //Методы для изменения цвета спрайта
+    private void ChangeColor(Color color)
+    {
+        sprite.color = color;
+    }
+    private IEnumerator ResetColorAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        sprite.color = originalColor;
+    }
+
+
+
     private IEnumerator RangeAttackCoolDown()
     {
         yield return new WaitForSeconds(0.5f);
@@ -280,6 +306,8 @@ public class Hero : Entity
     public override void GetDamageHero()
     {
         health -= 1;
+        ChangeColor(Color.red);
+        StartCoroutine(ResetColorAfterDelay(1f));
         if (health == 0)
         {
             foreach (var h in Hearts)

@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 56044185}
   - component: {fileID: 56044188}
   - component: {fileID: 56044187}
+  - component: {fileID: 56044189}
   m_Layer: 3
   m_Name: Saw_2 - future
   m_TagString: Saw
@@ -411,6 +412,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &56044189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56044184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b02024185afa748a940596cd559d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &68616142
 GameObject:
   m_ObjectHideFlags: 0
@@ -3008,6 +3021,7 @@ GameObject:
   - component: {fileID: 384475404}
   - component: {fileID: 384475407}
   - component: {fileID: 384475406}
+  - component: {fileID: 384475408}
   m_Layer: 3
   m_Name: Saw - future
   m_TagString: Saw
@@ -3127,6 +3141,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &384475408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384475403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b02024185afa748a940596cd559d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &401631618
 GameObject:
   m_ObjectHideFlags: 0
@@ -41931,6 +41957,7 @@ MonoBehaviour:
   IsJumping: 0
   AttackPos: {fileID: 744890292}
   attackRange: 3.5
+  attackHeight: 3.5
   enemy:
     serializedVersion: 2
     m_Bits: 8
@@ -61864,6 +61891,7 @@ GameObject:
   - component: {fileID: 1578014137}
   - component: {fileID: 1578014140}
   - component: {fileID: 1578014139}
+  - component: {fileID: 1578014141}
   m_Layer: 3
   m_Name: Saw_2 - present
   m_TagString: Saw
@@ -61983,6 +62011,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1578014141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578014136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b02024185afa748a940596cd559d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1587191328
 GameObject:
   m_ObjectHideFlags: 0
@@ -61994,6 +62034,7 @@ GameObject:
   - component: {fileID: 1587191329}
   - component: {fileID: 1587191332}
   - component: {fileID: 1587191331}
+  - component: {fileID: 1587191333}
   m_Layer: 3
   m_Name: Saw - present
   m_TagString: Saw
@@ -62113,6 +62154,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1587191333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587191328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b02024185afa748a940596cd559d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1591819531
 GameObject:
   m_ObjectHideFlags: 0

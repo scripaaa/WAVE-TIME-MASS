@@ -12827,6 +12827,7 @@ MonoBehaviour:
   IsJumping: 0
   AttackPos: {fileID: 2092505738}
   attackRange: 3.5
+  attackHeight: 3.5
   enemy:
     serializedVersion: 2
     m_Bits: 8
@@ -15653,7 +15654,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c04069ec3616d1840bfb0c4452e91fae, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.98823535, b: 0.98823535, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
