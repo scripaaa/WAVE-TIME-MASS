@@ -39,7 +39,7 @@ public class Projectile : MonoBehaviour
         boxCollider.enabled = true;
 
         float localScaleX = transform.localScale.x;
-        if (Mathf.Sign(localScaleX) != direction)
+        if (Mathf.Sign(localScaleX) != _direction)
             localScaleX = -localScaleX;
 
         transform.localScale = new Vector3(localScaleX, transform.localScale.y,transform.localScale.z);

@@ -200,9 +200,7 @@ public class Hero : Entity
             State = States.rangeattack;
 
             projectiles[FindProjectile()].transform.position = RangePoint.position;
-        projectiles[FindProjectile()].GetComponent<Projectile>().SetDirection(Mathf.Sign(transform.localScale.x));
-            StartCoroutine(AttackAnimation());
-            StartCoroutine(AttackCoolDown());
+            projectiles[FindProjectile()].GetComponent<Projectile>().SetDirection(Mathf.Sign(transform.localScale.x));
         
     }
     private int FindProjectile()
