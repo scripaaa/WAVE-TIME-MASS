@@ -14540,6 +14540,9 @@ MonoBehaviour:
   - {fileID: 653191437}
   Heart: {fileID: 21300000, guid: 33a3a0158667da444a2f3b5b43422086, type: 3}
   DeadHeart: {fileID: 21300000, guid: 86f83ae125aa3ea41861699a9d2d9c5c, type: 3}
+  RangePoint: {fileID: 0}
+  projectiles: []
+  RangeCooldown: 0
   groundCheckRadius: 0.5
   groundCheck: {fileID: 71272433}
   groundLayer:
@@ -14547,12 +14550,14 @@ MonoBehaviour:
     m_Bits: 64
   score: 0
   score_text: {fileID: 930030852}
+  IsRangeAttacking: 0
   IsAttacking: 0
   IsRecharged: 1
   IsFalling: 0
   IsJumping: 0
   AttackPos: {fileID: 744890292}
   attackRange: 3.5
+  attackHeight: 0
   enemy:
     serializedVersion: 2
     m_Bits: 8
@@ -23686,6 +23691,10 @@ PrefabInstance:
     - target: {fileID: 7965551050171093729, guid: 47c6e05c1ac9ed14ebd4b5dc554f51a9, type: 3}
       propertyPath: m_Name
       value: DeathMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7965551050171093729, guid: 47c6e05c1ac9ed14ebd4b5dc554f51a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8209964606614709097, guid: 47c6e05c1ac9ed14ebd4b5dc554f51a9, type: 3}
       propertyPath: m_Pivot.x
