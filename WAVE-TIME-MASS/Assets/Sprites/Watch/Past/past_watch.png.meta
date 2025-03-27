@@ -130,6 +130,447 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: past_watch_1
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 826
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4573c032abd7f04fbd5d79b79c6bb2c
+      internalID: 854654148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_2
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 826
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b393153134d2f6f48914d479c3edcf74
+      internalID: 1818443448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_3
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 826
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0a042438d81e90479d26e9b87cb064d
+      internalID: -214009264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_4
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 826
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7a104c29bd93304d804747eaa451a88
+      internalID: 606302950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_5
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 826
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccb7869c396a27e43a23262f5cdddc5d
+      internalID: -543326747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_6
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 826
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e86a4b9d656d42947be4efda57c64b11
+      internalID: 138252446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_7
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 588
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 456e514c31b1e1d4d9470daa8ed72b84
+      internalID: 1589050902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_8
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 588
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e45dd01097cf3c04b96615abe32a9d14
+      internalID: 1481798214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_9
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 588
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2b82f0e3449b5342bfb9a480ca6115b
+      internalID: -1296193366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_10
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 588
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bbf915fef8e84b469d61546fd637a86
+      internalID: -1449850134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_11
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 588
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d65ac01ccbe8a584aadbe2002b770471
+      internalID: -860581523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_12
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 588
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cf83becfab2bd146b36c619fa524b8d
+      internalID: -1450381837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_13
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 588
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d73ff419babb2d4dbf1ecb9c1d80bc5
+      internalID: 590650259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_14
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 350
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd5a971629e17b643aef816b51670bbb
+      internalID: -608925673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_15
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 350
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a03c4619c2862ec48a39238e82f802b3
+      internalID: 905530446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_16
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 350
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1af71e248cc0d8040a7074c8525675e1
+      internalID: -219339352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_17
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 350
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eaa5f619dc0dbc4994d45a3e4dfaaf9
+      internalID: 57735038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_18
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 350
+        width: 91
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4faf2334878bfc4e8f04e55f5bdabb9
+      internalID: 810016388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_19
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 343
+        width: 196
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08f8cf67f62b15740b744086aab916fa
+      internalID: -305348387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_20
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 399
+        width: 189
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94bdc04f6ac48ea4892e7b8e2e0f0ff4
+      internalID: 1135166913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: past_watch_21
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 91
+        width: 196
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 795041fea8b05b14fac452a3857b0500
+      internalID: -778935486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -142,6 +583,27 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       past_watch_0: -1166014483
+      past_watch_1: 854654148
+      past_watch_10: -1449850134
+      past_watch_11: -860581523
+      past_watch_12: -1450381837
+      past_watch_13: 590650259
+      past_watch_14: -608925673
+      past_watch_15: 905530446
+      past_watch_16: -219339352
+      past_watch_17: 57735038
+      past_watch_18: 810016388
+      past_watch_19: -305348387
+      past_watch_2: 1818443448
+      past_watch_20: 1135166913
+      past_watch_21: -778935486
+      past_watch_3: -214009264
+      past_watch_4: 606302950
+      past_watch_5: -543326747
+      past_watch_6: 138252446
+      past_watch_7: 1589050902
+      past_watch_8: 1481798214
+      past_watch_9: -1296193366
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
