@@ -9,33 +9,44 @@ public class BossFightManager : MonoBehaviour
     public Text bossText;        // Текст "Бой с боссом"
     public GameObject boss;      // Объект босса
 
+    private bool hasTriggered = false; // Флаг для отслеживания срабатывания
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Триггер сработал!"); // Добавьте эту строку
+        // Если триггер уже срабатывал или это не игрок - выходим
+        if (hasTriggered || !collision.CompareTag("Player"))
+            return;
 
-        if (collision.CompareTag("Player")) // Проверяем, что это игрок
-        {
-            StartCoroutine(StartBossFight()); // Запускаем битву
-        }
+        hasTriggered = true; // Помечаем триггер как сработавший
+        StartCoroutine(StartBossFight());
     }
 
     private IEnumerator StartBossFight()
     {
         // Закрываем двери
-        leftDoor.SetActive(true);
-        rightDoor.SetActive(true);
+        if (leftDoor != null) leftDoor.SetActive(true);
+        if (rightDoor != null) rightDoor.SetActive(true);
 
-        // Показываем надпись "Бой с боссом"
-        bossText.text = "Бой с боссом";
-        bossText.gameObject.SetActive(true);
+        // Показываем надпись
+        if (bossText != null)
+        {
+            bossText.text = "Бой с боссом";
+            bossText.gameObject.SetActive(true);
+        }
 
         // Ждем 5 секунд
         yield return new WaitForSeconds(5f);
 
         // Скрываем надпись
-        bossText.gameObject.SetActive(false);
+        if (bossText != null) bossText.gameObject.SetActive(false);
 
         // Активируем босса
-        boss.SetActive(true);
+        if (boss != null) boss.SetActive(true);
+    }
+
+    // Опционально: метод для сброса триггера (если нужно перезапустить битву)
+    public void ResetTrigger()
+    {
+        hasTriggered = false;
     }
 }

@@ -33,9 +33,6 @@ public class Projectile : MonoBehaviour
         {
             collision.gameObject.GetComponent<Entity>().GetDamage();
         }
-            
-
-
     }
     public void SetDirection(float _direction)
     {

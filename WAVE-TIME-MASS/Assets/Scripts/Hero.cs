@@ -336,7 +336,7 @@ public class Hero : Entity
         active_Damage_Jump = true;
     }
 
-    // Активация атаки прыжком
+    // Активация ближней атаки
     public void Active_Melee_Attacking()
     {
         active_Melee_Attacking = true;
