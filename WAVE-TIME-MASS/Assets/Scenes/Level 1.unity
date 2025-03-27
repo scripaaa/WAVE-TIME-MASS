@@ -12733,6 +12733,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.5, y: 0.2}
   m_EdgeRadius: 0
+--- !u!1 &925469280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 341331898800330573, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+  m_PrefabInstance: {fileID: 1190710306}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &925469284
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925469280}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22d41d150980c9e41adc14ccfce31984, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &949965695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4886157878089779142, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
@@ -13322,7 +13348,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7984606437183404008, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1239648475}
+    - targetCorrespondingSourceObject: {fileID: 341331898800330573, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 925469284}
+    - targetCorrespondingSourceObject: {fileID: 2889763717989606849, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1325243016}
   m_SourcePrefab: {fileID: 100100000, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
 --- !u!1 &1208193996
 GameObject:
@@ -13712,6 +13747,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1239648473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7984606437183404008, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+  m_PrefabInstance: {fileID: 1190710306}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1239648475
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239648473}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d65391bef529e234a924bb8b8106956c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1278201873 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6837094176272439540, guid: 443c3d2e054be464da0c372a81983aa7, type: 3}
@@ -13778,6 +13839,32 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
+--- !u!1 &1325243012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2889763717989606849, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+  m_PrefabInstance: {fileID: 1190710306}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1325243016
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325243012}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a7666ff0468285a49aef21b463351b0d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1373734801
 GameObject:
   m_ObjectHideFlags: 0
