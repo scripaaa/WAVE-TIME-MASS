@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System;
 
 public class Boss3 : Entity
 {
+    // Основные параметры (без изменений)
     public float speed = 3f;
     public Vector3[] patrolPoints;
     public float attackRange = 2f;
@@ -10,68 +13,98 @@ public class Boss3 : Entity
     public int attackDamage = 1;
     public float attackCooldown = 1f;
 
+    // Параметры дальнего боя (без изменений)
+    public float rangedAttackRange = 7f;
+    public float rangedAttackCooldown = 3f;
+    public GameObject projectilePrefab;
+    public Transform firePoint;
+
+    // Двери (без изменений)
+    public GameObject leftDoor;
+    public GameObject rightDoor;
+
+    // Новые события для UI
+    public event Action<int> OnHealthChanged;
+    public event Action<float> OnCooldownChanged;
+
+    // Здоровье теперь public для доступа из UI
+    public int maxHealth = 10;
+    public int currentHealth;
+
+    [Header("Immunity Settings")]
+    public float immunityCooldown = 20f; // Частота срабатывания
+    public int healthRegenAmount = 1;    // Сколько восстанавливать
+    public Color immunityColor = Color.gray; // Цвет полосы здоровья
+
+    [Header("UI Reference")]
+    public BossUI bossUIController; // Ссылка на контроллер UI
+
+    private float lastImmunityTime;
+    private bool isImmune = false;
+    private Color normalHealthColor;
+
     private SpriteRenderer sprite;
     private Transform player;
     private float lastAttackTime;
+    private float lastRangedAttackTime;
     private int currentPatrolIndex;
-    private bool isPlayerDetected;
-
     private Vector3 patrolZoneCenter;
     private float patrolZoneRadius;
-
-    [Header("Ranged Attack Settings")]
-    public float rangedAttackRange = 7f;   // Дистанция дальней атаки
-    public float rangedAttackCooldown = 3f; // Перезарядка
-    public GameObject projectilePrefab;     // Префаб снаряда
-    public Transform firePoint;            // Точка выстрела
-
-    private float lastRangedAttackTime;
-    private bool isRangedAttacking;
-
-    [Header("Cooldown UI")]
-    public Image cooldownFill;
-    public GameObject cooldownUI;
-
-    [Header("Health UI")]
-    public Slider bossHealthSlider;
-    public GameObject healthUI;
-
-    [Header("Doors")]
-    public GameObject leftDoor;  // Левая дверь
-    public GameObject rightDoor; // Правая дверь
 
     private enum EnemyState { Patrolling, Chasing, Attacking, RangedAttacking }
     private EnemyState currentState;
 
     void Start()
     {
-        livess = 10; // Теперь у врага 10 HP
+        currentHealth = maxHealth;
+        livess = maxHealth; // Синхронизируем с системой Entity
 
-        if (bossHealthSlider != null)
-        {
-            bossHealthSlider.maxValue = 10;                     // ЕСЛИ ЧТО ИЗМЕНИТЬ
-            bossHealthSlider.value = livess;
-        }
+        // Уведомляем UI о начальном состоянии
+        OnHealthChanged?.Invoke(currentHealth);
+        OnCooldownChanged?.Invoke(1f); // Полная перезарядка
 
         sprite = GetComponentInChildren<SpriteRenderer>();
         player = Hero.Instance.transform;
         currentState = EnemyState.Patrolling;
 
-        // Если точки патрулирования не заданы, используем текущую позицию
         if (patrolPoints == null || patrolPoints.Length == 0)
         {
             patrolPoints = new Vector3[] { transform.position, transform.position + new Vector3(3, 0, 0) };
         }
 
         CalculatePatrolZone();
+
+        lastImmunityTime = Time.time;
+        normalHealthColor = bossUIController.healthSlider.fillRect.GetComponent<Image>().color;
+    }
+
+    // Модифицированный метод получения урона
+    public override void GetDamage()
+    {
+        if (isImmune) return; // Игнорируем урон в режиме иммунитета
+
+        base.GetDamage(); // Уменьшает livess на 1
+
+        currentHealth = livess; // Синхронизируем значения
+        OnHealthChanged?.Invoke(currentHealth); // Уведомляем UI
+
+        if (livess <= 0)
+        {
+            Die();
+        }
     }
 
     void Update()
     {
+        if (isImmune) return;
+
+        // Проверка иммунитета
+        CheckImmunity();
+
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         bool isPlayerInPatrolZone = Vector3.Distance(player.position, patrolZoneCenter) <= patrolZoneRadius;
 
-        // Определяем состояние
+        // Логика состояний (без изменений)
         if (isPlayerInPatrolZone)
         {
             if (distanceToPlayer <= attackRange)
@@ -81,6 +114,7 @@ public class Boss3 : Entity
             else if (distanceToPlayer <= rangedAttackRange)
             {
                 currentState = EnemyState.RangedAttacking;
+                UpdateCooldownUI(); // Добавлен вызов обновления перезарядки
             }
             else
             {
@@ -92,7 +126,7 @@ public class Boss3 : Entity
             currentState = EnemyState.Patrolling;
         }
 
-        // Выполняем действия в зависимости от состояния
+        // Остальная логика без изменений
         switch (currentState)
         {
             case EnemyState.Patrolling:
@@ -110,20 +144,123 @@ public class Boss3 : Entity
         }
 
         FlipSprite();
-        UpdateCooldownUI();
+        UpdateCooldown();
     }
 
-    // Вычисляем зону патрулирования
+    void CheckImmunity()
+    {
+        if (Time.time - lastImmunityTime >= immunityCooldown && !isImmune)
+        {
+            StartCoroutine(ActivateImmunity());
+        }
+    }
+
+    IEnumerator ActivateImmunity()
+    {
+        // Активируем иммунитет
+        isImmune = true;
+
+        // Уведомляем UI о смене цвета
+        OnHealthChanged += (health) => {
+            if (TryGetComponent<BossUI>(out var bossUI))
+            {
+                bossUI.SetHealthColor(immunityColor);
+                Debug.Log($"Changing color to: {immunityColor}"); // Для отладки
+            }
+        };
+        OnHealthChanged?.Invoke(currentHealth);
+
+        // Останавливаем босса
+        EnemyState previousState = currentState;
+        currentState = EnemyState.Patrolling;
+
+        // Восстанавливаем здоровье
+        currentHealth = Mathf.Min(currentHealth + healthRegenAmount, maxHealth);
+        livess = currentHealth;
+
+        // Ждем 3 секунды в иммунитете
+        yield return new WaitForSeconds(5f);
+
+        // Возвращаем нормальное состояние
+        isImmune = false;
+
+        // Возвращаем обычный цвет
+        OnHealthChanged += (health) => {
+            if (TryGetComponent<BossUI>(out var bossUI))
+            {
+                bossUI.SetHealthColor(normalHealthColor);
+            }
+        };
+        OnHealthChanged?.Invoke(currentHealth);
+
+        currentState = previousState;
+        lastImmunityTime = Time.time;
+    }
+
+    // Новый метод для обновления перезарядки
+    void UpdateCooldownUI()
+    {
+        if (currentState == EnemyState.RangedAttacking)
+        {
+            float progress = (Time.time - lastRangedAttackTime) / rangedAttackCooldown;
+            OnCooldownChanged?.Invoke(Mathf.Clamp01(progress));
+        }
+        else
+        {
+            OnCooldownChanged?.Invoke(1f); // Скрываем полосу
+        }
+    }
+
+    void UpdateCooldown()
+    {
+        // Всегда обновляем прогресс перезарядки
+        float progress = (Time.time - lastRangedAttackTime) / rangedAttackCooldown;
+        OnCooldownChanged?.Invoke(Mathf.Clamp01(progress));
+    }
+
+    // Модифицированная дальняя атака
+    void RangedAttack()
+    {
+        if (isImmune) return; // Не атакуем в режиме иммунитета
+
+        if (Time.time - lastRangedAttackTime >= rangedAttackCooldown)
+        {
+            if (projectilePrefab != null && firePoint != null)
+            {
+                GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+                Projectile3 projectileScript = projectile.GetComponent<Projectile3>();
+                projectileScript.moveRight = !sprite.flipX;
+
+                if (!sprite.flipX)
+                {
+                    projectile.transform.localScale = new Vector3(-1, 1, 1);
+                }
+            }
+            lastRangedAttackTime = Time.time;
+            OnCooldownChanged?.Invoke(0f); // Начинаем перезарядку
+        }
+    }
+
+    public override void Die()
+    {
+        OnHealthChanged?.Invoke(0); // Обновляем UI перед смертью
+
+        // Открываем двери
+        if (leftDoor != null) leftDoor.SetActive(false);
+        if (rightDoor != null) rightDoor.SetActive(false);
+
+        base.Die();
+    }
+
     void CalculatePatrolZone()
     {
         if (patrolPoints == null || patrolPoints.Length == 0)
         {
             patrolZoneCenter = transform.position;
-            patrolZoneRadius = 5f; // Дефолтный радиус, если точек нет
+            patrolZoneRadius = 5f;
             return;
         }
 
-        // Находим центр зоны (среднее всех точек)
         patrolZoneCenter = Vector3.zero;
         foreach (Vector3 point in patrolPoints)
         {
@@ -131,7 +268,6 @@ public class Boss3 : Entity
         }
         patrolZoneCenter /= patrolPoints.Length;
 
-        // Находим максимальное расстояние от центра до любой точки
         patrolZoneRadius = 0f;
         foreach (Vector3 point in patrolPoints)
         {
@@ -141,11 +277,8 @@ public class Boss3 : Entity
                 patrolZoneRadius = distance;
             }
         }
-
-        // Добавляем небольшой запас (например, 20%)
         patrolZoneRadius *= 1.2f;
     }
-
 
     void Patrol()
     {
@@ -162,20 +295,17 @@ public class Boss3 : Entity
 
     void ChasePlayer()
     {
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            player.position,
-            speed * Time.deltaTime
-        );
+        transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
     }
 
     void Attack()
     {
+        if (isImmune) return; // Не атакуем в режиме иммунитета
+
         if (Time.time - lastAttackTime >= attackCooldown)
         {
             Hero.Instance.GetDamageHero();
             lastAttackTime = Time.time;
-            // Можно добавить анимацию атаки
         }
     }
 
@@ -188,49 +318,7 @@ public class Boss3 : Entity
         }
         else if (currentState != EnemyState.Patrolling)
         {
-            // Поворачиваемся к игроку при атаке или преследовании
             sprite.flipX = player.position.x < transform.position.x;
-        }
-    }
-
-    void RangedAttack()
-    {
-        if (Time.time - lastRangedAttackTime >= rangedAttackCooldown)
-        {
-            if (projectilePrefab != null && firePoint != null)
-            {
-                GameObject projectile = Instantiate(
-                    projectilePrefab,
-                    firePoint.position,
-                    Quaternion.identity
-                );
-
-                // Определяем направление по flipX (или позиции игрока)
-                bool isFacingRight = !sprite.flipX;
-                Projectile3 projectileScript = projectile.GetComponent<Projectile3>();
-                projectileScript.moveRight = isFacingRight;
-
-                // Поворачиваем спрайт снаряда (опционально)
-                if (!isFacingRight)
-                {
-                    projectile.transform.localScale = new Vector3(-1, 1, 1);
-                }
-            }
-
-            lastRangedAttackTime = Time.time;
-        }
-    }
-
-    void UpdateCooldownUI()
-    {
-        if (cooldownUI != null)
-        {
-            // Показываем UI только при перезарядке
-            cooldownUI.SetActive(Time.time - lastRangedAttackTime < rangedAttackCooldown);
-
-            // Заполняем шкалу
-            float cooldownProgress = (Time.time - lastRangedAttackTime) / rangedAttackCooldown;
-            cooldownFill.fillAmount = Mathf.Clamp01(cooldownProgress);
         }
     }
 
@@ -245,19 +333,15 @@ public class Boss3 : Entity
 
     private void OnDrawGizmosSelected()
     {
-        // Зона патрулирования (зелёный)
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(patrolZoneCenter, patrolZoneRadius);
 
-        // Ближняя атака (красный)
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
 
-        // Дальняя атака (синий)
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, rangedAttackRange);
 
-        // Точки патрулирования (жёлтые сферы)
         Gizmos.color = Color.yellow;
         if (patrolPoints != null)
         {
@@ -266,29 +350,5 @@ public class Boss3 : Entity
                 Gizmos.DrawSphere(point, 0.2f);
             }
         }
-    }
-
-    public override void GetDamage()
-    {
-        base.GetDamage();
-
-        if (bossHealthSlider != null)
-        {
-            bossHealthSlider.value = livess;
-        }
-
-        if (livess <= 0)
-        {
-            healthUI.SetActive(false);
-        }
-    }
-
-    public override void Die()
-    {
-        base.Die();
-
-        // Открываем двери
-        if (leftDoor != null) leftDoor.SetActive(false);
-        if (rightDoor != null) rightDoor.SetActive(false);
     }
 }
