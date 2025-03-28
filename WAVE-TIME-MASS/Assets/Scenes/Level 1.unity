@@ -15713,6 +15713,10 @@ PrefabInstance:
       value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 6441734517987485330, guid: 9ecd3cabffbe82542b52ac575d8c0f64, type: 3}
+      propertyPath: orthographic size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441734517987485330, guid: 9ecd3cabffbe82542b52ac575d8c0f64, type: 3}
       propertyPath: m_OcclusionCulling
       value: 1
       objectReference: {fileID: 0}
