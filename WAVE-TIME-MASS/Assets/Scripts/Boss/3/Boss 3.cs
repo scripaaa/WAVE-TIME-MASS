@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss3 : Entity
 {
@@ -18,9 +19,6 @@ public class Boss3 : Entity
     private Vector3 patrolZoneCenter;
     private float patrolZoneRadius;
 
-    private enum EnemyState { Patrolling, Chasing, Attacking, RangedAttacking }
-    private EnemyState currentState;
-
     [Header("Ranged Attack Settings")]
     public float rangedAttackRange = 7f;   // Дистанция дальней атаки
     public float rangedAttackCooldown = 3f; // Перезарядка
@@ -30,9 +28,30 @@ public class Boss3 : Entity
     private float lastRangedAttackTime;
     private bool isRangedAttacking;
 
+    [Header("Cooldown UI")]
+    public Image cooldownFill;
+    public GameObject cooldownUI;
+
+    [Header("Health UI")]
+    public Slider bossHealthSlider;
+    public GameObject healthUI;
+
+    [Header("Doors")]
+    public GameObject leftDoor;  // Левая дверь
+    public GameObject rightDoor; // Правая дверь
+
+    private enum EnemyState { Patrolling, Chasing, Attacking, RangedAttacking }
+    private EnemyState currentState;
+
     void Start()
     {
         livess = 10; // Теперь у врага 10 HP
+
+        if (bossHealthSlider != null)
+        {
+            bossHealthSlider.maxValue = 10;                     // ЕСЛИ ЧТО ИЗМЕНИТЬ
+            bossHealthSlider.value = livess;
+        }
 
         sprite = GetComponentInChildren<SpriteRenderer>();
         player = Hero.Instance.transform;
@@ -91,6 +110,7 @@ public class Boss3 : Entity
         }
 
         FlipSprite();
+        UpdateCooldownUI();
     }
 
     // Вычисляем зону патрулирования
@@ -201,6 +221,19 @@ public class Boss3 : Entity
         }
     }
 
+    void UpdateCooldownUI()
+    {
+        if (cooldownUI != null)
+        {
+            // Показываем UI только при перезарядке
+            cooldownUI.SetActive(Time.time - lastRangedAttackTime < rangedAttackCooldown);
+
+            // Заполняем шкалу
+            float cooldownProgress = (Time.time - lastRangedAttackTime) / rangedAttackCooldown;
+            cooldownFill.fillAmount = Mathf.Clamp01(cooldownProgress);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject == Hero.Instance.gameObject)
@@ -233,5 +266,29 @@ public class Boss3 : Entity
                 Gizmos.DrawSphere(point, 0.2f);
             }
         }
+    }
+
+    public override void GetDamage()
+    {
+        base.GetDamage();
+
+        if (bossHealthSlider != null)
+        {
+            bossHealthSlider.value = livess;
+        }
+
+        if (livess <= 0)
+        {
+            healthUI.SetActive(false);
+        }
+    }
+
+    public override void Die()
+    {
+        base.Die();
+
+        // Открываем двери
+        if (leftDoor != null) leftDoor.SetActive(false);
+        if (rightDoor != null) rightDoor.SetActive(false);
     }
 }
