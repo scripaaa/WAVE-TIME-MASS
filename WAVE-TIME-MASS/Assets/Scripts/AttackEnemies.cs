@@ -13,12 +13,14 @@ public class EnemyShooter : MonoBehaviour
 
     private float lastAttackTime;
     private SpriteRenderer enemySprite;
+    private Animator anim;
     private Transform player;
     private bool isFacingRight = true; // ƒобавл€ем €вное отслеживание направлени€
 
     void Start()
     {
         enemySprite = GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         lastAttackTime = -attackCooldown;
 
@@ -64,6 +66,10 @@ public class EnemyShooter : MonoBehaviour
     {
         if (projectilePrefab == null || firePoint == null) return;
 
+        anim.SetTrigger("Attack");
+    }
+    void OnShoot()
+    {
         GameObject projectile = Instantiate(
             projectilePrefab,
             firePoint.position,
