@@ -6,12 +6,14 @@ public class Projectile3 : MonoBehaviour
     public int damage = 1;             // Урон
     public float lifetime = 3f;        // Время жизни
     public bool moveRight = true;      // Летит вправо (или влево)
+    private Animator anim;
 
     private Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         Destroy(gameObject, lifetime);
 
         // Задаём начальную скорость
@@ -23,12 +25,19 @@ public class Projectile3 : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            anim.SetTrigger("explode");
             Hero.Instance.GetDamageHero();
-            Destroy(gameObject);
+           
         }
         else if (collision.CompareTag("Wall"))
         {
-            Destroy(gameObject);
+            anim.SetTrigger("explode");
+            
         }
     }
+    void Destroy()
+    {
+        Destroy(gameObject);
+    }
+    
 }

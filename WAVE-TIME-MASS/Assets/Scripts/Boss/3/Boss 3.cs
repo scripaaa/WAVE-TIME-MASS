@@ -44,6 +44,7 @@ public class Boss3 : Entity
     private Color normalHealthColor;
 
     private SpriteRenderer sprite;
+    private Animator anim;
     private Transform player;
     private float lastAttackTime;
     private float lastRangedAttackTime;
@@ -65,6 +66,7 @@ public class Boss3 : Entity
 
         sprite = GetComponentInChildren<SpriteRenderer>();
         player = Hero.Instance.transform;
+        anim = GetComponent<Animator>();
         currentState = EnemyState.Patrolling;
 
         if (patrolPoints == null || patrolPoints.Length == 0)
@@ -159,6 +161,7 @@ public class Boss3 : Entity
     {
         // Активируем иммунитет
         isImmune = true;
+        anim.SetTrigger("Immune");
 
         // Уведомляем UI о смене цвета
         OnHealthChanged += (health) => {
@@ -183,6 +186,7 @@ public class Boss3 : Entity
 
         // Возвращаем нормальное состояние
         isImmune = false;
+        anim.SetTrigger("AnImmune");
 
         // Возвращаем обычный цвет
         OnHealthChanged += (health) => {
@@ -217,8 +221,6 @@ public class Boss3 : Entity
         float progress = (Time.time - lastRangedAttackTime) / rangedAttackCooldown;
         OnCooldownChanged?.Invoke(Mathf.Clamp01(progress));
     }
-
-    // Модифицированная дальняя атака
     void RangedAttack()
     {
         if (isImmune) return; // Не атакуем в режиме иммунитета
@@ -227,6 +229,17 @@ public class Boss3 : Entity
         {
             if (projectilePrefab != null && firePoint != null)
             {
+                anim.SetTrigger("RangeAttack");
+            }
+            lastRangedAttackTime = Time.time;
+            OnCooldownChanged?.Invoke(0f); // Начинаем перезарядку
+        }
+    }
+
+    // Модифицированная дальняя атака
+    void OnRangedAttack()
+    {
+       
                 GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
                 Projectile3 projectileScript = projectile.GetComponent<Projectile3>();
                 projectileScript.moveRight = !sprite.flipX;
@@ -235,10 +248,7 @@ public class Boss3 : Entity
                 {
                     projectile.transform.localScale = new Vector3(-1, 1, 1);
                 }
-            }
-            lastRangedAttackTime = Time.time;
-            OnCooldownChanged?.Invoke(0f); // Начинаем перезарядку
-        }
+
     }
 
     public override void Die()
@@ -249,6 +259,10 @@ public class Boss3 : Entity
         if (leftDoor != null) leftDoor.SetActive(false);
         if (rightDoor != null) rightDoor.SetActive(false);
 
+        anim.SetTrigger("Die");
+    }
+    private void OnDie()
+    {
         base.Die();
     }
 
@@ -302,9 +316,11 @@ public class Boss3 : Entity
     {
         if (isImmune) return; // Не атакуем в режиме иммунитета
 
+       
         if (Time.time - lastAttackTime >= attackCooldown)
         {
-            Hero.Instance.GetDamageHero();
+            Debug.Log("Атака совершена");
+            anim.SetTrigger("Attack");
             lastAttackTime = Time.time;
         }
     }
@@ -322,13 +338,22 @@ public class Boss3 : Entity
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    //private void OnCollisionEnter2D(Collision2D collision)
+   // {
+    //    if (collision.gameObject == Hero.Instance.gameObject)
+    //    {
+    //        Hero.Instance.GetDamageHero();
+    //        if (livess < 1) Die();
+     //   }
+    //}
+    private void HeroDamage()
     {
-        if (collision.gameObject == Hero.Instance.gameObject)
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (distanceToPlayer <= 3.2f)
         {
             Hero.Instance.GetDamageHero();
-            if (livess < 1) Die();
         }
+
     }
 
     private void OnDrawGizmosSelected()
