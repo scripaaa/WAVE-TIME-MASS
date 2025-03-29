@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using static UnityEngine.EventSystems.EventTrigger;
@@ -12,8 +13,11 @@ public class WalkingEnemies : Entity
 {
     public float speed;
     public Vector3[] positions;
+    public GameObject healthBarPrefab; // Префаб хелсбара (перетащите в инспекторе)
+    public Vector3 healthBarOffset = new Vector3(0, 1.5f, 0);
 
-
+    private Slider healthSlider;
+    private GameObject healthBarInstance;
 
     private Vector3 target;
     private int currentTarget;
@@ -23,6 +27,29 @@ public class WalkingEnemies : Entity
     {
         sprite = GetComponentInChildren<SpriteRenderer>();
         livess = 3;
+
+        InitializeHealthBar();
+    }
+
+    void InitializeHealthBar()
+    {
+        if (healthBarPrefab != null)
+        {
+            healthBarInstance = Instantiate(healthBarPrefab, transform);
+            healthBarInstance.transform.localPosition = healthBarOffset;
+            healthSlider = healthBarInstance.GetComponentInChildren<Slider>();
+
+            // Настройка хелсбара
+            if (healthSlider != null)
+            {
+                healthSlider.minValue = 0;
+                healthSlider.maxValue = livess;
+                healthSlider.value = livess;
+            }
+
+            // Автоповорот к камере
+            healthBarInstance.AddComponent<HealthBarFaceCamera>();
+        }
     }
 
     void Flip() // Поворот врага при смене направления
@@ -64,6 +91,36 @@ public class WalkingEnemies : Entity
         {
             Destroy(gameObject);
         }
+
+        UpdateHealthBar();
+    }
+
+    void UpdateHealthBar()
+    {
+        if (healthSlider != null)
+        {
+            healthSlider.value = livess;
+        }
+    }
+
+    public override void GetDamage()
+    {
+        base.GetDamage();
+        UpdateHealthBar();
+
+        if (livess <= 0)
+        {
+            Die();
+        }
+    }
+
+    public override void Die()
+    {
+        if (healthBarInstance != null)
+        {
+            Destroy(healthBarInstance);
+        }
+        base.Die();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

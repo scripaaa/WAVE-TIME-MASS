@@ -80,7 +80,7 @@ public class Boss3 : Entity
         normalHealthColor = bossUIController.healthSlider.fillRect.GetComponent<Image>().color;
     }
 
-    // Модифицированный метод получения урона
+    // Модифицированный метод получения урона 
     public override void GetDamage()
     {
         if (isImmune) return; // Игнорируем урон в режиме иммунитета
