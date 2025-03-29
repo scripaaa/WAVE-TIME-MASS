@@ -18,6 +18,10 @@ public class PauseMenu : MonoBehaviour
     public void Continue() 
     {
         pauseMenu.SetActive(false);
+
+        MusicManager musicManager = FindObjectOfType<MusicManager>();
+        musicManager.SetPause(false); // Выключить паузу
+
         TimeManager.UnfreezeTime();
     }
 
@@ -85,6 +89,10 @@ public class PauseMenu : MonoBehaviour
             if (!pauseMenu.activeSelf)
             {
                 pauseMenu.SetActive(true);
+
+                MusicManager musicManager = FindObjectOfType<MusicManager>();
+                musicManager.SetPause(true); // Включить паузу
+
                 TimeManager.FreezeTime(); // Замораживаем игру
             }
             else
@@ -96,6 +104,10 @@ public class PauseMenu : MonoBehaviour
                 else
                 {
                     pauseMenu.SetActive(false);
+
+                    MusicManager musicManager = FindObjectOfType<MusicManager>();
+                    musicManager.SetPause(false); // Выключить паузу
+
                     TimeManager.UnfreezeTime(); // Размораживаем игру
                     TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
                 }
