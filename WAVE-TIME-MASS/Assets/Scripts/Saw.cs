@@ -10,8 +10,8 @@ public class Saw : Entity
     public float speed;
     public bool MovingRight;
     public Vector2 startPosition;
+    public GameObject deathMenu;
 
- 
 
     private void OnEnable()
     {
@@ -34,7 +34,10 @@ public class Saw : Entity
     {
         // Перезагрузка сцена при столкновении игрока и пилы
         if (other.gameObject.CompareTag("Player"))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        {
+            deathMenu.SetActive(true);
+        }
+
         if ((other.CompareTag("Obstacle")) || (other.CompareTag("Saw")))
         {
             MovingRight = !MovingRight;

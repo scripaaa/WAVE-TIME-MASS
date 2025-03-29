@@ -185,6 +185,15 @@ public class ArtifactSelector : MonoBehaviour
                     slowdown.ActivateSlowdown();
                 }
                 break;
+            case "RangedAttack":
+                PlayerPrefs.SetInt("RangedAttack", 1);
+                Debug.Log("Выбран RangedAttack");
+                InventoryUI.Instance.AddArtifact(4);
+                if (playerController != null)
+                {
+                    playerController.Active_Range_Attacking();
+                }
+                break;
         }
 
         PlayerPrefs.Save(); // Сохраняем изменения

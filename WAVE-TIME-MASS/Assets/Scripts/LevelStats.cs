@@ -131,6 +131,7 @@ public class LevelStats : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 4)
         {
+            statsPanel.SetActive(false);
             panel.SetActive(true);
             TimeManager.FreezeTime(); 
         }

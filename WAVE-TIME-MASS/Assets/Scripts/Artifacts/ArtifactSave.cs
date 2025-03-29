@@ -50,6 +50,12 @@ public class ArtifactSave : MonoBehaviour
             slowdown.ActivateSlowdown(); // Замедляем время
         }
 
+        if (InventoryUI.Instance.HasArtifact(4)) // Range_Attacking
+        {
+            player.Active_Range_Attacking(); // Разрешаем ближнюю атаку
+        }
+
+
         // Добавьте проверки для других артефактов
     }
 }

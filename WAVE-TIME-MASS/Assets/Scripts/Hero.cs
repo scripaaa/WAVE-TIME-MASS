@@ -51,6 +51,7 @@ public class Hero : Entity
     private int lives;
     private bool active_Damage_Jump = false; // блокируем возможность атаки прыжком
     private bool active_Melee_Attacking = false; // блокируем возможность атаки прыжком
+    private bool active_Range_Attacking = false; // блокируем возможность атаки прыжком
     private float cooldownTimer = Mathf.Infinity; //таймер для проверки
     private Color originalColor;
 
@@ -105,7 +106,7 @@ public class Hero : Entity
         // Смерть при падении с карты
         if (gameObject.transform.position.y < -20)
         {
-            gameObject.GetComponent<DeathMenu>().enabled = true;
+            //gameObject.GetComponent<DeathMenu>().enabled = true;
             deathMenu.SetActive(true);
         }
         UpdateAnimationState();
@@ -214,13 +215,16 @@ public class Hero : Entity
     }
     private void RangeAttack()
     {
-        cooldownTimer = 0;
-        State = States.rangeattack;
-        IsRangeAttacking = true;
-        StartCoroutine(RangeAttackCoolDown());
+        if(active_Range_Attacking)
+        {
+            cooldownTimer = 0;
+            State = States.rangeattack;
+            IsRangeAttacking = true;
+            StartCoroutine(RangeAttackCoolDown());
 
-        projectiles[FindProjectile()].transform.position = RangePoint.position;
+            projectiles[FindProjectile()].transform.position = RangePoint.position;
             projectiles[FindProjectile()].GetComponent<Projectile>().SetDirection(Mathf.Sign(transform.localScale.x));
+        }
         
     }
     //Возвращает нужные элемент дальней атаки
@@ -314,7 +318,7 @@ public class Hero : Entity
         {
             foreach (var h in Hearts)
                 h.sprite = DeadHeart;
-            gameObject.GetComponent<DeathMenu>().enabled = true;
+            //gameObject.GetComponent<DeathMenu>().enabled = true;
             deathMenu.SetActive(true);
         }
     }
@@ -342,6 +346,12 @@ public class Hero : Entity
     public void Active_Melee_Attacking()
     {
         active_Melee_Attacking = true;
+    }
+
+    // Активация дальней атаки
+    public void Active_Range_Attacking()
+    {
+        active_Range_Attacking = true;
     }
 
     public void AddHeart()

@@ -62,7 +62,8 @@ public class DeathMenu : MonoBehaviour
         TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Перезагрузить сцену
 
-        slowdown.NotActivateSlowdown();
+        if (slowdown != null)
+            slowdown.NotActivateSlowdown();
     }
 
     public void MainMenu()
