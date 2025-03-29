@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 44961040}
   m_Layer: 6
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -422,7 +422,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -750,17 +750,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &60953491 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5829204232838026990, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
-  m_PrefabInstance: {fileID: 1731218088}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &62055763
 GameObject:
   m_ObjectHideFlags: 0
@@ -2031,7 +2020,7 @@ GameObject:
   - component: {fileID: 140504076}
   m_Layer: 6
   m_Name: Square (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2080,7 +2069,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2704,7 +2693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 5}
   m_SizeDelta: {x: 300, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &172917779
@@ -3716,6 +3705,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &284515026 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5207988130605033906, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+  m_PrefabInstance: {fileID: 1731218088}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &288771347
 GameObject:
   m_ObjectHideFlags: 0
@@ -4852,7 +4852,7 @@ GameObject:
   - component: {fileID: 441463177}
   m_Layer: 6
   m_Name: Door (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4902,8 +4902,8 @@ Transform:
   m_GameObject: {fileID: 441579479}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.01289, z: -0.7311986}
-  m_LocalScale: {x: 0.58905023, y: 0.6233958, z: 1}
+  m_LocalPosition: {x: 0, y: 0.086, z: -0.7311986}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1911884664}
@@ -48441,7 +48441,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &631659277
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49476,7 +49476,7 @@ GameObject:
   - component: {fileID: 745968139}
   m_Layer: 6
   m_Name: Square (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49525,7 +49525,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -49798,6 +49798,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747906017}
   m_CullTransparentMesh: 1
+--- !u!1 &755847631 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3934323369785435474, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+  m_PrefabInstance: {fileID: 1731218088}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &755847632 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2798932556158427963, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+  m_PrefabInstance: {fileID: 1731218088}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &760731049
 GameObject:
   m_ObjectHideFlags: 0
@@ -93786,7 +93796,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &992231018
 RectTransform:
   m_ObjectHideFlags: 0
@@ -94383,6 +94393,8 @@ MonoBehaviour:
   jumpForce: 20
   heartsContainer: {fileID: 1731218089}
   heartPrefab: {fileID: 1731218090}
+  heartPrefab2: {fileID: 755847632}
+  heartPrefab3: {fileID: 755847631}
   Hearts:
   - {fileID: 1731218091}
   Heart: {fileID: 21300000, guid: 33a3a0158667da444a2f3b5b43422086, type: 3}
@@ -138483,7 +138495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftDoor: {fileID: 441463176}
   rightDoor: {fileID: 1702092600}
-  bossText: {fileID: 60953491}
+  bossText: {fileID: 284515026}
   boss: {fileID: 1911884659}
 --- !u!1 &1289351101
 GameObject:
@@ -140850,7 +140862,7 @@ GameObject:
   - component: {fileID: 1539179571}
   m_Layer: 6
   m_Name: Square (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140899,7 +140911,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -142632,7 +142644,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 3}
+  m_AnchoredPosition: {x: 0, y: 7}
   m_SizeDelta: {x: 300, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1669309303
@@ -143015,7 +143027,7 @@ GameObject:
   - component: {fileID: 1702092601}
   m_Layer: 6
   m_Name: Door 2 (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143190,6 +143202,10 @@ PrefabInstance:
       value: Text and Hearts
       objectReference: {fileID: 0}
     - target: {fileID: 4962315897681076858, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090005226978587923, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -143951,7 +143967,7 @@ GameObject:
   - component: {fileID: 1763974420}
   m_Layer: 6
   m_Name: Square (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144000,7 +144016,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -146556,7 +146572,7 @@ GameObject:
   - component: {fileID: 1878964639}
   m_Layer: 6
   m_Name: Square (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146605,7 +146621,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -147559,7 +147575,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0053629763, y: -0.046735585}
+  m_Offset: {x: 0.009645104, y: 0.03890857}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -147570,7 +147586,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.21733513, y: 0.22652882}
+  m_Size: {x: 0.2687218, y: 0.39781713}
   m_EdgeRadius: 0
 --- !u!50 &1911884662
 Rigidbody2D:
@@ -147584,7 +147600,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -147608,8 +147624,8 @@ Transform:
   m_GameObject: {fileID: 1911884659}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25, y: -4.6, z: 0}
-  m_LocalScale: {x: 15, y: 15, z: 1}
+  m_LocalPosition: {x: 25, y: -5.5, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 441579480}
@@ -147639,8 +147655,8 @@ MonoBehaviour:
   detectionRange: 5
   attackDamage: 1
   attackCooldown: 1
-  rangedAttackRange: 7
-  rangedAttackCooldown: 5
+  rangedAttackRange: 9
+  rangedAttackCooldown: 3
   projectilePrefab: {fileID: 6208151772165295176, guid: 157cdc3d43bc0e741971b499160515f8, type: 3}
   firePoint: {fileID: 2124173139}
   leftDoor: {fileID: 441463176}
@@ -150162,7 +150178,7 @@ GameObject:
   - component: {fileID: 2044692244}
   m_Layer: 6
   m_Name: Square (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150211,7 +150227,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -151174,7 +151190,7 @@ GameObject:
   - component: {fileID: 2136716065}
   m_Layer: 6
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151223,7 +151239,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

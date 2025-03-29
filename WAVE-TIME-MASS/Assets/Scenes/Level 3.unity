@@ -21968,6 +21968,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &702656426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3934323369785435474, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+  m_PrefabInstance: {fileID: 1731218088}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &702656427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2798932556158427963, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+  m_PrefabInstance: {fileID: 1731218088}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &724291826
 GameObject:
   m_ObjectHideFlags: 0
@@ -40988,6 +40998,8 @@ MonoBehaviour:
   jumpForce: 20
   heartsContainer: {fileID: 1731218089}
   heartPrefab: {fileID: 1731218090}
+  heartPrefab2: {fileID: 702656427}
+  heartPrefab3: {fileID: 702656426}
   Hearts:
   - {fileID: 1731218091}
   Heart: {fileID: 21300000, guid: 33a3a0158667da444a2f3b5b43422086, type: 3}

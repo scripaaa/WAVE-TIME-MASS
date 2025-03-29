@@ -12,6 +12,8 @@ public class Hero : Entity
 
     [SerializeField] private UnityEngine.Transform heartsContainer; // Контейнер для сердец
     [SerializeField] private GameObject heartPrefab; // Префаб сердца
+    [SerializeField] private GameObject heartPrefab2; // Префаб сердца
+    [SerializeField] private GameObject heartPrefab3; // Префаб сердца
 
     [SerializeField] private Image[] Hearts; // Сердечки в сцене
     [SerializeField] private Sprite Heart; // Отображение в сцене полных сердечек
@@ -349,7 +351,17 @@ public class Hero : Entity
         health = lives;
 
         // Добавляем сердце в HUD
-        GameObject newHeart = Instantiate(heartPrefab, heartsContainer);
+        GameObject newHeart;
+
+        if (lives == 2)
+            newHeart = Instantiate(heartPrefab, heartsContainer);
+
+        else if (lives == 3)
+            newHeart = Instantiate(heartPrefab2, heartsContainer);
+
+        else
+            newHeart = Instantiate(heartPrefab3, heartsContainer);
+
         newHeart.GetComponent<Image>().sprite = Heart;
 
         // Расширяем массив `Hearts`

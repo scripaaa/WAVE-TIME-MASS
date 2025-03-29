@@ -32,7 +32,7 @@ public class Projectile3 : MonoBehaviour
         else if (collision.CompareTag("Wall"))
         {
             anim.SetTrigger("explode");
-            
+            Destroy();
         }
     }
     void Destroy()

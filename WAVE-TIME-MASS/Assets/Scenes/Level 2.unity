@@ -15322,7 +15322,9 @@ MonoBehaviour:
   health: 0
   jumpForce: 20
   heartsContainer: {fileID: 184108039}
-  heartPrefab: {fileID: 2016483900}
+  heartPrefab: {fileID: 1594381773}
+  heartPrefab2: {fileID: 1144283921}
+  heartPrefab3: {fileID: 1144283920}
   Hearts:
   - {fileID: 653191437}
   Heart: {fileID: 21300000, guid: 33a3a0158667da444a2f3b5b43422086, type: 3}
@@ -15800,6 +15802,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1144283920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3934323369785435474, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+  m_PrefabInstance: {fileID: 972815336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1144283921 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2798932556158427963, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+  m_PrefabInstance: {fileID: 972815336}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1177124941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20664,6 +20676,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ecd3cabffbe82542b52ac575d8c0f64, type: 3}
+--- !u!1 &1594381773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7394238205322679268, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+  m_PrefabInstance: {fileID: 972815336}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1651315250 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7227646192600181337, guid: 47c6e05c1ac9ed14ebd4b5dc554f51a9, type: 3}
@@ -25199,11 +25216,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2016483900 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7394238205322679268, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
-  m_PrefabInstance: {fileID: 972815336}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2017861728
 GameObject:
   m_ObjectHideFlags: 0

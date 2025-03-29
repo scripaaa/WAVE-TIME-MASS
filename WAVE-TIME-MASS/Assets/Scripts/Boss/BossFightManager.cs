@@ -9,7 +9,13 @@ public class BossFightManager : MonoBehaviour
     public Text bossText;        // Текст "Бой с боссом"
     public GameObject boss;      // Объект босса
 
+    private Hero playerController;
     private bool hasTriggered = false; // Флаг для отслеживания срабатывания
+
+    void Start()
+    {
+        playerController = FindObjectOfType<Hero>(); // Ищем игрока
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -30,8 +36,14 @@ public class BossFightManager : MonoBehaviour
         // Показываем надпись
         if (bossText != null)
         {
-            bossText.text = "Бой с боссом";
+            bossText.text = "Boss fight!";
             bossText.gameObject.SetActive(true);
+        }
+
+        if (playerController != null)
+        {
+            playerController.AddHeart();
+            playerController.AddHeart();
         }
 
         // Ждем 5 секунд
