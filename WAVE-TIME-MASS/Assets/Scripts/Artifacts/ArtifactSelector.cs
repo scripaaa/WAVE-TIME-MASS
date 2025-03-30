@@ -109,6 +109,12 @@ public class ArtifactSelector : MonoBehaviour
                     meleeAttackButton.gameObject.SetActive(true);
                     doubleJumpButton.gameObject.SetActive(true);
                 }
+                else // если из главного меню заход€т
+                {
+                    doubleHPButton.gameObject.SetActive(true);
+                    meleeAttackButton.gameObject.SetActive(true);
+                    rangedAttackButton.gameObject.SetActive(true);
+                }
                 break;
             default:
                 // ≈сли уровень не определен, показываем все кнопки
