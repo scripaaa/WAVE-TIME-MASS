@@ -45,6 +45,12 @@ public class ArtifactSelector : MonoBehaviour
         slowdownButton.onClick.AddListener(() => SelectArtifact("Slowdown"));
     }
 
+    void Update()
+    {
+        if (artifactPanel.activeSelf)
+            TimeManager.FreezeTime(); // Замораживаем игру
+    }
+
     // Настройка кнопок в зависимости от уровня
     void SetupButtonsForLevel(int level)
     {

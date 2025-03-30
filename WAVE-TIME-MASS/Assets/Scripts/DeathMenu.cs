@@ -9,6 +9,9 @@ public class DeathMenu : MonoBehaviour
     public GameObject deathMenu;
     public Image fadeImage; // ссылка на фото
 
+    public GameObject HUD1;
+    public GameObject HUD2;
+
     private float fadeDuration = 0.5f; // длительность
     private Coroutine fadeCoroutine; // ссылка на корутину
     private Slowdown slowdown; // Ссылка на Slowdown
@@ -22,6 +25,12 @@ public class DeathMenu : MonoBehaviour
     {
         if (deathMenu.activeSelf)
         {
+            if (HUD1 != null)
+                HUD1.SetActive(false);
+
+            if (HUD2 != null)
+                HUD2.SetActive(false);
+
             if (fadeCoroutine == null)
             {
                 TimeManager.FreezeTime();
@@ -46,6 +55,9 @@ public class DeathMenu : MonoBehaviour
 
     public void Restart()
     {
+        if (HUD2 != null)
+            HUD2.SetActive(true);
+
         if (fadeCoroutine != null)
         {
             StopCoroutine(fadeCoroutine);
@@ -68,6 +80,9 @@ public class DeathMenu : MonoBehaviour
 
     public void MainMenu()
     {
+        if (HUD2 != null)
+            HUD2.SetActive(true);
+
         if (fadeCoroutine != null)
         {
             StopCoroutine(fadeCoroutine);

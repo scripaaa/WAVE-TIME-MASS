@@ -304,7 +304,14 @@ public class Hero : Entity
     {
         if (other.gameObject.tag == "Enemy" && active_Damage_Jump)
         {
-            Destroy(other.gameObject);
+            if (other.gameObject.GetComponent<Entity>().livess == 3)
+            {
+                //Destroy(other.gameObject);
+                other.gameObject.GetComponent<Entity>().Die();
+            }
+            else
+                other.gameObject.GetComponent<Entity>().GetDamage();
+
         }
     }
 

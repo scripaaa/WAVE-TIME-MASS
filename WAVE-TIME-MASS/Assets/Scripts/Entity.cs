@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Entity : MonoBehaviour
 {
-    protected int livess;
+    public int livess;
     public virtual void GetDamageHero()
     {
 

@@ -51,7 +51,7 @@ public class ShowingTheLevel : MonoBehaviour
         if (mainCameraScript != null)
         {
             mainCameraScript.enabled = true;
-            TimeManager.UnfreezeTime();
+            TimeManager.ResetFreezeCount();
         }
     }
 }
