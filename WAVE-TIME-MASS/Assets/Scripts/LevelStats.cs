@@ -44,7 +44,7 @@ public class LevelStats : MonoBehaviour
         {
             if (stars[i] != null)
             {
-                stars[i].color = Color.gray; 
+                stars[i].color = Color.gray;
             }
         }
 
