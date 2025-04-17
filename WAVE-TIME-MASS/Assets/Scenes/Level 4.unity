@@ -144250,6 +144250,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangeEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6423793309532189688, guid: 9879a0d36a12fa54d9e18d753ff29e74, type: 3}
+      propertyPath: m_Size.x
+      value: 1.1997845
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423793309532189688, guid: 9879a0d36a12fa54d9e18d753ff29e74, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.011096865
+      objectReference: {fileID: 0}
     - target: {fileID: 6697813310826573052, guid: 9879a0d36a12fa54d9e18d753ff29e74, type: 3}
       propertyPath: attackRange
       value: 14
@@ -145230,6 +145238,14 @@ PrefabInstance:
     - target: {fileID: 4948248885897185970, guid: 9879a0d36a12fa54d9e18d753ff29e74, type: 3}
       propertyPath: m_Name
       value: RangeEnemy 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423793309532189688, guid: 9879a0d36a12fa54d9e18d753ff29e74, type: 3}
+      propertyPath: m_Size.x
+      value: 1.1840682
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423793309532189688, guid: 9879a0d36a12fa54d9e18d753ff29e74, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.002139777
       objectReference: {fileID: 0}
     - target: {fileID: 6697813310826573052, guid: 9879a0d36a12fa54d9e18d753ff29e74, type: 3}
       propertyPath: attackRange

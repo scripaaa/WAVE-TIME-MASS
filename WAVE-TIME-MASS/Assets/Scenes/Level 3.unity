@@ -67016,6 +67016,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangeEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6423793309532189688, guid: 9879a0d36a12fa54d9e18d753ff29e74, type: 3}
+      propertyPath: m_Size.x
+      value: 1.1804879
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423793309532189688, guid: 9879a0d36a12fa54d9e18d753ff29e74, type: 3}
+      propertyPath: m_Size.y
+      value: 1.1884736
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423793309532189688, guid: 9879a0d36a12fa54d9e18d753ff29e74, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0019196272
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423793309532189688, guid: 9879a0d36a12fa54d9e18d753ff29e74, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.013440549
+      objectReference: {fileID: 0}
     - target: {fileID: 8783240602982229504, guid: 9879a0d36a12fa54d9e18d753ff29e74, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.06
