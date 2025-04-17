@@ -16,7 +16,7 @@ public class ReplaceObject : MonoBehaviour
     public GameObject pause_menu; // Меню паузы
 
     private float lastSwitchTime = -10f; // Время последнего переключения
-    private float cooldownDuration = 5f; // Длительность кулдауна (5 секунд)
+    private float cooldownDuration = 2f; // Длительность кулдауна (2 секунды)
     public Image cooldownIndicator; // UI Image для отображения кулдауна
     public Text cooldownText; // UI Text для отображения статуса перезарядки
 
