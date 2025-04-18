@@ -12054,6 +12054,7 @@ MonoBehaviour:
   AttackPos: {fileID: 2092505738}
   attackRange: 3.5
   attackHeight: 3.5
+  knockbackForce: 5
   enemy:
     serializedVersion: 2
     m_Bits: 8
@@ -12238,7 +12239,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.016982138, y: -0.065396145}
+  m_Offset: {x: 0.008757591, y: -0.08732907}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -12249,7 +12250,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.435763, y: 0.05765629}
+  m_Size: {x: 0.61670876, y: 0.10152213}
   m_EdgeRadius: 0
 --- !u!114 &1033001209
 MonoBehaviour:
@@ -12463,6 +12464,10 @@ PrefabInstance:
     - target: {fileID: 2798932556158427963, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2889763717989606849, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2988592676164615223, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
       propertyPath: pause_menu

@@ -42,6 +42,7 @@ public class Hero : Entity
     public UnityEngine.Transform AttackPos; // позиция атаки
     public float attackRange; // Дальность атаки
     public float attackHeight; //Высота атаки
+    public float knockbackForce = 6f; // Сила отталкивания при атаке
     public LayerMask enemy; // Слой врагов
     public GameObject deathMenu;
 
@@ -248,10 +249,13 @@ public class Hero : Entity
         Vector2 boxCenter = (Vector2)AttackPos.position + (Vector2)(direction * (attackRange / 2));
         Collider2D[] colliders = Physics2D.OverlapBoxAll(boxCenter, boxSize, 0f, enemy);
 
+        Vector2 knockbackDirection = new Vector2(transform.localScale.x, 0);
+
 
         for (int i = 0; i < colliders.Length; i++)
         {
             colliders[i].GetComponent<Entity>().GetDamage();
+            colliders[i].GetComponent<Rigidbody2D>().AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
         }
 
        
