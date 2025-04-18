@@ -40675,6 +40675,7 @@ MonoBehaviour:
   AttackPos: {fileID: 744890292}
   attackRange: 3.5
   attackHeight: 3.5
+  knockbackForce: 6
   enemy:
     serializedVersion: 2
     m_Bits: 8
@@ -67031,6 +67032,10 @@ PrefabInstance:
     - target: {fileID: 6423793309532189688, guid: 9879a0d36a12fa54d9e18d753ff29e74, type: 3}
       propertyPath: m_Offset.y
       value: -0.013440549
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784678709237948771, guid: 9879a0d36a12fa54d9e18d753ff29e74, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8783240602982229504, guid: 9879a0d36a12fa54d9e18d753ff29e74, type: 3}
       propertyPath: m_LocalPosition.x
