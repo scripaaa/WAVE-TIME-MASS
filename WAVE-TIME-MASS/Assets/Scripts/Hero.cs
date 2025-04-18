@@ -82,6 +82,10 @@ public class Hero : Entity
 
     private void Update()
     {
+        // Проверяем, заморожено ли время (пауза)
+        if (TimeManager.IsTimeFrozen())
+            return;
+
         CheckIfGrounded();
 
         if (Input.GetButtonDown("Fire1"))
