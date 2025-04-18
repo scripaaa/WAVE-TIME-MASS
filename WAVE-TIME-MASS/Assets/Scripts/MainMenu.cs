@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
         if (InventoryUI.Instance != null)
         {
             InventoryUI.Instance.ClearInventory();
+            InventoryUI.Instance.SaveInventory(); // Сохраняем пустой инвентарь
         }
 
         Debug.Log("новая игра");
@@ -19,11 +20,21 @@ public class MainMenu : MonoBehaviour
     }
     public void Continue()
     {
+        if (InventoryUI.Instance != null)
+        {
+            InventoryUI.Instance.LoadInventory(PlayerPrefs.GetInt("SavedScene")); // Загружаем сохранённый инвентарь
+        }
+
         TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
         SceneManager.LoadScene(PlayerPrefs.GetInt("SavedScene"));
     }
     public void Exit()
     {
+        if (InventoryUI.Instance != null)
+        {
+            InventoryUI.Instance.SaveInventory(); // Сохраняем инвентарь перед выходом
+        }
+
         Debug.Log("закрытие игры");
         Application.Quit();
     }

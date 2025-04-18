@@ -39,6 +39,7 @@ public class InventoryUI : MonoBehaviour
         {
             inventory.Add(artifactID); // Добавляем артефакт в список
             UpdateInventoryUI(); // Обновляем UI
+            SaveInventory(); // Сохраняем изменения
         }
         else
         {
@@ -53,6 +54,7 @@ public class InventoryUI : MonoBehaviour
         {
             inventory.RemoveAt(slotIndex); // Удаляем артефакт из списка
             UpdateInventoryUI(); // Обновляем UI
+            SaveInventory(); // Сохраняем изменения
         }
     }
 
@@ -88,5 +90,35 @@ public class InventoryUI : MonoBehaviour
                 inventorySlots[i].color = Color.white; // Делаем ячейку видимой
             }
         }
+    }
+
+    // В InventoryUI.cs
+    public void SaveInventory()
+    {
+        // Сохраняем количество артефактов
+        PlayerPrefs.SetInt("InventoryCount", inventory.Count);
+
+        // Сохраняем каждый артефакт по его ID
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            PlayerPrefs.SetInt($"InventoryArtifact_{i}", inventory[i]);
+        }
+        PlayerPrefs.Save(); // Важно!
+    }
+
+    public void LoadInventory(int count)
+    {
+        ClearInventory(); // Очищаем текущий инвентарь
+
+        for (int i = 0; i < count - 2; i++)
+        {
+            int artifactID = PlayerPrefs.GetInt($"InventoryArtifact_{i}", -1);
+            if (artifactID != -1)
+            {
+                inventory.Add(artifactID);
+            }
+        }
+
+        UpdateInventoryUI(); // Обновляем UI
     }
 }
