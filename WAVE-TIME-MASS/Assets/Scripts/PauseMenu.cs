@@ -66,6 +66,11 @@ public class PauseMenu : MonoBehaviour
 
     public void Quit() 
     {
+        if (InventoryUI.Instance != null)
+        {
+            InventoryUI.Instance.SaveInventory(); // Сохраняем инвентарь перед выходом
+        }
+
         PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex); // Сохраниение сцены при выходе
         Application.Quit();
     }

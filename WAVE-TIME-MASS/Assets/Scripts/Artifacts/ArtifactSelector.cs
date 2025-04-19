@@ -64,6 +64,12 @@ public class ArtifactSelector : MonoBehaviour
         rangedAttackButton.gameObject.SetActive(false);
         slowdownButton.gameObject.SetActive(false);
 
+        if (InventoryUI.Instance == null)
+        {
+            jumpAttackButton.gameObject.SetActive(true);
+            return;
+        }
+
         // ¬ключаем только нужные кнопки дл€ текущего уровн€
         switch (level)
         {
