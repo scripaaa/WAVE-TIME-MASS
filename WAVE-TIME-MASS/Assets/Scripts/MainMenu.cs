@@ -5,6 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    void Start()
+    {
+        // В MainMenu.Start()
+        /*if (InventoryUI.Instance == null)
+        {
+            GameObject inventoryObj = new GameObject("InventoryUI");
+            inventoryObj.AddComponent<InventoryUI>();
+            DontDestroyOnLoad(inventoryObj);
+        }*/
+    }
+
     public void NewGame()
     {
         // Очищаем инвентарь перед рестартом
