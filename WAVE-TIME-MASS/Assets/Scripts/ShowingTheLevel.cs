@@ -10,6 +10,8 @@ public class ShowingTheLevel : MonoBehaviour
     public bool Showing = true;
 
     private MonoBehaviour mainCameraScript; // Ссылка на скрипт MainCamera
+    private KeyCode skipKey = KeyCode.C; // Пропуск показа на C
+    private Coroutine CameraMovement;
 
 
     void Start()
@@ -31,7 +33,7 @@ public class ShowingTheLevel : MonoBehaviour
         if (cameraPoints.Length > 0)
         {
             // Начинаем движение камеры по точкам
-            StartCoroutine(FollowPath());
+            CameraMovement = StartCoroutine(FollowPath());
         }
     }
 
@@ -52,6 +54,35 @@ public class ShowingTheLevel : MonoBehaviour
         {
             mainCameraScript.enabled = true;
             TimeManager.ResetFreezeCount();
+        }
+    }
+
+    void Update()
+    {
+        if ((Input.GetKeyDown(skipKey)) && (Showing))
+        {
+            SkipShow();
+        }
+    }
+
+    public void SkipShow()
+    {
+        if (CameraMovement != null)
+        {
+            StopCoroutine(CameraMovement);
+            if (cameraPoints.Length > 0)
+            {
+                Transform lastPoint = cameraPoints[cameraPoints.Length - 1];
+                transform.position = lastPoint.position;
+                transform.rotation = lastPoint.rotation;
+            }
+            // Включаем скрипт MainCamera
+            Showing = false;
+            if (mainCameraScript != null)
+            {
+                mainCameraScript.enabled = true;
+                TimeManager.ResetFreezeCount();
+            }
         }
     }
 }
