@@ -60,10 +60,20 @@ public class ShowingTheLevel : MonoBehaviour
         {
             mainCameraScript.enabled = true;
             Skip.SetActive(false);
-            TimeManager.UnfreezeTime();
         }
 
         levelAlreadyShown = true;
+
+        // Находим ArtifactSelector и показываем выбор артефактов
+        ArtifactSelector artifactSelector = FindObjectOfType<ArtifactSelector>();
+        if (artifactSelector != null)
+        {
+            artifactSelector.ShowArtifactSelection();
+        }
+        else
+        {
+            TimeManager.UnfreezeTime(); // Размораживаем игру, если нет артефактов для выбора
+        }
     }
 
     void Update()
@@ -91,7 +101,17 @@ public class ShowingTheLevel : MonoBehaviour
             {
                 mainCameraScript.enabled = true;
                 Skip.SetActive(false);
-                TimeManager.UnfreezeTime();
+            }
+
+            // Находим ArtifactSelector и показываем выбор артефактов
+            ArtifactSelector artifactSelector = FindObjectOfType<ArtifactSelector>();
+            if (artifactSelector != null)
+            {
+                artifactSelector.ShowArtifactSelection();
+            }
+            else
+            {
+                TimeManager.UnfreezeTime(); // Размораживаем игру, если нет артефактов для выбора
             }
         }
     }

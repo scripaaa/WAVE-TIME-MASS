@@ -27,9 +27,7 @@ public class ArtifactSelector : MonoBehaviour
         playerDash = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDash>(); // Находим скрипт PlayerDash на объекте игрока
         slowdown = GameObject.FindGameObjectWithTag("Player").GetComponent<Slowdown>(); // Находим скрипт Slowdown на объекте игрока
 
-        TimeManager.FreezeTime(); // Замораживаем игру
-
-        artifactPanel.SetActive(true); // Показываем окно
+        artifactPanel.SetActive(false); // Показываем окно
 
         // Настраиваем кнопки в зависимости от уровня
         SetupButtonsForLevel(currentLevel);
@@ -45,10 +43,10 @@ public class ArtifactSelector : MonoBehaviour
         slowdownButton.onClick.AddListener(() => SelectArtifact("Slowdown"));
     }
 
-    void Update()
+    // Добавляем новый метод для внешнего вызова
+    public void ShowArtifactSelection()
     {
-        /*if (artifactPanel.activeSelf)
-            TimeManager.FreezeTime(); // Замораживаем игру*/
+        artifactPanel.SetActive(true);
     }
 
     // Настройка кнопок в зависимости от уровня
