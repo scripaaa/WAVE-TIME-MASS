@@ -124,7 +124,6 @@ public class LevelStats : MonoBehaviour
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         TimeManager.UnfreezeTime();
-        TimeManager.ResetFreezeCount(); // —бросить заморозку времени
     }
 
     public void NextLevel()
@@ -133,12 +132,11 @@ public class LevelStats : MonoBehaviour
         {
             statsPanel.SetActive(false);
             panel.SetActive(true);
-            TimeManager.FreezeTime(); 
+
         }
         else
         {
             TimeManager.UnfreezeTime();
-            TimeManager.ResetFreezeCount(); // —бросить заморозку времени
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

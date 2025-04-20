@@ -344,6 +344,7 @@ public class Hero : Entity
         }
         else
         {
+            TimeManager.FreezeTime();
             // Перезагрузка сцены
             deathMenu.SetActive(true);
         }

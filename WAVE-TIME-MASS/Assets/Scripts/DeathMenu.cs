@@ -33,7 +33,6 @@ public class DeathMenu : MonoBehaviour
 
             if (fadeCoroutine == null)
             {
-                TimeManager.FreezeTime();
                 fadeCoroutine = StartCoroutine(FadeToBlack());
             }
         }
@@ -71,8 +70,9 @@ public class DeathMenu : MonoBehaviour
         }
 
         deathMenu.SetActive(false); // Скрыть меню смерти
-        TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Перезагрузить сцену
+
+        TimeManager.UnfreezeTime(); // Сбросить заморозку времени
 
         if (slowdown != null)
             slowdown.NotActivateSlowdown();
@@ -80,6 +80,8 @@ public class DeathMenu : MonoBehaviour
 
     public void MainMenu()
     {
+        TimeManager.UnfreezeTime(); // Сбросить заморозку времени
+
         if (HUD2 != null)
             HUD2.SetActive(true);
 
@@ -96,7 +98,7 @@ public class DeathMenu : MonoBehaviour
         }
 
         PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex); // Сохраниение сцены при выходе
-        TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
+        
         SceneManager.LoadScene(0); // Загрузить главное меню
 
         slowdown.NotActivateSlowdown();
@@ -104,6 +106,8 @@ public class DeathMenu : MonoBehaviour
 
     public void Exit()
     {
+        TimeManager.UnfreezeTime(); // Сбросить заморозку времени
+
         // Очищаем инвентарь перед рестартом
         if (InventoryUI.Instance != null)
         {

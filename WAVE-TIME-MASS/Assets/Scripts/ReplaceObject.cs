@@ -36,6 +36,12 @@ public class ReplaceObject : MonoBehaviour
 
     private void Update()
     {
+        // Если игра на паузе или время заморожено - игнорируем ввод
+        if (pause_menu.activeSelf || TimeManager.IsTimeFrozen())
+        {
+            return;
+        }
+
         if (!pause_menu.activeSelf)
         {
             // Обновляем индикатор кулдауна
@@ -76,6 +82,13 @@ public class ReplaceObject : MonoBehaviour
 
     void TrySwitchTime(Times newTime)
     {
+        // Если время заморожено - отменяем переключение
+        if (TimeManager.IsTimeFrozen())
+        {
+            Debug.Log("Нельзя путешествовать во времени: время заморожено!");
+            return;
+        }
+
         // Если игрок пытается переключиться в то же время, ничего не делаем
         if (newTime == currentTime)
         {

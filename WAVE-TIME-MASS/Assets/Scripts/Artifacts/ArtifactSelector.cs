@@ -47,8 +47,8 @@ public class ArtifactSelector : MonoBehaviour
 
     void Update()
     {
-        if (artifactPanel.activeSelf)
-            TimeManager.FreezeTime(); // Замораживаем игру
+        /*if (artifactPanel.activeSelf)
+            TimeManager.FreezeTime(); // Замораживаем игру*/
     }
 
     // Настройка кнопок в зависимости от уровня
@@ -223,7 +223,6 @@ public class ArtifactSelector : MonoBehaviour
         artifactPanel.SetActive(false); // Скрываем окно
 
         TimeManager.UnfreezeTime(); // Размораживаем игру
-        TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
 
         // Применяем артефакты к игроку
         //ApplyArtifacts();

@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         slowdown = GameObject.FindGameObjectWithTag("Player").GetComponent<Slowdown>(); // Находим скрипт Slowdown на объекте игрока
+        TimeManager.ResetFreezeCount(); // Сбросить все заморозки
     }
 
     public void Continue() 
@@ -37,11 +38,6 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(0);
         TimeManager.UnfreezeTime(); // Размораживаем игру
 
-        if (finish == null)
-            TimeManager.UnfreezeTime(); // Размораживаем игру второй раз из-за конца игры
-
-        TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
-
         // Очищаем инвентарь перед рестартом
         if (slowdown != null)
         {
@@ -59,11 +55,6 @@ public class PauseMenu : MonoBehaviour
 
         SceneManager.LoadScene(1);
         TimeManager.UnfreezeTime(); // Размораживаем игру
-
-        if (finish == null)
-            TimeManager.UnfreezeTime(); // Размораживаем игру второй раз из-за конца игры
-
-        TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
 
         slowdown.NotActivateSlowdown();
     }
@@ -118,7 +109,6 @@ public class PauseMenu : MonoBehaviour
                     musicManager.SetPause(false); // Выключить паузу
 
                     TimeManager.UnfreezeTime(); // Размораживаем игру
-                    TimeManager.ResetFreezeCount(); // Сбросить заморозку времени
                 }
                 
             }

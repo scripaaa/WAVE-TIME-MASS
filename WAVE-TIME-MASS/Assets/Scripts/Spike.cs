@@ -21,6 +21,7 @@ public class Spike : MonoBehaviour
             }
             else
             {
+                TimeManager.FreezeTime(); // Замораживаем игру
                 deathMenu.SetActive(true);
             }
         }

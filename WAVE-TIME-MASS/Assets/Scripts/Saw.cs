@@ -45,6 +45,7 @@ public class Saw : Entity
             }
             else
             {
+                TimeManager.FreezeTime(); // Замораживаем игру
                 deathMenu.SetActive(true);
             }
         }

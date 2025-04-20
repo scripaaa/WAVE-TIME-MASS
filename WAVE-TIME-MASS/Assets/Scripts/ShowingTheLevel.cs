@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ShowingTheLevel : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class ShowingTheLevel : MonoBehaviour
     private KeyCode skipKey = KeyCode.C; // Пропуск показа на C
     private Coroutine CameraMovement;
 
+    private bool levelAlreadyShown = false;
 
     void Start()
     {
@@ -23,7 +25,9 @@ public class ShowingTheLevel : MonoBehaviour
             mainCameraScript.enabled = true;
             enabled = false;
         }
+
         TimeManager.FreezeTime();
+
         // Находим скрипт MainCamera на камере
         mainCameraScript = GetComponent<MainCamera>();
         Skip.SetActive(true);
@@ -56,8 +60,10 @@ public class ShowingTheLevel : MonoBehaviour
         {
             mainCameraScript.enabled = true;
             Skip.SetActive(false);
-            TimeManager.ResetFreezeCount();
+            TimeManager.UnfreezeTime();
         }
+
+        levelAlreadyShown = true;
     }
 
     void Update()
@@ -70,7 +76,7 @@ public class ShowingTheLevel : MonoBehaviour
 
     public void SkipShow()
     {
-        if (CameraMovement != null)
+        if (CameraMovement != null && !levelAlreadyShown)
         {
             StopCoroutine(CameraMovement);
             if (cameraPoints.Length > 0)
@@ -85,7 +91,7 @@ public class ShowingTheLevel : MonoBehaviour
             {
                 mainCameraScript.enabled = true;
                 Skip.SetActive(false);
-                TimeManager.ResetFreezeCount();
+                TimeManager.UnfreezeTime();
             }
         }
     }
