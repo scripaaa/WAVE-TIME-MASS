@@ -54,11 +54,12 @@ public class Boss3 : Entity
 
     private enum EnemyState { Patrolling, Chasing, Attacking, RangedAttacking }
     private EnemyState currentState;
+    private Vector3 initialPosition; // Сохраняем стартовую позицию
 
     void Start()
     {
-        currentHealth = maxHealth;
-        livess = maxHealth; // Синхронизируем с системой Entity
+        // Сохраняем начальную позицию при старте
+        initialPosition = transform.position;
 
         // Уведомляем UI о начальном состоянии
         OnHealthChanged?.Invoke(currentHealth);
@@ -78,6 +79,12 @@ public class Boss3 : Entity
 
         lastImmunityTime = Time.time;
         normalHealthColor = bossUIController.healthSlider.fillRect.GetComponent<Image>().color;
+    }
+
+    public void SetLives()
+    {
+        currentHealth = maxHealth;
+        livess = maxHealth;
     }
 
     // Модифицированный метод получения урона 
@@ -354,6 +361,13 @@ public class Boss3 : Entity
             Hero.Instance.GetDamageHero();
         }
 
+    }
+
+    public void ResetBoss()
+    {
+        // Сбрось здоровье, позицию, состояние атаки и т.д.
+        SetLives();
+        transform.position = initialPosition; // Нужно сохранить initialPosition в Start
     }
 
     private void OnDrawGizmosSelected()

@@ -111,8 +111,7 @@ public class Hero : Entity
         // Смерть при падении с карты
         if (gameObject.transform.position.y < -20)
         {
-            //gameObject.GetComponent<DeathMenu>().enabled = true;
-            deathMenu.SetActive(true);
+            Die();
         }
         UpdateAnimationState();
         UpdateHearts();
@@ -329,13 +328,52 @@ public class Hero : Entity
         health -= 1;
         ChangeColor(Color.red);
         StartCoroutine(ResetColorAfterDelay(1f));
-        if (health == 0)
+        if (health <= 0)
         {
-            foreach (var h in Hearts)
-                h.sprite = DeadHeart;
-            //gameObject.GetComponent<DeathMenu>().enabled = true;
+            Die();
+        }
+    }
+
+    public override void Die()
+    {
+        // Проверяем существование CheckpointManager
+        if (CheckpointManager.Instance != null && CheckpointManager.Instance.HasCheckpoint())
+        {
+            // Респавн у чекпоинта
+            RespawnAtCheckpoint();
+        }
+        else
+        {
+            // Перезагрузка сцены
             deathMenu.SetActive(true);
         }
+    }
+
+    public void RespawnAtCheckpoint()
+    {
+        if (!CheckpointManager.Instance.HasCheckpoint()) return;
+
+        Vector2 checkpointPos = CheckpointManager.Instance.GetLastCheckpoint().Value;
+
+        // Телепортация
+        transform.position = checkpointPos;
+
+        // Если это чекпоинт босса - перезапускаем бой
+        if (CheckpointManager.Instance.IsLastCheckpointBoss())
+        {
+            var bossFightManager = FindObjectOfType<BossFightManager>();
+            if (bossFightManager != null)
+            {
+                bossFightManager.ResetTrigger();
+                StartCoroutine(bossFightManager.StartBossFight());
+            }
+        }
+
+        // Восстановление параметров
+        health = lives;
+        UpdateHearts();
+        rb.velocity = Vector2.zero;
+        sprite.color = originalColor;
     }
 
     // Добавление монеты
@@ -367,6 +405,11 @@ public class Hero : Entity
     public void Active_Range_Attacking()
     {
         active_Range_Attacking = true;
+    }
+
+    public int CntHeart()
+    {
+        return lives;
     }
 
     public void AddHeart()

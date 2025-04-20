@@ -14629,6 +14629,7 @@ MonoBehaviour:
   AttackPos: {fileID: 744890292}
   attackRange: 3.5
   attackHeight: 3.5
+  knockbackForce: 6
   enemy:
     serializedVersion: 2
     m_Bits: 8

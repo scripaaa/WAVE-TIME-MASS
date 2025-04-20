@@ -27,8 +27,26 @@ public class BossFightManager : MonoBehaviour
         StartCoroutine(StartBossFight());
     }
 
-    private IEnumerator StartBossFight()
+    public void ResetBossFight()
     {
+        if (boss != null)
+        {
+            boss.SetActive(false);
+            boss.GetComponent<Boss3>().ResetBoss(); // Убедись, что у босса есть этот метод
+        }
+
+        if (leftDoor != null) leftDoor.SetActive(false);
+        if (rightDoor != null) rightDoor.SetActive(false);
+
+        ResetTrigger();
+    }
+
+    public IEnumerator StartBossFight()
+    {
+        // Отключаем босса
+        if (boss != null) boss.SetActive(false);
+
+        boss.GetComponent<Boss3>().SetLives();
         // Закрываем двери
         if (leftDoor != null) leftDoor.SetActive(true);
         if (rightDoor != null) rightDoor.SetActive(true);
@@ -40,7 +58,7 @@ public class BossFightManager : MonoBehaviour
             bossText.gameObject.SetActive(true);
         }
 
-        if (playerController != null)
+        if (playerController != null && playerController.CntHeart() < 3)
         {
             playerController.AddHeart();
             playerController.AddHeart();

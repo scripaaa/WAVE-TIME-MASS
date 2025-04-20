@@ -35,7 +35,18 @@ public class Saw : Entity
         // Перезагрузка сцена при столкновении игрока и пилы
         if (other.gameObject.CompareTag("Player"))
         {
-            deathMenu.SetActive(true);
+            // Получаем компонент Hero у игрока
+            Hero hero = other.gameObject.GetComponent<Hero>();
+
+            if (hero != null)
+            {
+                // Вызываем метод Die() у героя
+                hero.Die();
+            }
+            else
+            {
+                deathMenu.SetActive(true);
+            }
         }
 
         if ((other.CompareTag("Obstacle")) || (other.CompareTag("Saw")))

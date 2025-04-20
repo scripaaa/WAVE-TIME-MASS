@@ -12,7 +12,18 @@ public class SawUnable : Entity
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            deathMenu.SetActive(true);
+            // Получаем компонент Hero у игрока
+            Hero hero = other.gameObject.GetComponent<Hero>();
+
+            if (hero != null)
+            {
+                // Вызываем метод Die() у героя
+                hero.Die();
+            }
+            else
+            {
+                deathMenu.SetActive(true);
+            }
         }
     }
 }

@@ -42,7 +42,11 @@ public class PauseMenu : MonoBehaviour
 
         TimeManager.ResetFreezeCount(); // —бросить заморозку времени
 
-        slowdown.NotActivateSlowdown();
+        // ќчищаем инвентарь перед рестартом
+        if (slowdown != null)
+        {
+            slowdown.NotActivateSlowdown();
+        }
     }
 
     public void NewGame() 

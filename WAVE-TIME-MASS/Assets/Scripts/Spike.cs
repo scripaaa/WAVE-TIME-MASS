@@ -7,14 +7,23 @@ public class Spike : MonoBehaviour
 {
     public GameObject deathMenu;
 
-    private void OnTriggerEnter2D(Collider2D other) // проверка на столкновение 
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        // Перезагрузка сцена при столкновении игрока и пилы
         if (other.gameObject.CompareTag("Player"))
         {
-            deathMenu.SetActive(true);
+            // Получаем компонент Hero у игрока
+            Hero hero = other.gameObject.GetComponent<Hero>();
+
+            if (hero != null)
+            {
+                // Вызываем метод Die() у героя
+                hero.Die();
+            }
+            else
+            {
+                deathMenu.SetActive(true);
+            }
         }
-    
     }
 
 
