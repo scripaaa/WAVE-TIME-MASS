@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShowingTheLevel : MonoBehaviour
 {
     public Transform[] cameraPoints; // Список точек
     public float moveSpeed = 5f; // Скорость
     public bool Showing = true;
+    public GameObject Skip;
 
     private MonoBehaviour mainCameraScript; // Ссылка на скрипт MainCamera
+    private KeyCode skipKey = KeyCode.C; // Пропуск показа на C
+    private Coroutine CameraMovement;
 
 
     void Start()
@@ -22,7 +26,7 @@ public class ShowingTheLevel : MonoBehaviour
         TimeManager.FreezeTime();
         // Находим скрипт MainCamera на камере
         mainCameraScript = GetComponent<MainCamera>();
-
+        Skip.SetActive(true);
         if (mainCameraScript != null)
         {
             mainCameraScript.enabled = false; // Отключаем скрипт MainCamera на время движения камеры
@@ -31,7 +35,7 @@ public class ShowingTheLevel : MonoBehaviour
         if (cameraPoints.Length > 0)
         {
             // Начинаем движение камеры по точкам
-            StartCoroutine(FollowPath());
+            CameraMovement = StartCoroutine(FollowPath());
         }
     }
 
@@ -51,7 +55,38 @@ public class ShowingTheLevel : MonoBehaviour
         if (mainCameraScript != null)
         {
             mainCameraScript.enabled = true;
+            Skip.SetActive(false);
             TimeManager.ResetFreezeCount();
+        }
+    }
+
+    void Update()
+    {
+        if ((Input.GetKeyDown(skipKey)) && (Showing))
+        {
+            SkipShow();
+        }
+    }
+
+    public void SkipShow()
+    {
+        if (CameraMovement != null)
+        {
+            StopCoroutine(CameraMovement);
+            if (cameraPoints.Length > 0)
+            {
+                Transform lastPoint = cameraPoints[cameraPoints.Length - 1];
+                transform.position = lastPoint.position;
+                transform.rotation = lastPoint.rotation;
+            }
+            // Включаем скрипт MainCamera
+            Showing = false;
+            if (mainCameraScript != null)
+            {
+                mainCameraScript.enabled = true;
+                Skip.SetActive(false);
+                TimeManager.ResetFreezeCount();
+            }
         }
     }
 }
