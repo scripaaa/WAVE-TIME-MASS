@@ -10,6 +10,10 @@ public class Settings : MonoBehaviour
     public GameObject settingsMenu;
     public GameObject HUD;
 
+    [SerializeField] private AudioSource audioScr;
+    [SerializeField] private Slider sliderVolume;
+    float musicVolume = 1f;
+
     Resolution[] resolutions;
     void Start()
     {
@@ -73,6 +77,19 @@ public class Settings : MonoBehaviour
         {
             Screen.fullScreen = true;
         }
+    }
+    private void Update()
+    {
+        audioScr.volume = musicVolume;
+    }
+    public void SetVolume(float vol)
+    {
+        musicVolume = vol;
+    }
+
+    public void ChangeVolume()
+    {
+        AudioListener.volume = sliderVolume.value;
     }
 
 }
