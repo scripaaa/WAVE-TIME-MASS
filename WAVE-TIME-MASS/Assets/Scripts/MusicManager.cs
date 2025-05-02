@@ -9,7 +9,18 @@ public class MusicManager : MonoBehaviour
     [Header("Current Level Music")]
     public AudioClip mainTrack;
     public AudioClip pauseTrack;
-    [Range(0f, 1f)] public float volume = 1f;
+
+    // Изменено с public field на property с вызовом UpdateVolume
+    private float _volume = 1f;
+    public float volume
+    {
+        get => _volume;
+        set
+        {
+            _volume = Mathf.Clamp01(value);
+            UpdateVolume();
+        }
+    }
 
     private bool isPaused = false;
 
@@ -18,6 +29,9 @@ public class MusicManager : MonoBehaviour
         // Настройка AudioSources
         mainMusicSource.loop = true;
         pauseMusicSource.loop = true;
+
+        // Загружаем сохраненную громкость
+        volume = PlayerPrefs.GetFloat("volumePreference", 0.7f);
     }
 
     private void Start()
@@ -25,13 +39,18 @@ public class MusicManager : MonoBehaviour
         PlayMusic();
     }
 
+    void UpdateVolume()
+    {
+        mainMusicSource.volume = _volume;
+        pauseMusicSource.volume = _volume;
+    }
+
     public void PlayMusic()
     {
         mainMusicSource.clip = mainTrack;
         pauseMusicSource.clip = pauseTrack;
 
-        mainMusicSource.volume = volume;
-        pauseMusicSource.volume = volume;
+        UpdateVolume();
 
         if (isPaused)
         {
