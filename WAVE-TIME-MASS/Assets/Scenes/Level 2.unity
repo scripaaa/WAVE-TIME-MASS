@@ -14626,6 +14626,7 @@ MonoBehaviour:
   IsRecharged: 1
   IsFalling: 0
   IsJumping: 0
+  FinishDone: 0
   AttackPos: {fileID: 744890292}
   attackRange: 3.5
   attackHeight: 3.5
