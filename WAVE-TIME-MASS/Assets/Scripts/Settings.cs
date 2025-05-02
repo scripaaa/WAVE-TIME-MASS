@@ -17,6 +17,7 @@ public class Settings : MonoBehaviour
     Resolution[] resolutions;
     void Start()
     {
+        audioScr.volume = musicVolume;
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
         resolutions = Screen.resolutions;
@@ -57,6 +58,8 @@ public class Settings : MonoBehaviour
     {
         PlayerPrefs.SetInt("resolutionScreenPreference", resolutionDropdown.value);
         PlayerPrefs.SetInt("fullScreenPreference", System.Convert.ToInt32(Screen.fullScreen));
+        PlayerPrefs.SetFloat("volumePreference", sliderVolume.value);
+        PlayerPrefs.Save();
     }
 
     public void LoadSetting(int currentResolutionIndex)
@@ -77,7 +80,18 @@ public class Settings : MonoBehaviour
         {
             Screen.fullScreen = true;
         }
+        if (PlayerPrefs.HasKey("volumePreference"))
+        {
+            float savedVolume = PlayerPrefs.GetFloat("volumePreference");
+            sliderVolume.value = savedVolume;
+            musicVolume = savedVolume;
+        }
+        else
+        {
+            sliderVolume.value = musicVolume;
+        }
     }
+    
     private void Update()
     {
         audioScr.volume = musicVolume;
