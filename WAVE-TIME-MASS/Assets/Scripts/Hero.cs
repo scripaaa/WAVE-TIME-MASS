@@ -258,8 +258,14 @@ public class Hero : Entity
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            colliders[i].GetComponent<Entity>().GetDamage();
-            colliders[i].GetComponent<Rigidbody2D>().AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+            if (colliders[i].GetComponent<Entity>().livess > 0)
+            {
+                colliders[i].GetComponent<Entity>().GetDamage();
+                colliders[i].GetComponent<Rigidbody2D>().AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+
+            }
+            else return;
+               
         }
 
        
