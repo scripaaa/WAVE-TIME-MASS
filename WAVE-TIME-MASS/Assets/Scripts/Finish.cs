@@ -6,15 +6,25 @@ using UnityEngine.SceneManagement;
 public class Finish : MonoBehaviour
 {
     public LevelStats levelStats; // Ссылка на LevelStats
+    public bool FinishDone= false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (FinishDone) return;
         if (collision.tag == "Player")
         {
-            TimeManager.FreezeTime(); // Замораживаем игру
-            levelStats.CompleteLevel(); // Показываем статистику
-
-            Destroy(gameObject);
+            FinishDone = true;
+            Hero hero = collision.GetComponent<Hero>();
+            hero.FinishAnim();
+            
         }
+    }
+    public void FinishStats()
+    {
+        TimeManager.FreezeTime(); // Замораживаем игру
+        levelStats.CompleteLevel(); // Показываем статистику
+        FinishDone = false;
+
+        Destroy(gameObject);
     }
 }
