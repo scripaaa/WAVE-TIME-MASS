@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject settingsMenu;
+    public GameObject HUD;
     void Start()
     {
         // В MainMenu.Start()
@@ -48,5 +50,10 @@ public class MainMenu : MonoBehaviour
 
         Debug.Log("закрытие игры");
         Application.Quit();
+    }
+    public void Settings()
+    {
+        HUD.SetActive(false);
+        settingsMenu.SetActive(true);
     }
 }

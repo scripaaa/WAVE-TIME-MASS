@@ -38,6 +38,7 @@ public class Hero : Entity
     public bool IsRecharged = true; // Перезарядка атаки
     public bool IsFalling = false; //Падаем ли мы сейчас
     public bool IsJumping = false; //В прыжке ли мы сейчас
+    public bool FinishDone = false;
 
     public UnityEngine.Transform AttackPos; // позиция атаки
     public float attackRange; // Дальность атаки
@@ -83,7 +84,7 @@ public class Hero : Entity
     private void Update()
     {
         // Проверяем, заморожено ли время (пауза)
-        if (TimeManager.IsTimeFrozen())
+        if (TimeManager.IsTimeFrozen() || FinishDone)
             return;
 
         CheckIfGrounded();
@@ -257,8 +258,14 @@ public class Hero : Entity
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            colliders[i].GetComponent<Entity>().GetDamage();
-            colliders[i].GetComponent<Rigidbody2D>().AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+            if (colliders[i].GetComponent<Entity>().livess > 0)
+            {
+                colliders[i].GetComponent<Entity>().GetDamage();
+                colliders[i].GetComponent<Rigidbody2D>().AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+
+            }
+            else return;
+               
         }
 
        
@@ -442,6 +449,17 @@ public class Hero : Entity
 
         Debug.Log("Новое сердце добавлено!");
     }
+    public void FinishAnim()
+    {
+        FinishDone = true;
+        State = States.finish;
+    }
+    public void FinishStatsMessage()
+    {
+        FinishDone = false;
+        Finish finish = FindObjectOfType<Finish>();
+        finish.FinishStats();
+    }
 
 
 }
@@ -453,5 +471,6 @@ public enum States
     jump,
     attack,
     fall,
-    rangeattack
+    rangeattack,
+    finish
 }

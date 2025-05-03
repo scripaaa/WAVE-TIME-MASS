@@ -42,6 +42,7 @@ public class Boss3 : Entity
     private float lastImmunityTime;
     private bool isImmune = false;
     private Color normalHealthColor;
+    public bool Died = false;
 
     private SpriteRenderer sprite;
     private Animator anim;
@@ -90,23 +91,33 @@ public class Boss3 : Entity
     // Модифицированный метод получения урона 
     public override void GetDamage()
     {
-        if (isImmune) return; // Игнорируем урон в режиме иммунитета
+        if (isImmune || Died) return; // Игнорируем урон в режиме иммунитета
 
+        if (livess <= 0)
+        {
+            Died = true;
+            Die();
+            anim.SetTrigger("Die");
+
+            return;
+        }
         base.GetDamage(); // Уменьшает livess на 1
 
         currentHealth = livess; // Синхронизируем значения
         OnHealthChanged?.Invoke(currentHealth); // Уведомляем UI
 
-        if (livess <= 0)
-        {
-            Die();
-        }
+        
     }
 
     void Update()
     {
-        if (isImmune) return;
+        if (isImmune || Died) return;
 
+        if (livess <= 0)
+        {
+            Die();
+            anim.SetTrigger("Die");
+        }
         // Проверка иммунитета
         CheckImmunity();
 
