@@ -15,7 +15,16 @@ public class Finish : MonoBehaviour
         {
             FinishDone = true;
             Hero hero = collision.GetComponent<Hero>();
-            hero.FinishAnim();
+
+            if (SceneManager.GetActiveScene().buildIndex == 4)
+            {
+                hero.FinishAnim();
+
+            }
+            else
+            {
+                FinishStats();
+            }
             
         }
     }

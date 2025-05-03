@@ -4033,11 +4033,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4886157878089779142, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.14999999
+      value: 0.4299602
       objectReference: {fileID: 0}
     - target: {fileID: 4886157878089779142, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.14999999
+      value: 0.4299602
       objectReference: {fileID: 0}
     - target: {fileID: 4886157878089779142, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -94329,6 +94329,7 @@ MonoBehaviour:
   IsRecharged: 1
   IsFalling: 0
   IsJumping: 0
+  FinishDone: 0
   AttackPos: {fileID: 744890292}
   attackRange: 3.5
   attackHeight: 3.5
@@ -143233,6 +143234,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8856185120815358167, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8856185120815358167, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8856185120815358167, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8856185120815358167, guid: 22cce80dcfba08f4db6529580c63cb01, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -143659,11 +143672,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4886157878089779142, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.14999999
+      value: 0.4299602
       objectReference: {fileID: 0}
     - target: {fileID: 4886157878089779142, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.14999999
+      value: 0.4299602
       objectReference: {fileID: 0}
     - target: {fileID: 4886157878089779142, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -146626,11 +146639,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4886157878089779142, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.14999999
+      value: 0.4299602
       objectReference: {fileID: 0}
     - target: {fileID: 4886157878089779142, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.14999999
+      value: 0.4299602
       objectReference: {fileID: 0}
     - target: {fileID: 4886157878089779142, guid: 0e611b0b7a3dd5042a6cb5c92ea4efed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -147295,6 +147308,7 @@ MonoBehaviour:
   healthRegenAmount: 1
   immunityColor: {r: 0.4188679, g: 0.3912068, b: 0.3912068, a: 1}
   bossUIController: {fileID: 1453146699}
+  Died: 0
 --- !u!95 &1911884666
 Animator:
   serializedVersion: 5
