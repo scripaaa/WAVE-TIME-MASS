@@ -2249,11 +2249,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 862800858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff7ff3783a721dc4aa6875cadf41a822, type: 3}
+  m_Script: {fileID: 11500000, guid: 4150a49bbc196314abcab011b7fc75e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingsMenu: {fileID: 0}
-  HUD: {fileID: 0}
+  settingsMenu: {fileID: 2025090886}
+  HUD: {fileID: 295321709}
 --- !u!1 &919208267
 GameObject:
   m_ObjectHideFlags: 0
