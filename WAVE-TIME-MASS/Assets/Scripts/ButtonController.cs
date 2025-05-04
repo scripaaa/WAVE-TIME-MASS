@@ -5,8 +5,15 @@ public class ButtonController : MonoBehaviour
     public GameObject[] platforms; // Массив платформ, которые будут раздвигаться
     public float moveDistance = 2f; // Расстояние, на которое раздвигаются платформы
     public float moveSpeed = 2f; // Скорость раздвижения
+    private Animator anim;
 
     private bool isPressed = false;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,6 +21,7 @@ public class ButtonController : MonoBehaviour
         {
             isPressed = true;
             MovePlatforms();
+            anim.SetTrigger("Press");
         }
     }
 

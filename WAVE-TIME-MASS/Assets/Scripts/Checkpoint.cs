@@ -5,6 +5,7 @@ public class Checkpoint : MonoBehaviour
     [SerializeField] private Sprite inactiveSprite;
     [SerializeField] private Sprite activeSprite;
     [SerializeField] private bool isBossCheckpoint = false; // Новое поле
+    private Animator anim;
 
     private SpriteRenderer spriteRenderer;
     private bool isActive = false;
@@ -13,8 +14,7 @@ public class Checkpoint : MonoBehaviour
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = inactiveSprite;
+        anim = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,7 +28,7 @@ public class Checkpoint : MonoBehaviour
     private void ActivateCheckpoint()
     {
         isActive = true;
-        spriteRenderer.sprite = activeSprite;
+        
         CheckpointManager.Instance.SetCheckpoint(transform.position);
 
         // Сохраняем, является ли это чекпоинтом босса
