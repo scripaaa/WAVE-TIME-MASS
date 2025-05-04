@@ -480,19 +480,7 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 955437650}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 888cbc34745cbb348a72a7f2fd97b71b, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &90021869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,19 +1452,7 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 955437650}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 888cbc34745cbb348a72a7f2fd97b71b, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &485414732
 GameObject:
   m_ObjectHideFlags: 0
@@ -2502,19 +2478,7 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 377153186}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 888cbc34745cbb348a72a7f2fd97b71b, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &955437649
 GameObject:
   m_ObjectHideFlags: 0
@@ -2718,6 +2682,76 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067470756}
   m_CullTransparentMesh: 1
+--- !u!1001 &1118567984
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2015302210767788746, guid: ac1f753ac7f0f1747a7eedfb125d6453, type: 3}
+      propertyPath: mainTrack
+      value: 
+      objectReference: {fileID: 8300000, guid: 8d7d074a7425843449dc21121e4669b0, type: 3}
+    - target: {fileID: 2015302210767788746, guid: ac1f753ac7f0f1747a7eedfb125d6453, type: 3}
+      propertyPath: pauseTrack
+      value: 
+      objectReference: {fileID: 8300000, guid: 8d7d074a7425843449dc21121e4669b0, type: 3}
+    - target: {fileID: 4283481621327706244, guid: ac1f753ac7f0f1747a7eedfb125d6453, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 522.78455
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283481621327706244, guid: ac1f753ac7f0f1747a7eedfb125d6453, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 151.44682
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283481621327706244, guid: ac1f753ac7f0f1747a7eedfb125d6453, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.2852437
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283481621327706244, guid: ac1f753ac7f0f1747a7eedfb125d6453, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283481621327706244, guid: ac1f753ac7f0f1747a7eedfb125d6453, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283481621327706244, guid: ac1f753ac7f0f1747a7eedfb125d6453, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283481621327706244, guid: ac1f753ac7f0f1747a7eedfb125d6453, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283481621327706244, guid: ac1f753ac7f0f1747a7eedfb125d6453, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283481621327706244, guid: ac1f753ac7f0f1747a7eedfb125d6453, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283481621327706244, guid: ac1f753ac7f0f1747a7eedfb125d6453, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763765770526812512, guid: ac1f753ac7f0f1747a7eedfb125d6453, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ac1f753ac7f0f1747a7eedfb125d6453, type: 3}
+--- !u!82 &1118567985 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5296868886649002761, guid: ac1f753ac7f0f1747a7eedfb125d6453, type: 3}
+  m_PrefabInstance: {fileID: 1118567984}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1134371430
 GameObject:
   m_ObjectHideFlags: 0
@@ -4141,19 +4175,7 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 955437650}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 888cbc34745cbb348a72a7f2fd97b71b, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &1843140057
 GameObject:
   m_ObjectHideFlags: 0
@@ -4512,19 +4534,7 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 955437650}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 888cbc34745cbb348a72a7f2fd97b71b, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &1964806045
 GameObject:
   m_ObjectHideFlags: 0
@@ -4541,7 +4551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1964806046
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4740,7 +4750,7 @@ MonoBehaviour:
   resolutionDropdown: {fileID: 485414733}
   settingsMenu: {fileID: 2025090886}
   HUD: {fileID: 295321709}
-  audioScr: {fileID: 0}
+  audioScr: {fileID: 1118567985}
   sliderVolume: {fileID: 626526522}
 --- !u!114 &2025090889
 MonoBehaviour:
@@ -5008,19 +5018,7 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 377153186}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 888cbc34745cbb348a72a7f2fd97b71b, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &2101148619
 GameObject:
   m_ObjectHideFlags: 0
@@ -5141,3 +5139,4 @@ SceneRoots:
   - {fileID: 1964806047}
   - {fileID: 1471679369}
   - {fileID: 1501877540}
+  - {fileID: 1118567984}
