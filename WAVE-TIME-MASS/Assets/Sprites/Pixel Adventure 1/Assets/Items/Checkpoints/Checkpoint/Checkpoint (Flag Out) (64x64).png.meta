@@ -178,12 +178,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 19
         y: 0
-        width: 64
-        height: 64
+        width: 31
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,12 +199,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 83
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -220,12 +220,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 147
         y: 0
-        width: 64
-        height: 64
+        width: 33
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -241,12 +241,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 211
         y: 0
-        width: 64
-        height: 64
+        width: 33
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -262,12 +262,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_4
       rect:
         serializedVersion: 2
-        x: 256
+        x: 275
         y: 0
-        width: 64
-        height: 64
+        width: 33
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -283,12 +283,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_5
       rect:
         serializedVersion: 2
-        x: 320
+        x: 338
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -304,12 +304,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_6
       rect:
         serializedVersion: 2
-        x: 384
+        x: 402
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -325,12 +325,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_7
       rect:
         serializedVersion: 2
-        x: 448
+        x: 467
         y: 0
-        width: 64
-        height: 64
+        width: 31
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -346,12 +346,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_8
       rect:
         serializedVersion: 2
-        x: 512
+        x: 531
         y: 0
-        width: 64
-        height: 64
+        width: 31
+        height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -367,12 +367,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_9
       rect:
         serializedVersion: 2
-        x: 576
+        x: 595
         y: 0
-        width: 64
-        height: 64
+        width: 30
+        height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -388,12 +388,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_10
       rect:
         serializedVersion: 2
-        x: 640
+        x: 659
         y: 0
-        width: 64
-        height: 64
+        width: 30
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -409,12 +409,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_11
       rect:
         serializedVersion: 2
-        x: 704
-        y: 0
-        width: 64
-        height: 64
+        x: 723
+        y: 1
+        width: 30
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -430,12 +430,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_12
       rect:
         serializedVersion: 2
-        x: 768
+        x: 787
         y: 0
-        width: 64
-        height: 64
+        width: 29
+        height: 51
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -451,12 +451,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_13
       rect:
         serializedVersion: 2
-        x: 832
+        x: 851
         y: 0
-        width: 64
-        height: 64
+        width: 30
+        height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -472,12 +472,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_14
       rect:
         serializedVersion: 2
-        x: 896
+        x: 915
         y: 0
-        width: 64
-        height: 64
+        width: 31
+        height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -493,12 +493,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_15
       rect:
         serializedVersion: 2
-        x: 960
+        x: 979
         y: 0
-        width: 64
-        height: 64
+        width: 29
+        height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -514,12 +514,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_16
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 1043
         y: 0
-        width: 64
-        height: 64
+        width: 29
+        height: 51
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -535,12 +535,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_17
       rect:
         serializedVersion: 2
-        x: 1088
+        x: 1107
         y: 0
-        width: 64
-        height: 64
+        width: 29
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -556,12 +556,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_18
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 1171
         y: 0
-        width: 64
-        height: 64
+        width: 28
+        height: 51
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -577,12 +577,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_19
       rect:
         serializedVersion: 2
-        x: 1216
+        x: 1235
         y: 0
-        width: 64
-        height: 64
+        width: 29
+        height: 51
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -598,12 +598,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_20
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 0
-        width: 64
-        height: 64
+        x: 1299
+        y: 1
+        width: 28
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -619,12 +619,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_21
       rect:
         serializedVersion: 2
-        x: 1344
+        x: 1363
         y: 0
-        width: 64
-        height: 64
+        width: 28
+        height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -640,12 +640,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_22
       rect:
         serializedVersion: 2
-        x: 1408
+        x: 1427
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 54
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -661,12 +661,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_23
       rect:
         serializedVersion: 2
-        x: 1472
+        x: 1491
         y: 0
-        width: 64
-        height: 64
+        width: 29
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -682,12 +682,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_24
       rect:
         serializedVersion: 2
-        x: 1536
+        x: 1555
         y: 0
-        width: 64
-        height: 64
+        width: 30
+        height: 51
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -703,12 +703,12 @@ TextureImporter:
       name: Checkpoint (Flag Out) (64x64)_25
       rect:
         serializedVersion: 2
-        x: 1600
+        x: 1619
         y: 0
-        width: 64
-        height: 64
+        width: 28
+        height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
